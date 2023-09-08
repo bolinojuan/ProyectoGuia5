@@ -3,7 +3,7 @@ package guia5.AccesoADatos;
 
 import guia5.Entidades.Alumno;
 import java.sql.*;
-import java.util.List;
+import java.util.*;
 
 public class AlumnoData {
 
