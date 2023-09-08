@@ -5,7 +5,7 @@ import javax.swing.*;
 
 public class MiConexion {
 
-    private static final String URL = "jdbc:mariadb://localhost/";
+    private static final String URL = "jdbc:mysql://localhost/";
     private static final String USER = "root";
     private static final String DB = "universidadEjemplo";
     private static final String PASSWORD = "";
