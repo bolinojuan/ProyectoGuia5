@@ -1,5 +1,5 @@
 
-package persistencia;
+package guia5.AccesoADatos;
 import java.sql.*;
 import javax.swing.*;
 

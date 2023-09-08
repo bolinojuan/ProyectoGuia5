@@ -1,8 +1,8 @@
 
-package persistencia;
+package guia5;
 
 
-public class Persistencia {
+public class Guia5 {
 
     public static void main(String[] args) {
      
