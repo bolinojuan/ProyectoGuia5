@@ -1,32 +1,36 @@
 
 package guia5.Entidades;
 
+import java.sql.Date;
 import java.time.LocalDate;
 
 
 public class Alumno {
 
     public int idAlumno;
+    public int dni;
     private String apellido;
     private String nombre;
-    private LocalDate fecha;
+    private LocalDate fechaNac;
     private boolean activo;
     
     public Alumno(){
     }
 
-    public Alumno(int idAlumno, String apellido, String nombre, LocalDate fecha, boolean activo) {
+    public Alumno(int idAlumno, int dni, String apellido, String nombre, LocalDate fechaNac, boolean activo) {
         this.idAlumno = idAlumno;
+        this.dni=dni;
         this.apellido = apellido;
         this.nombre = nombre;
-        this.fecha = fecha;
+        this.fechaNac= fechaNac;
         this.activo = activo;
     }
 
-    public Alumno(String apellido, String nombre, LocalDate fecha, boolean activo) {
+    public Alumno(int dni,String apellido, String nombre, LocalDate fechaNac, boolean activo) {
+       this.dni=dni;
         this.apellido = apellido;
         this.nombre = nombre;
-        this.fecha = fecha;
+        this.fechaNac = fechaNac;
         this.activo = activo;
     }
 
@@ -38,6 +42,13 @@ public class Alumno {
         this.idAlumno = idAlumno;
     }
 
+    public int getDni(){
+    return this.dni;
+    }
+    
+    public void setDni(int dni){
+    this.dni=dni;
+    }
     public String getApellido() {
         return apellido;
     }
@@ -54,12 +65,12 @@ public class Alumno {
         this.nombre = nombre;
     }
 
-    public LocalDate getFecha() {
-        return fecha;
+    public LocalDate getFechaNac() {
+        return fechaNac;
     }
 
-    public void setFecha(LocalDate fecha) {
-        this.fecha = fecha;
+    public void setFecha(LocalDate fechaNac) {
+        this.fechaNac = fechaNac;
     }
 
     public boolean isActivo() {
