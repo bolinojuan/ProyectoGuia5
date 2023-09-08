@@ -11,6 +11,10 @@ public class MiConexion {
     private static final String PASSWORD = "";
     private static Connection conexion;
     
+    private MiConexion(){
+    
+    }
+    
     public Connection getConexion(){
 
     if(conexion == null){
