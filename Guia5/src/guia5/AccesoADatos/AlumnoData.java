@@ -29,7 +29,7 @@ con = Conexion.getConexion();
     
     //metodos
     public void guardarAlumno(Alumno alumno){
-<<<<<<< Updated upstream
+        
     String insert = "INSERT INTO alumno(dni,apellido,nombre,fechaNacimiento,estado) "
                               + "Values(?,?,?,?,?) ";
                               
@@ -57,9 +57,7 @@ con = Conexion.getConexion();
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null,"Error de conexion " +ex.getMessage());
         }
-=======
-        
->>>>>>> Stashed changes
+
     }
 
     public Alumno buscarAlumno(int id){
@@ -133,8 +131,29 @@ con = Conexion.getConexion();
       }
     
       public List listarAlumno(){
-      return  lista 
-      }
+          ArrayList <Alumno> alu=new ArrayList();
+           String lista="SELECT * FROM alumno WHERE estado=1"; 
+         
+    try{
+        PreparedStatement ps=con.prepareStatement(lista);
+        ResultSet rs=ps.executeQuery();
+        while(rs.next()){
+            Alumno alumno = new Alumno();
+            alumno.setIdAlumno(rs.getInt("idAlumno"));
+            alumno.setDni(rs.getInt("dni"));
+            alumno.setApellido(rs.getString("apellido"));
+            alumno.setNombre(rs.getString("nombre"));
+            alumno.setFecha(rs.getDate("fechaNacimiento").toLocalDate());
+            alumno.setActivo(true);
+            alu.add(alumno);
+        }
+        ps.close();
+    }catch(SQLException ex){
+        JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Materia"+ex.getMessage());
+    }
+    return alu;
+}
+      
 
      public void modificarAlumno(Alumno alumno){
      
