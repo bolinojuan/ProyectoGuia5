@@ -61,7 +61,6 @@ public void actualizarNota(int idAlumno, int idMateria, double nota){
     
 }
 
-//TreeSet Alumno paso una materia y me devuelve la cantidad de alumnos inscriptos en ella
 public List obtenerAlumnosXMateria(){
 return alumno;
 }
