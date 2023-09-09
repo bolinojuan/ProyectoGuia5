@@ -32,6 +32,7 @@ con = Conexion.getConexion();
     
     //metodos
     public void guardarAlumno(Alumno alumno){
+<<<<<<< Updated upstream
     String insert = "INSERT INTO alumno(dni,apellido,nombre,fechaNacimiento,estado) "
                               + "Values(?,?,?,?,?) ";
                               
@@ -59,6 +60,9 @@ con = Conexion.getConexion();
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null,"Error de conexion " +ex.getMessage());
         }
+=======
+        
+>>>>>>> Stashed changes
     }
 
     public Alumno buscarAlumno(int id){
