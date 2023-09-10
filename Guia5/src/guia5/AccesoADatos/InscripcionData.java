@@ -46,7 +46,7 @@ return id;
 
 //TreeSet de materias
 public List obtenerMateriasCursadas(int id){
-    return id;
+    return lista;
 }
 
 public List obtenerMateriasNoCursadas(int id){
@@ -61,7 +61,7 @@ public void actualizarNota(int idAlumno, int idMateria, double nota){
     
 }
 
-public List obtenerAlumnosXMateria(){
-return alumno;
+public List obtenerAlumnosXMateria(int idMateria){
+return lista;
 }
 }
