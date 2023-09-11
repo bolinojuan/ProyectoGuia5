@@ -3,14 +3,8 @@ package guia5.AccesoADatos;
 
 
 import guia5.Entidades.*;
-
-import guia5.Entidades.Inscripcion;
-import guia5.Entidades.Materia;
-
 import java.sql.*;
 import java.util.*;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 
@@ -64,7 +58,52 @@ PreparedStatement ps;
 
 
 public List obtenerInscripcionesPorAlumno(int id){
-    return inscripcion;
+    
+    ArrayList <Inscripcion> inscripcionAlumno = new ArrayList<>();
+    
+    String sql = "SELECT  COUNT(idMateria) FROM inscripcion WHERE idAlumno = ?";
+    
+     Inscripcion ins = new Inscripcion();
+ 
+     AlumnoData AluDat = new AlumnoData();
+     
+     MateriaData MatDat = new MateriaData();
+    
+        try {
+            PreparedStatement ps=con.prepareStatement(sql);
+            ps.setInt(1,id);
+            ResultSet rs = ps.executeQuery();
+            while(rs.next()){    
+                
+             Alumno a = new Alumno();
+            //a.setIdAlumno(rs.getInt("idAlumno"));            
+           
+            //ins.setIdInscripcion(rs.getInt("idMateria"));
+            Materia mat = new Materia();
+            
+            a=AluDat.buscarAlumno(id);
+            
+            mat=MatDat.buscarMateria(rs.getInt("idMateria"));
+            
+            ins.setAlumno(a);
+         
+            ins.setMateria(mat);
+            
+            ins.setIdInscripcion(rs.getInt("idInscripcion"));
+            
+            ins.setNota(rs.getDouble("nota"));
+            
+             inscripcionAlumno.add(ins);
+             
+            
+            }
+            
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null,"Error en la conexion a Base de Datos");
+        }
+    
+    
+    return inscripcionAlumno;
 }
 
 
@@ -118,7 +157,7 @@ public List obtenerMateriasNoCursadas(int id){
 public void borrarInscripcionMateriaAlumno(int idAlumno, int idMateria){
     
     //probar restriccion de integridad referencial   
-    String sql = "DELETE FROM inscripcion JOIN alumno ON(inscripcion.idAlumno = alumno.idAlumno) JOIN materia ON(inscripcion.idMateria = materia.idMmateria) WHERE idAlumno = ? AND idMateria = ?";
+    String sql = "DELETE FROM inscripcion JOIN  idAlumno ON(inscripcion.idAlumno = alumno.idAlumno) JOIN materia ON(inscripcion.idMateria = materia.idMmateria) WHERE idAlumno = ? AND idMateria = ?";
     PreparedStatement  ps= null;    
     try {
           
@@ -130,9 +169,9 @@ public void borrarInscripcionMateriaAlumno(int idAlumno, int idMateria){
                    }
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error en la conexion a la Base De Datos");
-        }
         
-                
+        }
+}       
         
 public void actualizarNota(int idAlumno, int idMateria, double nota){
     String sql="UPDATE inscripcion SET nota=? WHERE idMateria=? AND idAlumno=?";
@@ -154,33 +193,34 @@ public void actualizarNota(int idAlumno, int idMateria, double nota){
 }
 
 public List obtenerAlumnosXMateria(int idMateria){
-    return inscripcion;
+    String sql = "SELECT * FROM  materia JOIN inscripcion ON(materia.idMateria=inscripcion.idMateria) JOIN alumno ON(inscripcion.idAlumno=alumno.idAlumno) WHERE idMateria = ?";
+    
+    ArrayList <Alumno> listado = new ArrayList<>();
+    Alumno alum = new Alumno();
+        try {
+           
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1,idMateria);
+            
+            ResultSet rs  = ps.executeQuery();
+            while(rs.next()){
+            alum.setDni(rs.getInt("dni"));
+            alum.setNombre(rs.getString("nombre"));
+            alum.setApellido(rs.getString("apellido"));
+            alum.setFecha((rs.getDate("fechaNacimiento").toLocalDate()));
+            alum.setActivo(rs.getBoolean("estado"));
+             listado.add(alum);
+             }
+            ps.close();
+           } catch (SQLException ex) {
+           JOptionPane.showMessageDialog(null, "Error en la conexion a Base De Datos");
+        }
+    
+    
+    return listado;
 }
 
 }
-//public List obtenerInscripcionesPorAlumno(int id){
-//return inscripcion;
-//}
-//
-//
-////TreeSet de materias
-//public List obtenerMateriasCursadas(int id){
-//    return lista;
-//}
-//
-//public List obtenerMateriasNoCursadas(int id){
-//return lista;
-//}
-//
-//public void borrarInscripcionMateriaAlumno(int idAlumno, int idMateria){
-//
-//}
-//
-//public void actualizarNota(int idAlumno, int idMateria, double nota){
-//    
-//}
-//
-//public List obtenerAlumnosXMateria(int idMateria){
-//return lista;
-//}
-//}
+
+
+
