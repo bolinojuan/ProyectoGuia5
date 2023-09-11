@@ -55,30 +55,30 @@ PreparedStatement ps;
     return inscripcion;
 }
 
-
-public List obtenerInscripcionesPorAlumno(int id){
-return inscripcion;
 }
-
-
-//TreeSet de materias
-public List obtenerMateriasCursadas(int id){
-    return lista;
-}
-
-public List obtenerMateriasNoCursadas(int id){
-return lista;
-}
-
-public void borrarInscripcionMateriaAlumno(int idAlumno, int idMateria){
-
-}
-
-public void actualizarNota(int idAlumno, int idMateria, double nota){
-    
-}
-
-public List obtenerAlumnosXMateria(int idMateria){
-return lista;
-}
-}
+//public List obtenerInscripcionesPorAlumno(int id){
+//return inscripcion;
+//}
+//
+//
+////TreeSet de materias
+//public List obtenerMateriasCursadas(int id){
+//    return lista;
+//}
+//
+//public List obtenerMateriasNoCursadas(int id){
+//return lista;
+//}
+//
+//public void borrarInscripcionMateriaAlumno(int idAlumno, int idMateria){
+//
+//}
+//
+//public void actualizarNota(int idAlumno, int idMateria, double nota){
+//    
+//}
+//
+//public List obtenerAlumnosXMateria(int idMateria){
+//return lista;
+//}
+//}

@@ -4,7 +4,6 @@ package guia5.AccesoADatos;
 import guia5.Entidades.Materia;
 import java.util.*;
 import java.sql.*;
-import static java.sql.Statement.RETURN_GENERATED_KEYS;
 import javax.swing.JOptionPane;
 
 public class MateriaData {
@@ -17,8 +16,9 @@ public MateriaData(){
 //metodos
 public void guardarMateria(Materia materia){
     String sql="INSERT INTO materia (nombre,anioMateria,activo) VALUES (?,?,?)";
+    PreparedStatement ps;
     try{
-     PreparedStatement ps=con.prepareStatement(sql,Statement.RETURN_GENERATED_KEYS);
+     ps=con.prepareStatement(sql,Statement.RETURN_GENERATED_KEYS);
      ps.setString(1,materia.getNombre());
      ps.setInt(2,materia.getAnioMateria());
      ps.setBoolean(3, materia.isActivo());
@@ -38,7 +38,7 @@ public void guardarMateria(Materia materia){
 public Materia buscarMateria(int id){
     Materia materia=null;
     String sql="SELECT nombre,anioMateria,estado FROM materia WHERE idMateria=? AND estado=1";
-    PreparedStatement ps=null;
+    PreparedStatement ps;
     try{
         ps=con.prepareStatement(sql);
         ps.setInt(1, id);
@@ -61,7 +61,7 @@ public Materia buscarMateria(int id){
 
 public void modificarMateria(Materia materia){
     String sql="UPDATE materia SET nombre=?,anioMatteria=?,estado=? WHERE idMateria=?";
-    PreparedStatement ps=null;
+    PreparedStatement ps;
     try{
         ps=con.prepareStatement(sql);
         ps.setString(1, materia.getNombre());
@@ -97,9 +97,10 @@ public void eliminarMateria(int id){
 
 public List <Materia> listarMaterias(){
     ArrayList <Materia> materias=new ArrayList();
+    PreparedStatement ps;
     try{
         String sql="SELECT * FROM materia WHERE estado=1";
-        PreparedStatement ps=con.prepareStatement(sql);
+       ps=con.prepareStatement(sql);
         ResultSet rs=ps.executeQuery();
         while(rs.next()){
             Materia materia=new Materia();

@@ -20,10 +20,13 @@ public class AlumnoData {
     
      private static ArrayList <Alumno> alu;
     
-    public AlumnoData(){
+    
+     
+     public AlumnoData(){
+    
     alu = new ArrayList<>();
     
-con = Conexion.getConexion();
+    con = Conexion.getConexion();
   
     }
     
