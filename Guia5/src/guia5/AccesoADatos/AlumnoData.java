@@ -18,10 +18,10 @@ public class AlumnoData {
 
     private Connection con=null;
     
-      
+     private static ArrayList <Alumno> alu;
     
     public AlumnoData(){
-    
+    this.alu = new ArrayList<>();
     
 con = Conexion.getConexion();
   
@@ -131,7 +131,7 @@ con = Conexion.getConexion();
       }
     
       public List listarAlumno(){
-          ArrayList <Alumno> alu=new ArrayList();
+          
            String lista="SELECT * FROM alumno WHERE estado=1"; 
          
     try{
