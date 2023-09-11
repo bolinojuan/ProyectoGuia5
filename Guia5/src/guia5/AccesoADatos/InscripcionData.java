@@ -1,7 +1,7 @@
 
 package guia5.AccesoADatos;
 
-import guia5.Entidades.Inscripcion;
+import guia5.Entidades.*;
 import java.sql.*;
 import java.util.*;
 import javax.swing.JOptionPane;
@@ -12,15 +12,18 @@ public class InscripcionData {
     private Connection con;
     private MateriaData matData;
     private AlumnoData aluData;
+    private static ArrayList<Inscripcion> inscripcion;
     
     public InscripcionData(){
+    inscripcion = new ArrayList<>();
     }
 
 //metodos    
 public void guardarInscripcion(Inscripcion insc){
     String sql="INSERT INTO inscripcion (nota,idAlumno,idMateria) VALUES (?,?,?)";
+    PreparedStatement ps;
     try{
-     PreparedStatement ps=con.prepareStatement(sql,Statement.RETURN_GENERATED_KEYS);
+     ps=con.prepareStatement(sql,Statement.RETURN_GENERATED_KEYS);
      ps.setDouble(1,insc.getNota());
      ps.setInt(2,insc.getAlumno().getIdAlumno());
      ps.setInt(3, insc.getMateria().getIdMateria());
@@ -36,11 +39,25 @@ public void guardarInscripcion(Inscripcion insc){
 }
 
 public List obtenerInscripciones(){
+String sql = "SELECT * FROM inscripcion";
+PreparedStatement ps;
+        try {
+            ps = con.prepareStatement(sql);
+            
+            ResultSet rs = ps.executeQuery();
+            if(rs.next()){
+            JOptionPane.showMessageDialog(null," Lista obtenida exitosamente" );
+            }
+        } catch (SQLException ex) {
+        JOptionPane.showMessageDialog(null,"Error en la conexion a Base de Datos "+ex.getMessage());
+        }
 
+    return inscripcion;
 }
 
+
 public List obtenerInscripcionesPorAlumno(int id){
-return id;
+return inscripcion;
 }
 
 
@@ -50,7 +67,7 @@ public List obtenerMateriasCursadas(int id){
 }
 
 public List obtenerMateriasNoCursadas(int id){
-return id;
+return lista;
 }
 
 public void borrarInscripcionMateriaAlumno(int idAlumno, int idMateria){

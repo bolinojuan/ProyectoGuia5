@@ -21,7 +21,7 @@ public class AlumnoData {
      private static ArrayList <Alumno> alu;
     
     public AlumnoData(){
-    this.alu = new ArrayList<>();
+    alu = new ArrayList<>();
     
 con = Conexion.getConexion();
   
