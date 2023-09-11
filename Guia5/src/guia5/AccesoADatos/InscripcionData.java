@@ -2,6 +2,7 @@
 package guia5.AccesoADatos;
 
 import guia5.Entidades.Inscripcion;
+import guia5.Entidades.Materia;
 import java.sql.*;
 import java.util.*;
 import javax.swing.JOptionPane;
@@ -36,32 +37,85 @@ public void guardarInscripcion(Inscripcion insc){
 }
 
 public List obtenerInscripciones(){
-
+    
 }
 
 public List obtenerInscripcionesPorAlumno(int id){
-return id;
+    return id;
 }
 
 
 //TreeSet de materias
 public List obtenerMateriasCursadas(int id){
-    return lista;
+    ArrayList <Materia> materias=new ArrayList();
+    try{
+        String sql="SELECT inscripcion.idMateria,nombre,año FROM inscripcion JOIN materia ON (inscripcion.idMateria=materia.idMateria) WHERE inscripcion.idAlumno=?";
+        PreparedStatement ps=con.prepareStatement(sql);
+        ps.setInt(1, id);
+        ResultSet rs=ps.executeQuery();
+        Materia materia;
+        while(rs.next()){
+            materia=new Materia();
+            materia.setIdMateria(rs.getInt("idMateria"));
+            materia.setNombre(rs.getString("nombre"));
+            materia.setAnioMateria(rs.getInt("anioMateria"));
+            materia.setActivo(rs.getBoolean("estado"));
+            materias.add(materia);
+        }
+        ps.close();
+    }catch(SQLException ex){
+        JOptionPane.showMessageDialog(null, "Error al obtener inscripciones"+ex.getMessage());
+    }
+    return materias;
 }
 
 public List obtenerMateriasNoCursadas(int id){
-return id;
+    ArrayList <Materia> materias=new ArrayList();
+    try{
+        String sql="SELECT inscripcion.idMateria,nombre,año FROM inscripcion JOIN materia ON (inscripcion.idMateria=materia.idMateria) WHERE inscripcion.idAlumno NOT ?";
+        PreparedStatement ps=con.prepareStatement(sql);
+        ps.setInt(1, id);
+        ResultSet rs=ps.executeQuery();
+        Materia materia;
+        while(rs.next()){
+            materia=new Materia();
+            materia.setIdMateria(rs.getInt("idMateria"));
+            materia.setNombre(rs.getString("nombre"));
+            materia.setAnioMateria(rs.getInt("anioMateria"));
+            materia.setActivo(rs.getBoolean("estado"));
+            materias.add(materia);
+        }
+        ps.close();
+    }catch(SQLException ex){
+        JOptionPane.showMessageDialog(null, "Error al obtener inscripciones"+ex.getMessage());
+    }
+    return materias;
 }
 
 public void borrarInscripcionMateriaAlumno(int idAlumno, int idMateria){
-
-}
-
-public void actualizarNota(int idAlumno, int idMateria, double nota){
     
 }
 
+public void actualizarNota(int idAlumno, int idMateria, double nota){
+    String sql="UPDATE inscripcion SET nota=? WHERE idMateria=? AND idAlumno=?";
+    PreparedStatement ps=null;
+    try{
+        ps=con.prepareStatement(sql);
+        ps.setDouble(1, nota);
+        ps.setInt(2, idMateria);
+        ps.setInt(3, idAlumno);
+        int exito=ps.executeUpdate();
+        if(exito==1){
+            JOptionPane.showMessageDialog(null, "Inscripción modificada exitosamente");
+        }else{
+            JOptionPane.showMessageDialog(null, "La inscripción no existe");
+        }
+    }catch(SQLException ex){
+        JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Materia"+ex.getMessage());
+    }
+}
+
 public List obtenerAlumnosXMateria(int idMateria){
-return lista;
+    return lista;
 }
 }
