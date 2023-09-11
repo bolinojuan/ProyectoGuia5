@@ -9,6 +9,8 @@ import guia5.Entidades.Materia;
 
 import java.sql.*;
 import java.util.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 
@@ -115,8 +117,23 @@ public List obtenerMateriasNoCursadas(int id){
 
 public void borrarInscripcionMateriaAlumno(int idAlumno, int idMateria){
     
-}
-
+    //probar restriccion de integridad referencial   
+    String sql = "DELETE FROM inscripcion JOIN alumno ON(inscripcion.idAlumno = alumno.idAlumno) JOIN materia ON(inscripcion.idMateria = materia.idMmateria) WHERE idAlumno = ? AND idMateria = ?";
+    PreparedStatement  ps= null;    
+    try {
+          
+             ps = con.prepareStatement(sql);
+            ps.setInt(idMateria, idAlumno);
+             int borrado = ps.executeUpdate();
+             if(borrado ==1){
+                 JOptionPane.showMessageDialog(null,"Inscripcion eliminada");
+                   }
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error en la conexion a la Base De Datos");
+        }
+        
+                
+        
 public void actualizarNota(int idAlumno, int idMateria, double nota){
     String sql="UPDATE inscripcion SET nota=? WHERE idMateria=? AND idAlumno=?";
     PreparedStatement ps=null;
