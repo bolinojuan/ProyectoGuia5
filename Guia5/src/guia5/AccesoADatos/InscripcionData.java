@@ -1,12 +1,12 @@
 
 package guia5.AccesoADatos;
 
-<<<<<<< HEAD
+
 import guia5.Entidades.*;
-=======
+
 import guia5.Entidades.Inscripcion;
 import guia5.Entidades.Materia;
->>>>>>> cde18edbee1c911a2bd8110424266736eb8d4c23
+
 import java.sql.*;
 import java.util.*;
 import javax.swing.JOptionPane;
@@ -44,7 +44,6 @@ public void guardarInscripcion(Inscripcion insc){
 }
 
 public List obtenerInscripciones(){
-<<<<<<< HEAD
 String sql = "SELECT * FROM inscripcion";
 PreparedStatement ps;
         try {
@@ -61,12 +60,9 @@ PreparedStatement ps;
     return inscripcion;
 }
 
-=======
-    
-}
 
 public List obtenerInscripcionesPorAlumno(int id){
-    return id;
+    return inscripcion;
 }
 
 
@@ -141,9 +137,9 @@ public void actualizarNota(int idAlumno, int idMateria, double nota){
 }
 
 public List obtenerAlumnosXMateria(int idMateria){
-    return lista;
+    return inscripcion;
 }
->>>>>>> cde18edbee1c911a2bd8110424266736eb8d4c23
+
 }
 //public List obtenerInscripcionesPorAlumno(int id){
 //return inscripcion;
