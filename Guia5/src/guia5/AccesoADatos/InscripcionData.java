@@ -57,54 +57,52 @@ PreparedStatement ps;
 }
 
 
-public List obtenerInscripcionesPorAlumno(int id){
-    
-    ArrayList <Inscripcion> inscripcionAlumno = new ArrayList<>();
-    
-    String sql = "SELECT  COUNT(idMateria) FROM inscripcion WHERE idAlumno = ?";
-    
-     Inscripcion ins = new Inscripcion();
- 
-     AlumnoData AluDat = new AlumnoData();
-     
-     MateriaData MatDat = new MateriaData();
-    
+    public List obtenerInscripcionesPorAlumno(int id) {
+
+        ArrayList<Inscripcion> inscripcionAlumno = new ArrayList<>();
+
+        String sql = "SELECT  COUNT(idMateria) FROM inscripcion WHERE idAlumno = ?";
+
+        Inscripcion ins = new Inscripcion();
+
+        AlumnoData AluDat = new AlumnoData();
+
+        MateriaData MatDat = new MateriaData();
+
         try {
-            PreparedStatement ps=con.prepareStatement(sql);
-            ps.setInt(1,id);
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, id);
             ResultSet rs = ps.executeQuery();
-            while(rs.next()){    
-                
-             Alumno a = new Alumno();
-            //a.setIdAlumno(rs.getInt("idAlumno"));            
-           
-            //ins.setIdInscripcion(rs.getInt("idMateria"));
-            Materia mat = new Materia();
-            
-            a=AluDat.buscarAlumno(id);
-            
-            mat=MatDat.buscarMateria(rs.getInt("idMateria"));
-            
-            ins.setAlumno(a);
-         
-            ins.setMateria(mat);
-            
-            ins.setIdInscripcion(rs.getInt("idInscripcion"));
-            
-            ins.setNota(rs.getDouble("nota"));
-            
-             inscripcionAlumno.add(ins);
-             
-            
+            while (rs.next()) {
+
+                Alumno a;//*= new Alumno();
+                //a.setIdAlumno(rs.getInt("idAlumno"));            
+
+                //ins.setIdInscripcion(rs.getInt("idMateria"));
+                Materia mat;//= new Materia();
+
+                a = AluDat.buscarAlumno(id);
+
+                mat = MatDat.buscarMateria(rs.getInt("idMateria"));
+
+                ins.setAlumno(a);
+
+                ins.setMateria(mat);
+
+                ins.setIdInscripcion(rs.getInt("idInscripcion"));
+
+                ins.setNota(rs.getDouble("nota"));
+
+                inscripcionAlumno.add(ins);
+
             }
-            
+
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null,"Error en la conexion a Base de Datos");
+            JOptionPane.showMessageDialog(null, "Error en la conexion a Base de Datos");
         }
-    
-    
-    return inscripcionAlumno;
-}
+
+        return inscripcionAlumno;
+    }
 
 
 //TreeSet de materias

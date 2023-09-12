@@ -1,6 +1,5 @@
 
 package guia5.AccesoADatos;
-
 import guia5.Entidades.Alumno;
 import java.sql.Connection;
 import java.sql.Date;
@@ -18,7 +17,7 @@ public class AlumnoData {
 
     private Connection con=null;
     
-     private static ArrayList <Alumno> alu;
+     public static ArrayList <Alumno> alu;
     
     
      
