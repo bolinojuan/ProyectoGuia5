@@ -90,7 +90,7 @@ public class AlumnoData {
              ps.close();
             }
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null,"Error en la conexion a BD "+ ex.getMessage());
+            JOptionPane.showMessageDialog(null,"Error en la conexion a BD Alumno "+ ex.getMessage());
         }
         
         

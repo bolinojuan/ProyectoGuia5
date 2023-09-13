@@ -5,9 +5,9 @@ import javax.swing.*;
 
 public class Conexion {
 
-    private static final String URL = "jdbc:mysql://localhost/";
+    private static final String URL = "jdbc:mariadb://localhost/";
     private static final String USER = "root";
-    private static final String DB = "universidadEjemplo";
+    private static final String DB = "obrador";
     private static final String PASSWORD = "";
     private static Connection con;
     
@@ -22,15 +22,15 @@ public class Conexion {
         try {
             Class.forName("org.mariadb.jdbc.Driver");
             
-            con= DriverManager.getConnection(URL+DB+" ?useLegacyDatetimeCode=false&serverTimezone=UTC"+"&user="+ USER + "&password="+PASSWORD);
-            
+          //  con= DriverManager.getConnection(URL+DB+" ?useLegacyDatetimeCode=false&serverTimezone=UTC"+"&user="+ USER + "&password="+PASSWORD);
+            con =DriverManager.getConnection(URL, USER, PASSWORD);
         } catch (ClassNotFoundException ex) {
 
             JOptionPane.showMessageDialog(null, "Error al cargar el driver  "+ ex.getMessage());
       
         }catch(SQLException ex){
      
-            JOptionPane.showMessageDialog(null,"Error de conexion a la BD " +ex.getMessage());
+            JOptionPane.showMessageDialog(null,"Error de conexion a SQL " +ex.getMessage());
         }
     }
     return con;

@@ -15,7 +15,7 @@ import javax.swing.JOptionPane;
  * @author dev0
  */
 public class FormularioAlumno extends javax.swing.JInternalFrame {
-
+private LocalDate fecha;
     private AlumnoData aldat;
     /**
      * Creates new form FormularioAlumno
@@ -99,10 +99,25 @@ public class FormularioAlumno extends javax.swing.JInternalFrame {
         });
 
         jBEliminar.setText("Eliminar");
+        jBEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBEliminarActionPerformed(evt);
+            }
+        });
 
         jBGuardar.setText("Guardar");
+        jBGuardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBGuardarActionPerformed(evt);
+            }
+        });
 
         jBSalir.setText("Salir");
+        jBSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBSalirActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -219,19 +234,58 @@ public class FormularioAlumno extends javax.swing.JInternalFrame {
        alum.setApellido(jTApellido.getText());
        alum.setNombre(jTNombre.getText());
        alum.setActivo(jREstado.isSelected());
-       alum.setFecha(locdat);
+       alum.setFecha(fecha);
        
         aldat.guardarAlumno(alum);
+        borrarCampos();
+        
+    
        
       
       
     }//GEN-LAST:event_jBNuevoActionPerformed
 
+        public void borrarCampos(){
+        if(!jTApellido.getText().isEmpty() && !jTDni.getText().isEmpty() && !jTApellido.getText().isEmpty()){
+            jTApellido= null;
+            jTDni = null;
+            jTNombre = null;
+        }
+        }
+    
     private void jDCFechaNacPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_jDCFechaNacPropertyChange
         if(jDCFechaNac.getDate()!=null){
-        LocalDate  locdat = jDCFechaNac.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+        fecha= jDCFechaNac.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
         }
     }//GEN-LAST:event_jDCFechaNacPropertyChange
+
+    private void jBEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBEliminarActionPerformed
+       int dni  = Integer.parseInt(jTDni.getText());
+        aldat.eliminarAlumno(dni);
+    }//GEN-LAST:event_jBEliminarActionPerformed
+
+    private void jBGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBGuardarActionPerformed
+        if(jTApellido.getText().isEmpty() || jTDni.getText().isEmpty() || jTApellido.getText().isEmpty()){
+           JOptionPane.showMessageDialog(null, "Debe completar todos los campos");
+       }
+    
+       Alumno alum = new Alumno();
+       LocalDate  locdat = jDCFechaNac.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+       
+       int dni = Integer.parseInt(jTDni.getText());
+       alum.setDni(dni);
+       alum.setApellido(jTApellido.getText());
+       alum.setNombre(jTNombre.getText());
+       alum.setActivo(jREstado.isSelected());
+       alum.setFecha(fecha);
+       
+        aldat.modificarAlumno(alum);
+    }//GEN-LAST:event_jBGuardarActionPerformed
+
+    private void jBSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBSalirActionPerformed
+       JOptionPane.showMessageDialog(null,"Confirme si desea salir al menu principal");
+        System.exit(0);
+    }//GEN-LAST:event_jBSalirActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
