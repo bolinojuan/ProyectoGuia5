@@ -45,23 +45,25 @@ public class AlumnoData {
             ps.setBoolean(5,alumno.isActivo());
             
             ps.executeUpdate();
+            
            
             ResultSet rs= ps.getGeneratedKeys();
             
             if(rs.next()){
                 
                  alumno.setDni(rs.getInt(1));
-            JOptionPane.showMessageDialog(null,"Alumno agregado exitosamente");
             }
             
          
+                 JOptionPane.showMessageDialog(null,"Alumno agregado exitosamente");
             
         } catch (SQLException ex) {
+     
             JOptionPane.showMessageDialog(null,"Error de conexion " +ex.getMessage());
         }
 
+    
     }
-
     public Alumno buscarAlumno(int id){
     
         String select = "SELECT dni, apellido, nombre, fechaNacimiento FROM alumno WHERE idAlumno = ? AND estado =1";

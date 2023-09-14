@@ -71,10 +71,25 @@ private MateriaData matdat;
         });
 
         jBEliminar.setText("Eliminar");
+        jBEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBEliminarActionPerformed(evt);
+            }
+        });
 
         jGuardar.setText("Guardar");
+        jGuardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jGuardarActionPerformed(evt);
+            }
+        });
 
         jBSalir.setText("Salir");
+        jBSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBSalirActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -149,16 +164,17 @@ private MateriaData matdat;
     }// </editor-fold>//GEN-END:initComponents
 
     private void jBBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBBuscarActionPerformed
-        MateriaData md = new MateriaData();
+        
         
        
         int cod = Integer.parseInt(jTCodigo.getText());
         
-        int anio = Integer.parseInt(jTAnio.getText());
-        md.buscarMateria(cod);
-        mat.setNombre(jTNombre.getText());
-        mat.setAnioMateria(anio);
-       mat.setActivo(jREstado.isSelected());
+       // int anio = Integer.parseInt(jTAnio.getText());
+        mat =matdat.buscarMateria(cod);
+//        mat.setNombre(jTNombre.getText());
+//        mat.setAnioMateria(anio);
+//       mat.setActivo(jREstado.isSelected());
+      
         
     }//GEN-LAST:event_jBBuscarActionPerformed
 
@@ -166,11 +182,52 @@ private MateriaData matdat;
        if(jTAnio.getText().isEmpty() || jTCodigo.getText().isEmpty()  || jTNombre.getText().isEmpty()){
        JOptionPane.showMessageDialog(null, "Debe completar todos los campos");
        
-        matdat.guardarMateria(mat);
+       }
+      
+       int anio = Integer.parseInt(jTAnio.getText());
+       int codigo = Integer.parseInt(jTCodigo.getText());
+       if(codigo==mat.getIdMateria()){
+       JOptionPane.showMessageDialog(null, "El alumno ya existe");
+       }else{
+       mat.setIdMateria(codigo);
+       mat.setNombre(jTNombre.getText());
+       mat.setAnioMateria(anio);
+       mat.setActivo(jREstado.isSelected());         
+       matdat.guardarMateria(mat);
         borrarCampos();
         
-       }
+       
     }//GEN-LAST:event_jBNuevoActionPerformed
+    }
+    
+    private void jGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jGuardarActionPerformed
+       if(jTCodigo.getText().isEmpty()||jTNombre.getText().isEmpty()|| jTAnio.getText().isEmpty()){
+        JOptionPane.showMessageDialog(null,"Debe completar todos los campos");    
+       }   
+                               
+        int codigo = Integer.parseInt(jTCodigo.getText());
+        
+        int anio = Integer.parseInt(jTAnio.getText());
+        
+        mat.setIdMateria(codigo);
+        mat.setNombre(jTNombre.getText());
+        mat.setAnioMateria(anio);
+        mat.setActivo(jREstado.isSelected());
+        
+       matdat.modificarMateria(mat);
+        
+    }//GEN-LAST:event_jGuardarActionPerformed
+
+    private void jBEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBEliminarActionPerformed
+       int cod  = Integer.parseInt(jTCodigo.getText());
+       matdat.eliminarMateria(cod);
+       
+    }//GEN-LAST:event_jBEliminarActionPerformed
+
+    private void jBSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBSalirActionPerformed
+        JOptionPane.showMessageDialog(null,"Desea salir al menu principal?");
+        System.exit(0);
+    }//GEN-LAST:event_jBSalirActionPerformed
 
 
     private void borrarCampos(){
@@ -180,6 +237,8 @@ private MateriaData matdat;
     jTNombre = null;
     }
     }
+    
+    
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBBuscar;

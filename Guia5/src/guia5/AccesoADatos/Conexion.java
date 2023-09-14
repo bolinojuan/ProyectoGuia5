@@ -5,9 +5,9 @@ import javax.swing.*;
 
 public class Conexion {
 
-    private static final String URL = "jdbc:mariadb://localhost/";
+    private static final String URL = "jdbc:mariadb://localhost/universidadEjemplo";
     private static final String USER = "root";
-    private static final String DB = "obrador";
+    //private static final String DB = "";
     private static final String PASSWORD = "";
     private static Connection con;
     

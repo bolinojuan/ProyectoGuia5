@@ -15,10 +15,10 @@ public MateriaData(){
 
 //metodos
 public void guardarMateria(Materia materia){
-    String sql="INSERT INTO materia (nombre,anioMateria,activo) VALUES (?,?,?)";
-    PreparedStatement ps;
+    String sql="INSERT INTO materia (nombre,año,estado) VALUES (?,?,?)";
+    
     try{
-     ps=con.prepareStatement(sql,Statement.RETURN_GENERATED_KEYS);
+     PreparedStatement ps=con.prepareStatement(sql,Statement.RETURN_GENERATED_KEYS);
      ps.setString(1,materia.getNombre());
      ps.setInt(2,materia.getAnioMateria());
      ps.setBoolean(3, materia.isActivo());
@@ -37,17 +37,16 @@ public void guardarMateria(Materia materia){
 
 public Materia buscarMateria(int id){
     Materia materia=null;
-    String sql="SELECT nombre,anioMateria,estado FROM materia WHERE idMateria=? AND estado=1";
-    PreparedStatement ps;
+    String sql="SELECT nombre,año,estado FROM materia WHERE idMateria=? AND estado=1";
     try{
-        ps=con.prepareStatement(sql);
+       PreparedStatement  ps=con.prepareStatement(sql);
         ps.setInt(1, id);
         ResultSet rs=ps.executeQuery();
         if(rs.next()){
             materia=new Materia();
             materia.setIdMateria(id);
             materia.setNombre(rs.getString("nombre"));
-            materia.setAnioMateria(rs.getInt("anioMateria"));
+            materia.setAnioMateria(rs.getInt("año"));
             materia.setActivo(rs.getBoolean("estado"));
         }else{
             JOptionPane.showMessageDialog(null, "La materia no existe");
@@ -60,10 +59,10 @@ public Materia buscarMateria(int id){
 }
 
 public void modificarMateria(Materia materia){
-    String sql="UPDATE materia SET nombre=?,anioMatteria=?,estado=? WHERE idMateria=?";
-    PreparedStatement ps;
+    String sql="UPDATE materia SET nombre=?,año=?,estado=? WHERE idMateria=?";
+     
     try{
-        ps=con.prepareStatement(sql);
+       PreparedStatement ps=con.prepareStatement(sql);
         ps.setString(1, materia.getNombre());
         ps.setInt(2, materia.getAnioMateria());
         ps.setBoolean(3, materia.isActivo());
@@ -97,16 +96,16 @@ public void eliminarMateria(int id){
 
 public List <Materia> listarMaterias(){
     ArrayList <Materia> materias=new ArrayList();
-    PreparedStatement ps;
+    
     try{
         String sql="SELECT * FROM materia WHERE estado=1";
-       ps=con.prepareStatement(sql);
+       PreparedStatement ps=con.prepareStatement(sql);
         ResultSet rs=ps.executeQuery();
         while(rs.next()){
             Materia materia=new Materia();
             materia.setIdMateria(rs.getInt("idMateria"));
             materia.setNombre(rs.getString("nombre"));
-            materia.setAnioMateria(rs.getInt("anioMateria"));
+            materia.setAnioMateria(rs.getInt("año"));
             materia.setActivo(rs.getBoolean("estado"));
             materias.add(materia);
         }

@@ -227,7 +227,6 @@ private LocalDate fecha;
        }
     
        Alumno alum = new Alumno();
-       LocalDate  locdat = jDCFechaNac.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
        
        int dni = Integer.parseInt(jTDni.getText());
        alum.setDni(dni);
@@ -270,7 +269,7 @@ private LocalDate fecha;
        }
     
        Alumno alum = new Alumno();
-       LocalDate  locdat = jDCFechaNac.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+       
        
        int dni = Integer.parseInt(jTDni.getText());
        alum.setDni(dni);

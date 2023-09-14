@@ -60,11 +60,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jMenuBar1.add(jMAlumno);
 
         jMMateria.setText("Materia");
-        jMMateria.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMMateriaActionPerformed(evt);
-            }
-        });
 
         jMFormularioMateria.setText("Formulario de Materia");
         jMFormularioMateria.addActionListener(new java.awt.event.ActionListener() {
@@ -132,12 +127,13 @@ public class MenuPrincipal extends javax.swing.JFrame {
     escritorio.moveToFront(f);
     }//GEN-LAST:event_jMFormAlumnoActionPerformed
 
-    private void jMMateriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMMateriaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jMMateriaActionPerformed
-
     private void jMFormularioMateriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMFormularioMateriaActionPerformed
-        
+      escritorio.removeAll();
+      escritorio.repaint();
+      FormularioMaterias f = new FormularioMaterias();
+      f.setVisible(true);
+      escritorio.add(f);
+      escritorio.moveToFront(f);
     }//GEN-LAST:event_jMFormularioMateriaActionPerformed
 
     /**
