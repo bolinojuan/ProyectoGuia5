@@ -64,28 +64,26 @@ PreparedStatement ps;
 
         String sql = "SELECT  idInscripcion,idAlumno,idMateria,nota FROM inscripcion JOIN alumno ON (inscripcion.idAlumno=alumno.idAlumno) WHERE idAlumno = ?";
 
-        Inscripcion ins = new Inscripcion();
-
-        AlumnoData AluDat = new AlumnoData();
-
-        MateriaData MatDat = new MateriaData();
+        
 
         try {
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setInt(1, id);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
+                Inscripcion ins = new Inscripcion();
 
-                Alumno a;//*= new Alumno();
-                //a.setIdAlumno(rs.getInt("idAlumno"));            
+                AlumnoData AluDat = new AlumnoData();
 
-                //ins.setIdInscripcion(rs.getInt("idMateria"));
-                Materia mat;//= new Materia();
+                MateriaData MatDat = new MateriaData();
 
-                a = AluDat.buscarAlumno(id);
-
-                mat = MatDat.buscarMateria(rs.getInt("idMateria"));
-
+                Alumno a;
+                a=AluDat.buscarAlumno(rs.getInt("idAlumno"));
+                            
+                
+                Materia mat;
+                mat=MatDat.buscarMateria(rs.getInt("idMateria"));
+                
                 ins.setAlumno(a);
 
                 ins.setMateria(mat);
