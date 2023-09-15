@@ -8,9 +8,10 @@ import javax.swing.JOptionPane;
 
 public class MateriaData {
 
-    private Connection con;
+    private Connection con=null;
 
 public MateriaData(){
+    con=Conexion.getConexion();
 }
 
 //metodos
@@ -22,6 +23,7 @@ public void guardarMateria(Materia materia){
      ps.setString(1,materia.getNombre());
      ps.setInt(2,materia.getAnioMateria());
      ps.setBoolean(3, materia.isActivo());
+     ps.executeUpdate();
      ResultSet rs=ps.getGeneratedKeys();
      if(rs.next()){
          materia.setIdMateria(rs.getInt("idMateria"));

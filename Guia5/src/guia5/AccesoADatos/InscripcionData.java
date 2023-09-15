@@ -10,13 +10,14 @@ import javax.swing.JOptionPane;
 
 public class InscripcionData {
 
-    private Connection con;
+    private Connection con=null;
     private MateriaData matData;
     private AlumnoData aluData;
     private static ArrayList<Inscripcion> inscripcion;
     
     public InscripcionData(){
-    inscripcion = new ArrayList<>();
+        con=Conexion.getConexion();
+        inscripcion = new ArrayList<>();
     }
 
 //metodos    
@@ -61,7 +62,7 @@ PreparedStatement ps;
 
         ArrayList<Inscripcion> inscripcionAlumno = new ArrayList<>();
 
-        String sql = "SELECT  COUNT(idMateria) FROM inscripcion WHERE idAlumno = ?";
+        String sql = "SELECT  idInscripcion,idAlumno,idMateria,nota FROM inscripcion JOIN alumno ON (inscripcion.idAlumno=alumno.idAlumno) WHERE idAlumno = ?";
 
         Inscripcion ins = new Inscripcion();
 
