@@ -208,10 +208,10 @@ private LocalDate fecha;
     }//GEN-LAST:event_jTApellidoActionPerformed
 
     private void jBBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBBuscarActionPerformed
-        Alumno alu ;
+        Alumno alu = new Alumno();
         
         int dni = Integer.parseInt(jTDni.getText());
-        alu = aldat.buscarAlumno(dni);
+        aldat.buscarAlumno(dni);
         jTNombre.setText(alu.getNombre());
         jTApellido.setText(alu.getApellido());
        
@@ -246,9 +246,13 @@ private LocalDate fecha;
 
         public void borrarCampos(){
         if(!jTApellido.getText().isEmpty() && !jTDni.getText().isEmpty() && !jTApellido.getText().isEmpty()){
-            jTApellido= null;
-            jTDni = null;
-            jTNombre = null;
+            jTApellido.setText(null);
+            jTDni .setText(null);
+            jTNombre.setText(null);
+            jREstado.setSelected(false);
+            jDCFechaNac.setDate(null);
+            
+           
         }
         }
     

@@ -52,6 +52,7 @@ public class AlumnoData {
             if(rs.next()){
                 
                  alumno.setDni(rs.getInt(1));
+                 
             }
             
          
@@ -75,7 +76,7 @@ public class AlumnoData {
             
             ps.setInt(1, id);
             ResultSet rs = ps.executeQuery();
-        
+            
             if(rs.next()){
                 
                 alumno = new Alumno();
@@ -86,6 +87,8 @@ public class AlumnoData {
                 alumno.setNombre(rs.getString("nombre"));
                 alumno.setFecha(rs.getDate("fechaNacimiento").toLocalDate());
                 alumno.setActivo(true);
+          
+            
             }else{
                 
              JOptionPane.showMessageDialog(null,"Alumno no encontrado");
@@ -194,6 +197,7 @@ public class AlumnoData {
                ps.setInt(1, id);
                
                int resultado = ps.executeUpdate();
+               
                
                if(resultado ==1){
                 JOptionPane.showMessageDialog(null, "Alumno eliminado exitosamente");

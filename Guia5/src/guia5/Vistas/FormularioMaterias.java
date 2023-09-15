@@ -168,14 +168,16 @@ private MateriaData matdat;
         
        
         int cod = Integer.parseInt(jTCodigo.getText());
-        
+      
        // int anio = Integer.parseInt(jTAnio.getText());
         mat =matdat.buscarMateria(cod);
+   
+       
 //        mat.setNombre(jTNombre.getText());
 //        mat.setAnioMateria(anio);
 //       mat.setActivo(jREstado.isSelected());
       
-        
+    
     }//GEN-LAST:event_jBBuscarActionPerformed
 
     private void jBNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBNuevoActionPerformed
@@ -185,20 +187,17 @@ private MateriaData matdat;
        }
       
        int anio = Integer.parseInt(jTAnio.getText());
-       int codigo = Integer.parseInt(jTCodigo.getText());
-       if(codigo==mat.getIdMateria()){
-       JOptionPane.showMessageDialog(null, "El alumno ya existe");
-       }else{
+       int codigo = Integer.parseInt(jTCodigo.getText());       
        mat.setIdMateria(codigo);
        mat.setNombre(jTNombre.getText());
        mat.setAnioMateria(anio);
        mat.setActivo(jREstado.isSelected());         
        matdat.guardarMateria(mat);
-        borrarCampos();
+       borrarCampos();
         
        
     }//GEN-LAST:event_jBNuevoActionPerformed
-    }
+    
     
     private void jGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jGuardarActionPerformed
        if(jTCodigo.getText().isEmpty()||jTNombre.getText().isEmpty()|| jTAnio.getText().isEmpty()){
@@ -215,6 +214,7 @@ private MateriaData matdat;
         mat.setActivo(jREstado.isSelected());
         
        matdat.modificarMateria(mat);
+       borrarCampos();
         
     }//GEN-LAST:event_jGuardarActionPerformed
 
@@ -230,14 +230,16 @@ private MateriaData matdat;
     }//GEN-LAST:event_jBSalirActionPerformed
 
 
-    private void borrarCampos(){
-    if(jTAnio !=null &&  jTCodigo!=null && jTNombre!=null){
-    jTAnio = null;
-    jTCodigo = null;
-    jTNombre = null;
-    }
-    }
+    public void borrarCampos(){
+    if(!jTAnio.getText().isEmpty() && !jTCodigo.getText().isEmpty() && !jTNombre.getText().isEmpty()){
+    jTAnio.setText(null);
+    jTCodigo.setText(null);
+    jTNombre.setText(null);
+    jREstado.setText(null);
     
+    
+    }
+    }
     
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
