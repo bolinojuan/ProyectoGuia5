@@ -14,14 +14,14 @@ import javax.swing.JOptionPane;
  * @author dev0
  */
 public class FormularioMaterias extends javax.swing.JInternalFrame {
-private Materia mat;
+//public Materia mat;
 private MateriaData matdat;
     /**
      * Creates new form FormularioMaterias
      */
     public FormularioMaterias() {
         initComponents();
-        mat = new Materia();
+        //mat = new Materia();
         matdat = new MateriaData();
     }
 
@@ -166,44 +166,43 @@ private MateriaData matdat;
     private void jBBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBBuscarActionPerformed
         
         
-       
+       Materia mat;
         int cod = Integer.parseInt(jTCodigo.getText());
       
-       // int anio = Integer.parseInt(jTAnio.getText());
         mat =matdat.buscarMateria(cod);
-   
-       
-//        mat.setNombre(jTNombre.getText());
-//        mat.setAnioMateria(anio);
-//       mat.setActivo(jREstado.isSelected());
-      
+        if(mat==null){
+            borrarCampos();
+        }else{
+        jTNombre.setText(mat.getNombre());
+        jTAnio.setText(mat.getAnioMateria()+"");
+        }
     
     }//GEN-LAST:event_jBBuscarActionPerformed
 
     private void jBNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBNuevoActionPerformed
        if(jTAnio.getText().isEmpty() || jTCodigo.getText().isEmpty()  || jTNombre.getText().isEmpty()){
        JOptionPane.showMessageDialog(null, "Debe completar todos los campos");
-       
+       return;
        }
-      
+      Materia mat=new Materia();
        int anio = Integer.parseInt(jTAnio.getText());
-       int codigo = Integer.parseInt(jTCodigo.getText());       
-       mat.setIdMateria(codigo);
+       //int codigo = Integer.parseInt(jTCodigo.getText());       
+       //mat.setIdMateria(codigo);
        mat.setNombre(jTNombre.getText());
        mat.setAnioMateria(anio);
        mat.setActivo(jREstado.isSelected());         
        matdat.guardarMateria(mat);
        borrarCampos();
-        
        
     }//GEN-LAST:event_jBNuevoActionPerformed
     
     
     private void jGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jGuardarActionPerformed
        if(jTCodigo.getText().isEmpty()||jTNombre.getText().isEmpty()|| jTAnio.getText().isEmpty()){
-        JOptionPane.showMessageDialog(null,"Debe completar todos los campos");    
-       }   
-                               
+        JOptionPane.showMessageDialog(null,"Debe completar todos los campos");
+        return;
+       }
+        Materia mat=new Materia();                       
         int codigo = Integer.parseInt(jTCodigo.getText());
         
         int anio = Integer.parseInt(jTAnio.getText());
@@ -237,11 +236,11 @@ private MateriaData matdat;
     jTNombre.setText(null);
     jREstado.setText(null);
     
-    
-    }
     }
     
+    }
     
+       
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBBuscar;
     private javax.swing.JButton jBEliminar;
