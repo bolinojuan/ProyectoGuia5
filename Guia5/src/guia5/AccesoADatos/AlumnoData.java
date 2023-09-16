@@ -117,14 +117,15 @@ public class AlumnoData {
             ps.setInt(1, dni);
             
             if(resultado.next()){
-        
+                
             alumno = new Alumno();
             alumno.setDni(dni);
+            alumno.setIdAlumno(resultado.getInt("idAlumno"));  
             alumno.setNombre(resultado.getString("nombre"));            
             alumno.setApellido(resultado.getString("apellido"));
             alumno.setFecha(resultado.getDate("fechaNacimiento").toLocalDate());
             alumno.setActivo(true);
-            alumno.setIdAlumno(resultado.getInt("idAlumno"));
+            
            
             JOptionPane.showMessageDialog(null,"Alumno encontrado satisfactoriamente");
             }else{

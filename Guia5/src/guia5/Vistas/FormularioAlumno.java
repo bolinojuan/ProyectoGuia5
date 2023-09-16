@@ -224,7 +224,7 @@ private AlumnoData aldat;
         jTApellido.setText(alu.getApellido());
         jREstado.setSelected(alu.isActivo());
         jDCFechaNac.setDate(Date.valueOf(alu.getFechaNac()));
-      
+        
     }//GEN-LAST:event_jBBuscarActionPerformed
        
     private void jREstadoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jREstadoMouseClicked
