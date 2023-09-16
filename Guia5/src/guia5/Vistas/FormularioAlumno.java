@@ -216,13 +216,14 @@ private AlumnoData aldat;
         
         int dni = Integer.parseInt(jTDni.getText());
  
-        alu = aldat.buscarAlumno(dni);
-      
-      
-       jTNombre.setText(alu.getNombre());
-       jTApellido.setText(alu.getApellido());
-       jREstado.setSelected(alu.isActivo());
-       jDCFechaNac.setDate(Date.valueOf(alu.getFechaNac()));
+        alu = aldat.buscarPorDni(dni);
+        
+        String dniString = String.valueOf(alu.getDni());
+        jTDni.setText(dniString);
+        jTNombre.setText(alu.getNombre());
+        jTApellido.setText(alu.getApellido());
+        jREstado.setSelected(alu.isActivo());
+        jDCFechaNac.setDate(Date.valueOf(alu.getFechaNac()));
       
     }//GEN-LAST:event_jBBuscarActionPerformed
        

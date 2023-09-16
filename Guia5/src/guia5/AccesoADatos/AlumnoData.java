@@ -106,27 +106,30 @@ public class AlumnoData {
       
           Alumno alumno = null;
           
-          String sql = "SELECT apellido, nombre, fechaNacimiento,estado  FROM alumno WHERE idAlumno =1 AND dni = ?";
+          String sql = "SELECT idAlumno, apellido, nombre, fechaNacimiento,estado  FROM alumno WHERE idAlumno =1 AND dni = ?";
           
+         
         try {
             PreparedStatement ps =con.prepareStatement(sql);
             
             ResultSet resultado = ps.executeQuery();
             
-            if(resultado.next()&&resultado.getBoolean(sql)){
-            alumno = new Alumno();
+            ps.setInt(1, dni);
             
-          if(resultado.getInt("dni")>0){
-           alumno.setApellido(resultado.getString("apellido"));
-            alumno.setNombre(resultado.getString("nombre"));
+            if(resultado.next()){
+        
+            alumno = new Alumno();
+            alumno.setDni(dni);
+            alumno.setNombre(resultado.getString("nombre"));            
+            alumno.setApellido(resultado.getString("apellido"));
             alumno.setFecha(resultado.getDate("fechaNacimiento").toLocalDate());
             alumno.setActivo(true);
-          }
+            alumno.setIdAlumno(resultado.getInt("idAlumno"));
            
             
             }else{
             JOptionPane.showMessageDialog(null,"Alumno no encontrado");
-             ps.close();
+             
             }
             
             
@@ -167,6 +170,8 @@ public class AlumnoData {
      
          String modificar = "UPDATE alumno SET dni = ?, apellido = ?, nombre = ?,fechaNacimiento = ?, estado = ? WHERE idAlumno = ? ";
          
+
+
         try {
             PreparedStatement ps = con.prepareStatement(modificar);
       
