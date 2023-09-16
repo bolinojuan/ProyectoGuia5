@@ -190,7 +190,7 @@ public class AlumnoData {
      
      public void eliminarAlumno(int id){
      
-        String eliminar = "UPDATE  alumno SET estado = 0 WHERE idAlumno = ?";
+        String eliminar = "UPDATE  alumno SET estado = 0 WHERE dni = ?";
         
         try {
                PreparedStatement  ps = con.prepareStatement(eliminar);

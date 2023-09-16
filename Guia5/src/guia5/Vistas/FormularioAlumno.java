@@ -7,6 +7,7 @@ package guia5.Vistas;
 
 import guia5.AccesoADatos.*;
 import guia5.Entidades.*;
+import java.sql.Date;
 import java.time.*;
 import javax.swing.JOptionPane;
 
@@ -16,13 +17,14 @@ import javax.swing.JOptionPane;
  */
 public class FormularioAlumno extends javax.swing.JInternalFrame {
 private LocalDate fecha;
-    private AlumnoData aldat;
+private AlumnoData aldat;
     /**
      * Creates new form FormularioAlumno
      */
     public FormularioAlumno() {
         initComponents();
         aldat = new AlumnoData();
+     
     }
 
     /**
@@ -211,12 +213,26 @@ private LocalDate fecha;
         Alumno alu = new Alumno();
         
         int dni = Integer.parseInt(jTDni.getText());
-        aldat.buscarAlumno(dni);
+//        String dniParam = String.valueOf(dni);
+        String dniString =String.valueOf(alu.getDni());
+//        
+//       
+      if( dniString.equals(dni)&& dni>0){
+//          
+    
+        jTDni.setText(dniString);
         jTNombre.setText(alu.getNombre());
         jTApellido.setText(alu.getApellido());
-       
+        jREstado.setSelected(alu.isActivo());
+        jDCFechaNac.setDate(Date.valueOf(alu.getFechaNac()));
+        aldat.buscarAlumno(dni);         
+      
+      }else{
+     JOptionPane.showMessageDialog(null, "El dni buscado no se encuentra en la base de datos");
+      
+      }
     }//GEN-LAST:event_jBBuscarActionPerformed
-
+       
     private void jREstadoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jREstadoMouseClicked
       
     }//GEN-LAST:event_jREstadoMouseClicked
@@ -265,6 +281,7 @@ private LocalDate fecha;
     private void jBEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBEliminarActionPerformed
        int dni  = Integer.parseInt(jTDni.getText());
         aldat.eliminarAlumno(dni);
+        borrarCampos();
     }//GEN-LAST:event_jBEliminarActionPerformed
 
     private void jBGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBGuardarActionPerformed
