@@ -106,22 +106,23 @@ public class AlumnoData {
       
           Alumno alumno = null;
           
-          String sql = "SELECT idAlumno, apellido, nombre, fechaNacimiento,estado  FROM alumno WHERE dni = ?";
+          String sql = "SELECT apellido, nombre, fechaNacimiento,estado  FROM alumno WHERE idAlumno =1 AND dni = ?";
           
         try {
             PreparedStatement ps =con.prepareStatement(sql);
             
             ResultSet resultado = ps.executeQuery();
             
-            if(resultado.next()){
+            if(resultado.next()&&resultado.getBoolean(sql)){
             alumno = new Alumno();
             
-            alumno.setIdAlumno(resultado.getInt("idAlumno"));
-            alumno.setApellido(resultado.getString("apellido"));
+          if(resultado.getInt("dni")>0){
+           alumno.setApellido(resultado.getString("apellido"));
             alumno.setNombre(resultado.getString("nombre"));
             alumno.setFecha(resultado.getDate("fechaNacimiento").toLocalDate());
             alumno.setActivo(true);
-            
+          }
+           
             
             }else{
             JOptionPane.showMessageDialog(null,"Alumno no encontrado");
@@ -188,13 +189,13 @@ public class AlumnoData {
      }
 
      
-     public void eliminarAlumno(int id){
+     public void eliminarAlumno(int dni){
      
         String eliminar = "UPDATE  alumno SET estado = 0 WHERE dni = ?";
         
         try {
                PreparedStatement  ps = con.prepareStatement(eliminar);
-               ps.setInt(1, id);
+               ps.setInt(1, dni);
                
                int resultado = ps.executeUpdate();
                

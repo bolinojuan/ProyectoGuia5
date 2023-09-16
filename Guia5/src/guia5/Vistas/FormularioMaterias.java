@@ -48,6 +48,8 @@ private MateriaData matdat;
         jGuardar = new javax.swing.JButton();
         jBSalir = new javax.swing.JButton();
 
+        setPreferredSize(new java.awt.Dimension(590, 350));
+
         jLabel1.setText("Codigo");
 
         jLabel2.setText("Nombre");
@@ -108,10 +110,10 @@ private MateriaData matdat;
                                 .addComponent(jBEliminar)
                                 .addGap(37, 37, 37)
                                 .addComponent(jGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGap(26, 26, 26)
                                 .addComponent(jBSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jREstado))
-                        .addGap(45, 45, 45))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jLabel2)
                         .addGap(63, 63, 63)
@@ -151,7 +153,7 @@ private MateriaData matdat;
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
                     .addComponent(jREstado))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jBNuevo)
                     .addComponent(jBEliminar)
@@ -224,7 +226,7 @@ private MateriaData matdat;
     }//GEN-LAST:event_jBEliminarActionPerformed
 
     private void jBSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBSalirActionPerformed
-        JOptionPane.showMessageDialog(null,"Desea salir al menu principal?");
+        JOptionPane.showMessageDialog(null,"Confirme si desea salir");
         System.exit(0);
     }//GEN-LAST:event_jBSalirActionPerformed
 

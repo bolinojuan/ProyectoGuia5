@@ -52,6 +52,8 @@ private AlumnoData aldat;
         jBGuardar = new javax.swing.JButton();
         jBSalir = new javax.swing.JButton();
 
+        setPreferredSize(new java.awt.Dimension(590, 350));
+
         jTDni.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTDniActionPerformed(evt);
@@ -157,7 +159,7 @@ private AlumnoData aldat;
                         .addComponent(jBEliminar)
                         .addGap(40, 40, 40)
                         .addComponent(jBGuardar)
-                        .addGap(57, 57, 57)
+                        .addGap(48, 48, 48)
                         .addComponent(jBSalir)
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
@@ -189,7 +191,7 @@ private AlumnoData aldat;
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel5)
                     .addComponent(jDCFechaNac, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jBNuevo)
                     .addComponent(jBEliminar)
@@ -210,27 +212,18 @@ private AlumnoData aldat;
     }//GEN-LAST:event_jTApellidoActionPerformed
 
     private void jBBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBBuscarActionPerformed
-        Alumno alu = new Alumno();
+        Alumno alu;
         
         int dni = Integer.parseInt(jTDni.getText());
-//        String dniParam = String.valueOf(dni);
-        String dniString =String.valueOf(alu.getDni());
-//        
-//       
-      if( dniString.equals(dni)&& dni>0){
-//          
-    
-        jTDni.setText(dniString);
-        jTNombre.setText(alu.getNombre());
-        jTApellido.setText(alu.getApellido());
-        jREstado.setSelected(alu.isActivo());
-        jDCFechaNac.setDate(Date.valueOf(alu.getFechaNac()));
-        aldat.buscarAlumno(dni);         
+ 
+        alu = aldat.buscarAlumno(dni);
       
-      }else{
-     JOptionPane.showMessageDialog(null, "El dni buscado no se encuentra en la base de datos");
       
-      }
+       jTNombre.setText(alu.getNombre());
+       jTApellido.setText(alu.getApellido());
+       jREstado.setSelected(alu.isActivo());
+       jDCFechaNac.setDate(Date.valueOf(alu.getFechaNac()));
+      
     }//GEN-LAST:event_jBBuscarActionPerformed
        
     private void jREstadoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jREstadoMouseClicked
@@ -303,7 +296,7 @@ private AlumnoData aldat;
     }//GEN-LAST:event_jBGuardarActionPerformed
 
     private void jBSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBSalirActionPerformed
-       JOptionPane.showMessageDialog(null,"Confirme si desea salir al menu principal");
+       JOptionPane.showMessageDialog(null,"Confirme si desea salir");
         System.exit(0);
     }//GEN-LAST:event_jBSalirActionPerformed
 
