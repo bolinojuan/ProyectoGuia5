@@ -216,10 +216,10 @@ private AlumnoData aldat;
         
         int dni = Integer.parseInt(jTDni.getText());
  
-        alu = aldat.buscarPorDni(dni);
+        alu=aldat.buscarPorDni(dni);
         
-        String dniString = String.valueOf(alu.getDni());
-        jTDni.setText(dniString);
+       String aluDniString = String.valueOf(alu.getDni());
+        jTDni.setText(aluDniString);
         jTNombre.setText(alu.getNombre());
         jTApellido.setText(alu.getApellido());
         jREstado.setSelected(alu.isActivo());

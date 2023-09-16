@@ -126,7 +126,7 @@ public class AlumnoData {
             alumno.setActivo(true);
             alumno.setIdAlumno(resultado.getInt("idAlumno"));
            
-            
+            JOptionPane.showMessageDialog(null,"Alumno encontrado satisfactoriamente");
             }else{
             JOptionPane.showMessageDialog(null,"Alumno no encontrado");
              
