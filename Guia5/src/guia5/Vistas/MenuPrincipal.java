@@ -39,14 +39,20 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jMMateria = new javax.swing.JMenu();
         jMFormularioMateria = new javax.swing.JMenuItem();
         jMAdministracion = new javax.swing.JMenu();
-        jMenuItem3 = new javax.swing.JMenuItem();
-        jMenuItem4 = new javax.swing.JMenuItem();
+        jMManejoIns = new javax.swing.JMenuItem();
+        jMManipNotas = new javax.swing.JMenuItem();
         jMConsultas = new javax.swing.JMenu();
         jMenuItem5 = new javax.swing.JMenuItem();
         jMSalir = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(600, 400));
+
+        escritorio.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                escritorioPropertyChange(evt);
+            }
+        });
 
         jMAlumno.setText("Alumno");
 
@@ -74,16 +80,16 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         jMAdministracion.setText("Administracion");
 
-        jMenuItem3.setText("Manejo de Inscripciones");
-        jMenuItem3.addMouseListener(new java.awt.event.MouseAdapter() {
+        jMManejoIns.setText("Manejo de Inscripciones");
+        jMManejoIns.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jMenuItem3MouseClicked(evt);
+                jMManejoInsMouseClicked(evt);
             }
         });
-        jMAdministracion.add(jMenuItem3);
+        jMAdministracion.add(jMManejoIns);
 
-        jMenuItem4.setText("Manipulacion de Notas");
-        jMAdministracion.add(jMenuItem4);
+        jMManipNotas.setText("Manipulacion de Notas");
+        jMAdministracion.add(jMManipNotas);
 
         jMenuBar1.add(jMAdministracion);
 
@@ -95,9 +101,9 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jMenuBar1.add(jMConsultas);
 
         jMSalir.setText("Salir");
-        jMSalir.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMSalirActionPerformed(evt);
+        jMSalir.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jMSalirMousePressed(evt);
             }
         });
         jMenuBar1.add(jMSalir);
@@ -118,11 +124,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jMSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMSalirActionPerformed
-    JOptionPane.showMessageDialog(null, "Desea salir?");
-        System.exit(0);
-    }//GEN-LAST:event_jMSalirActionPerformed
-
     private void jMFormAlumnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMFormAlumnoActionPerformed
     escritorio.removeAll();
     escritorio.repaint();
@@ -142,14 +143,23 @@ public class MenuPrincipal extends javax.swing.JFrame {
       escritorio.moveToFront(f);
     }//GEN-LAST:event_jMFormularioMateriaActionPerformed
 
-    private void jMenuItem3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItem3MouseClicked
+    private void jMManejoInsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMManejoInsMouseClicked
        escritorio.removeAll();
        escritorio.repaint();
         FormularioConsulta fc = new FormularioConsulta();
         fc.setVisible(true);
         escritorio.add(fc);
         escritorio.moveToFront(fc);
-    }//GEN-LAST:event_jMenuItem3MouseClicked
+    }//GEN-LAST:event_jMManejoInsMouseClicked
+
+    private void escritorioPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_escritorioPropertyChange
+        // TODO add your handling code here:
+    }//GEN-LAST:event_escritorioPropertyChange
+
+    private void jMSalirMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMSalirMousePressed
+        JOptionPane.showMessageDialog(this,"Desea cerrar el programa?");
+        System.exit(0);
+    }//GEN-LAST:event_jMSalirMousePressed
 
     /**
      * @param args the command line arguments
@@ -190,11 +200,11 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenu jMConsultas;
     private javax.swing.JMenuItem jMFormAlumno;
     private javax.swing.JMenuItem jMFormularioMateria;
+    private javax.swing.JMenuItem jMManejoIns;
+    private javax.swing.JMenuItem jMManipNotas;
     private javax.swing.JMenu jMMateria;
     private javax.swing.JMenu jMSalir;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem3;
-    private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem5;
     // End of variables declaration//GEN-END:variables
         

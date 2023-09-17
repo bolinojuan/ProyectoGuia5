@@ -236,7 +236,7 @@ private MateriaData matdat;
     }//GEN-LAST:event_jBEliminarActionPerformed
 
     private void jBSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBSalirActionPerformed
-        JOptionPane.showMessageDialog(null,"Confirme si desea salir");
+        JOptionPane.showMessageDialog(null,"Confirme si desea cerrar el programa");
         System.exit(0);
     }//GEN-LAST:event_jBSalirActionPerformed
 

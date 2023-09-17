@@ -61,6 +61,11 @@ public class FormularioConsulta extends javax.swing.JInternalFrame {
         jLabel3.setText("Formulario de Inscripcion");
 
         jRMatIns.setText("Materias Inscriptas");
+        jRMatIns.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jRMatInsMouseClicked(evt);
+            }
+        });
 
         jRMatNoIns.setText("Materias NO inscriptas");
         jRMatNoIns.addActionListener(new java.awt.event.ActionListener() {
@@ -146,13 +151,17 @@ public class FormularioConsulta extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jRMatNoInsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRMatNoInsActionPerformed
-        // TODO add your handling code here:
+     jRMatNoIns.setEnabled(false);
     }//GEN-LAST:event_jRMatNoInsActionPerformed
 
     private void jBSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBSalirActionPerformed
         JOptionPane.showMessageDialog(this,"Confirme si desea salir");
         System.exit(0);
     }//GEN-LAST:event_jBSalirActionPerformed
+
+    private void jRMatInsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jRMatInsMouseClicked
+       jRMatIns.setEnabled(false);
+    }//GEN-LAST:event_jRMatInsMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

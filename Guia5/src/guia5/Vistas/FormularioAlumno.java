@@ -9,7 +9,9 @@ import guia5.AccesoADatos.*;
 import guia5.Entidades.*;
 import java.sql.Date;
 import java.time.*;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import sun.awt.AWTAccessor;
 
 /**
  *
@@ -117,9 +119,9 @@ private AlumnoData aldat;
         });
 
         jBSalir.setText("Salir");
-        jBSalir.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jBSalirActionPerformed(evt);
+        jBSalir.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jBSalirMouseClicked(evt);
             }
         });
 
@@ -297,10 +299,10 @@ private AlumnoData aldat;
         aldat.modificarAlumno(alum);
     }//GEN-LAST:event_jBGuardarActionPerformed
 
-    private void jBSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBSalirActionPerformed
-       JOptionPane.showMessageDialog(null,"Confirme si desea salir");
-        System.exit(0);
-    }//GEN-LAST:event_jBSalirActionPerformed
+    private void jBSalirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBSalirMouseClicked
+       JOptionPane.showMessageDialog(this,"Desea cerrar el programa?");
+       System.exit(0);
+    }//GEN-LAST:event_jBSalirMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
