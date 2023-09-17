@@ -75,6 +75,11 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jMAdministracion.setText("Administracion");
 
         jMenuItem3.setText("Manejo de Inscripciones");
+        jMenuItem3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jMenuItem3MouseClicked(evt);
+            }
+        });
         jMAdministracion.add(jMenuItem3);
 
         jMenuItem4.setText("Manipulacion de Notas");
@@ -136,6 +141,15 @@ public class MenuPrincipal extends javax.swing.JFrame {
       escritorio.add(f);
       escritorio.moveToFront(f);
     }//GEN-LAST:event_jMFormularioMateriaActionPerformed
+
+    private void jMenuItem3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItem3MouseClicked
+       escritorio.removeAll();
+       escritorio.repaint();
+        FormularioConsulta fc = new FormularioConsulta();
+        fc.setVisible(true);
+        escritorio.add(fc);
+        escritorio.moveToFront(fc);
+    }//GEN-LAST:event_jMenuItem3MouseClicked
 
     /**
      * @param args the command line arguments
