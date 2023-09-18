@@ -86,7 +86,7 @@ public void modificarMateria(Materia materia){
 
 
 public void eliminarMateria(int id){
-    String sql="UPDATE materia SET estado=false WHERE idMateria=?";
+    String sql="UPDATE materia SET estado=false WHERE idMateria=? AND estado=1";
     try{
         PreparedStatement ps=con.prepareStatement(sql);
         ps.setInt(1, id);
@@ -106,7 +106,7 @@ public List <Materia> listarMaterias(){
     
     try{
         String sql="SELECT * FROM materia WHERE estado=1";
-       PreparedStatement ps=con.prepareStatement(sql);
+        PreparedStatement ps=con.prepareStatement(sql);
         ResultSet rs=ps.executeQuery();
         while(rs.next()){
             Materia materia=new Materia();
