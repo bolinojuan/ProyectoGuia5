@@ -13,14 +13,18 @@ public class Main {
 //        Alumno c = new Alumno(3473954,"Ramirez","Gabriela",LocalDate.of(2007,03,23),true);
 //        Alumno d = new Alumno(3473955,"Fernandez","Juan",LocalDate.of(2007,12,11),true);
 //        
-//      AlumnoData alu = new AlumnoData();
+
+    AlumnoData alu = new AlumnoData();
 //        
 //        alu.guardarAlumno(a);
 //        alu.guardarAlumno(b);
 //        alu.guardarAlumno(c);
 //        alu.guardarAlumno(d);        
 //        alu.listarAlumno();
-//    }
+
+        System.out.println(alu.buscarPorDni(1));
+  
+    }
    
     }
-}
+

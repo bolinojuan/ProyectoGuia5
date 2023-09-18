@@ -9,9 +9,8 @@ import guia5.AccesoADatos.*;
 import guia5.Entidades.*;
 import java.sql.Date;
 import java.time.*;
-import javax.swing.JFrame;
 import javax.swing.JOptionPane;
-import sun.awt.AWTAccessor;
+
 
 /**
  *
@@ -214,24 +213,30 @@ private AlumnoData aldat;
     }//GEN-LAST:event_jTApellidoActionPerformed
 
     private void jBBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBBuscarActionPerformed
-        Alumno alu;
+        Alumno alu =new Alumno();
         
+      AlumnoData aludata = new AlumnoData();   
+      
         int dni = Integer.parseInt(jTDni.getText());
- 
-        alu=aldat.buscarPorDni(dni);
         
-       String aluDniString = String.valueOf(alu.getDni());
-       
-        jTDni.setText(aluDniString);
-        jTNombre.setText(alu.getNombre());
+        //aludata.estadoTrue();
+        alu=aludata.buscarPorDni(dni);
+        if(alu==null&&dni>0){
+            borrarCampos();
+        }else{   
+          
         jTApellido.setText(alu.getApellido());
-        jREstado.setSelected(alu.isActivo());
+        jTNombre.setText(alu.getNombre());       
         jDCFechaNac.setDate(Date.valueOf(alu.getFechaNac()));
+        jREstado.setSelected(alu.isActivo());
         
+        }
+        
+
     }//GEN-LAST:event_jBBuscarActionPerformed
        
     private void jREstadoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jREstadoMouseClicked
-      
+      jREstado.setEnabled(false);
     }//GEN-LAST:event_jREstadoMouseClicked
 
     private void jBNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBNuevoActionPerformed
@@ -290,18 +295,20 @@ private AlumnoData aldat;
        
        
        int dni = Integer.parseInt(jTDni.getText());
-       alum.setDni(dni);
+       alum.setDni(dni);       
        alum.setApellido(jTApellido.getText());
        alum.setNombre(jTNombre.getText());
        alum.setActivo(jREstado.isSelected());
        alum.setFecha(fecha);
-       
-        aldat.modificarAlumno(alum);
+         aldat.modificarAlumno(alum);
+        
+        
     }//GEN-LAST:event_jBGuardarActionPerformed
 
     private void jBSalirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBSalirMouseClicked
        JOptionPane.showMessageDialog(this,"Desea cerrar el programa?");
        System.exit(0);
+       
     }//GEN-LAST:event_jBSalirMouseClicked
 
 
