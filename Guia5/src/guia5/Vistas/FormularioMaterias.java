@@ -176,17 +176,14 @@ private MateriaData matdat;
     }// </editor-fold>//GEN-END:initComponents
 
     private void jBBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBBuscarActionPerformed
-        
-        
-       Materia mat;
+        Materia mat;
         int cod = Integer.parseInt(jTCodigo.getText());
-      
         mat =matdat.buscarMateria(cod);
         if(mat==null){
             borrarCampos();
         }else{
-        jTNombre.setText(mat.getNombre());
-        jTAnio.setText(mat.getAnioMateria()+"");
+            jTNombre.setText(mat.getNombre());
+            jTAnio.setText(mat.getAnioMateria()+"");
         }
     
     }//GEN-LAST:event_jBBuscarActionPerformed
@@ -216,16 +213,13 @@ private MateriaData matdat;
        }
         Materia mat=new Materia();                       
         int codigo = Integer.parseInt(jTCodigo.getText());
-        
         int anio = Integer.parseInt(jTAnio.getText());
-        
         mat.setIdMateria(codigo);
         mat.setNombre(jTNombre.getText());
         mat.setAnioMateria(anio);
         mat.setActivo(jREstado.isSelected());
-        
-       matdat.modificarMateria(mat);
-       borrarCampos();
+        matdat.modificarMateria(mat);
+        borrarCampos();
         
     }//GEN-LAST:event_jGuardarActionPerformed
 
