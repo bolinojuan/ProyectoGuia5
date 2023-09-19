@@ -3,8 +3,6 @@ package guia5.AccesoADatos;
 import guia5.Entidades.Materia;
 import java.util.*;
 import java.sql.*;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 public class MateriaData {

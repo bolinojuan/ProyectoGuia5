@@ -5,6 +5,8 @@
  */
 package guia5.Vistas;
 
+import guia5.AccesoADatos.InscripcionData;
+import guia5.Entidades.Inscripcion;
 import javax.swing.JOptionPane;
 
 /**
@@ -42,6 +44,11 @@ public class FormularioConsulta extends javax.swing.JInternalFrame {
         jTabla = new javax.swing.JTable();
 
         jBInscribir.setText("Inscribir");
+        jBInscribir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBInscribirActionPerformed(evt);
+            }
+        });
 
         jBAnular.setText("Anular Inscripcion");
 
@@ -167,6 +174,14 @@ public class FormularioConsulta extends javax.swing.JInternalFrame {
     private void jRMatInsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jRMatInsMouseClicked
        jRMatIns.setEnabled(false);
     }//GEN-LAST:event_jRMatInsMouseClicked
+
+    private void jBInscribirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBInscribirActionPerformed
+        Inscripcion insc = new Inscripcion();
+        
+        InscripcionData insdat =new InscripcionData();
+        
+        insdat.guardarInscripcion(insc);
+    }//GEN-LAST:event_jBInscribirActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
