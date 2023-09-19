@@ -171,19 +171,23 @@ public class AlumnoData {
 
      public void modificarAlumno(Alumno alumno){
      
-         String modificar = "UPDATE alumno SET dni = ?, apellido = ?, nombre = ?,fechaNacimiento = ?, estado = ? WHERE idAlumno= 1 ";
+         String modificar = "UPDATE alumno SET dni = ?, apellido = ?, nombre = ?,fechaNacimiento = ?, estado = ? WHERE idAlumno= ? ";
          
 
 
         try {
             PreparedStatement ps = con.prepareStatement(modificar);
       
-           //ps.setInt(1,alumno.getDni());            
+            ps.setInt(1,alumno.getDni()); 
+            
+       
             ps.setString(2,alumno.getApellido());
             ps.setString(3, alumno.getNombre());
             ps.setDate(4, Date.valueOf(alumno.getFechaNac()));
             ps.setBoolean(5,alumno.isActivo());
-           // ps.setInt(6, alumno.getIdAlumno());
+            ps.setInt(6, alumno.getIdAlumno());
+   
+      
             
             int resultado =ps.executeUpdate();
             

@@ -295,6 +295,8 @@ private AlumnoData aldat;
        
        
        int dni = Integer.parseInt(jTDni.getText());
+       
+       jTDni.isOpaque();
        alum.setDni(dni);       
        alum.setApellido(jTApellido.getText());
        alum.setNombre(jTNombre.getText());
