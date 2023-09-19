@@ -217,7 +217,7 @@ private MateriaData matdat;
         mat.setIdMateria(codigo);
         mat.setNombre(jTNombre.getText());
         mat.setAnioMateria(anio);
-        mat.setActivo(jREstado.isSelected());
+        //mat.setActivo(jREstado.isSelected());
         matdat.modificarMateria(mat);
         borrarCampos();
         
@@ -225,6 +225,7 @@ private MateriaData matdat;
 
     private void jBEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBEliminarActionPerformed
        int cod  = Integer.parseInt(jTCodigo.getText());
+       borrarCampos();
        matdat.eliminarMateria(cod);
        
     }//GEN-LAST:event_jBEliminarActionPerformed
