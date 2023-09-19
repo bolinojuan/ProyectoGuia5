@@ -234,3 +234,4 @@ jTInsc.setModel(modelo);
 private void cargarCombo(){
 //jCBAlumno
 }
+}
