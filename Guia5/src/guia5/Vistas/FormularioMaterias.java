@@ -220,7 +220,7 @@ private MateriaData matdat;
         mat.setIdMateria(codigo);
         mat.setNombre(jTNombre.getText());
         mat.setAnioMateria(anio);
-        //mat.setActivo(jREstado.isSelected());
+        mat.setActivo(jREstado.isSelected());
         matdat.modificarMateria(mat);
         borrarCampos();
         
