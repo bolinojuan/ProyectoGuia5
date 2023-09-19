@@ -42,7 +42,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jMManejoIns = new javax.swing.JMenuItem();
         jMManipNotas = new javax.swing.JMenuItem();
         jMConsultas = new javax.swing.JMenu();
-        jMenuItem5 = new javax.swing.JMenuItem();
+        jMAlumnosPorMateria = new javax.swing.JMenuItem();
         jMSalir = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -81,22 +81,32 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jMAdministracion.setText("Administracion");
 
         jMManejoIns.setText("Manejo de Inscripciones");
-        jMManejoIns.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jMManejoInsMouseClicked(evt);
+        jMManejoIns.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMManejoInsActionPerformed(evt);
             }
         });
         jMAdministracion.add(jMManejoIns);
 
         jMManipNotas.setText("Manipulacion de Notas");
+        jMManipNotas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMManipNotasActionPerformed(evt);
+            }
+        });
         jMAdministracion.add(jMManipNotas);
 
         jMenuBar1.add(jMAdministracion);
 
         jMConsultas.setText("Consultas");
 
-        jMenuItem5.setText("Alumnos por Materia");
-        jMConsultas.add(jMenuItem5);
+        jMAlumnosPorMateria.setText("Alumnos por Materia");
+        jMAlumnosPorMateria.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMAlumnosPorMateriaActionPerformed(evt);
+            }
+        });
+        jMConsultas.add(jMAlumnosPorMateria);
 
         jMenuBar1.add(jMConsultas);
 
@@ -147,15 +157,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
       escritorio.moveToFront(f);
     }//GEN-LAST:event_jMFormularioMateriaActionPerformed
 
-    private void jMManejoInsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMManejoInsMouseClicked
-       escritorio.removeAll();
-       escritorio.repaint();
-        FormularioConsulta fc = new FormularioConsulta();
-        fc.setVisible(true);
-        escritorio.add(fc);
-        escritorio.moveToFront(fc);
-    }//GEN-LAST:event_jMManejoInsMouseClicked
-
     private void escritorioPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_escritorioPropertyChange
         // TODO add your handling code here:
     }//GEN-LAST:event_escritorioPropertyChange
@@ -164,6 +165,33 @@ public class MenuPrincipal extends javax.swing.JFrame {
       JOptionPane.showMessageDialog(null, "Desea cerrar el programa?");
       System.exit(0);
     }//GEN-LAST:event_jMSalirMenuSelected
+
+    private void jMManejoInsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMManejoInsActionPerformed
+       escritorio.removeAll();
+       escritorio.repaint();
+       FormularioConsulta fc = new FormularioConsulta();
+       fc.setVisible(true);
+       escritorio.add(fc);
+       escritorio.moveToFront(fc);
+    }//GEN-LAST:event_jMManejoInsActionPerformed
+
+    private void jMManipNotasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMManipNotasActionPerformed
+       escritorio.removeAll();
+       escritorio.repaint();
+       cargaDeNotas cn = new cargaDeNotas();
+       cn.setVisible(true);
+       escritorio.add(cn);
+       escritorio.moveToFront(cn);
+    }//GEN-LAST:event_jMManipNotasActionPerformed
+
+    private void jMAlumnosPorMateriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMAlumnosPorMateriaActionPerformed
+       escritorio.removeAll();
+       escritorio.repaint();
+       ListadoMaterias lm = new ListadoMaterias();
+       lm.setVisible(true);
+       escritorio.add(lm);
+       escritorio.moveToFront(lm);
+    }//GEN-LAST:event_jMAlumnosPorMateriaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -201,6 +229,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JDesktopPane escritorio;
     private javax.swing.JMenu jMAdministracion;
     private javax.swing.JMenu jMAlumno;
+    private javax.swing.JMenuItem jMAlumnosPorMateria;
     private javax.swing.JMenu jMConsultas;
     private javax.swing.JMenuItem jMFormAlumno;
     private javax.swing.JMenuItem jMFormularioMateria;
@@ -209,7 +238,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenu jMMateria;
     private javax.swing.JMenu jMSalir;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem5;
     // End of variables declaration//GEN-END:variables
         
     

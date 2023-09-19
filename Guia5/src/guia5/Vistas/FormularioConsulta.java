@@ -7,6 +7,9 @@ package guia5.Vistas;
 
 import guia5.AccesoADatos.InscripcionData;
 import guia5.Entidades.Inscripcion;
+import java.beans.PropertyVetoException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -43,6 +46,8 @@ public class FormularioConsulta extends javax.swing.JInternalFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTabla = new javax.swing.JTable();
 
+        setPreferredSize(new java.awt.Dimension(590, 350));
+
         jBInscribir.setText("Inscribir");
         jBInscribir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -63,7 +68,7 @@ public class FormularioConsulta extends javax.swing.JInternalFrame {
 
         jLabel1.setText("Seleccione un alumno");
 
-        jLabel2.setFont(new java.awt.Font("Noto Sans", 1, 14)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Noto Sans", 1, 16)); // NOI18N
         jLabel2.setText("Listado de Materias");
 
         jLabel3.setFont(new java.awt.Font("Noto Sans", 1, 18)); // NOI18N
@@ -101,38 +106,35 @@ public class FormularioConsulta extends javax.swing.JInternalFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(37, 37, 37)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel1)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(jBInscribir)
-                                    .addGap(204, 204, 204)
-                                    .addComponent(jBAnular)
-                                    .addGap(150, 150, 150)
-                                    .addComponent(jBSalir))))
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(251, 251, 251)
-                            .addComponent(jCBAlumno, javax.swing.GroupLayout.PREFERRED_SIZE, 259, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(132, 132, 132)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 380, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(197, 197, 197)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addGap(14, 14, 14)
-                                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(89, 89, 89)
-                        .addComponent(jRMatIns)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jRMatNoIns)
-                        .addGap(57, 57, 57)))
-                .addContainerGap(297, Short.MAX_VALUE))
+                        .addGap(218, 218, 218)
+                        .addComponent(jCBAlumno, javax.swing.GroupLayout.PREFERRED_SIZE, 259, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(37, 37, 37)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(12, 12, 12)
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 380, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel1)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jRMatIns)
+                                .addGap(120, 120, 120)
+                                .addComponent(jRMatNoIns))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(61, 61, 61)
+                        .addComponent(jBInscribir)
+                        .addGap(62, 62, 62)
+                        .addComponent(jBAnular)
+                        .addGap(76, 76, 76)
+                        .addComponent(jBSalir))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(146, 146, 146)
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(108, 108, 108)
+                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(413, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -142,20 +144,20 @@ public class FormularioConsulta extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jCBAlumno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1))
-                .addGap(32, 32, 32)
+                .addGap(18, 18, 18)
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jRMatIns)
                     .addComponent(jRMatNoIns))
-                .addGap(40, 40, 40)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 117, Short.MAX_VALUE)
+                .addGap(49, 49, 49)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jBInscribir)
                     .addComponent(jBAnular)
+                    .addComponent(jBInscribir)
                     .addComponent(jBSalir))
-                .addGap(27, 27, 27))
+                .addContainerGap(137, Short.MAX_VALUE))
         );
 
         pack();
@@ -167,8 +169,12 @@ public class FormularioConsulta extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jRMatNoInsActionPerformed
 
     private void jBSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBSalirActionPerformed
-        JOptionPane.showMessageDialog(this,"Confirme si desea salir");
-        System.exit(0);
+        JOptionPane.showMessageDialog(this,"desea volver al menu principal?");
+        try {            
+            setClosed(true);
+        } catch (PropertyVetoException ex) {
+            Logger.getLogger(FormularioConsulta.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jBSalirActionPerformed
 
     private void jRMatInsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jRMatInsMouseClicked
