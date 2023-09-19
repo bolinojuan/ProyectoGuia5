@@ -71,7 +71,7 @@ public void modificarMateria(Materia materia){
         PreparedStatement ps=con.prepareStatement(sql);
         ps.setString(1, materia.getNombre());
         ps.setInt(2, materia.getAnioMateria());
-        ps.setBoolean(3, materia.isActivo());
+        //ps.setBoolean(3, materia.isActivo());
         ps.setInt(4, materia.getIdMateria());
         int exito=ps.executeUpdate();
         if(exito==1){

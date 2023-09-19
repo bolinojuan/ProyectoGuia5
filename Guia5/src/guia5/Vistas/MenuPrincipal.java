@@ -169,7 +169,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private void jMManejoInsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMManejoInsActionPerformed
        escritorio.removeAll();
        escritorio.repaint();
-       FormularioConsulta fc = new FormularioConsulta();
+       FormularioInscripcion fc = new FormularioInscripcion();
        fc.setVisible(true);
        escritorio.add(fc);
        escritorio.moveToFront(fc);

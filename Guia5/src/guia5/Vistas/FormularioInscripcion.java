@@ -17,12 +17,12 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author dev0
  */
-public class FormularioConsulta extends javax.swing.JInternalFrame {
+public class FormularioInscripcion extends javax.swing.JInternalFrame {
 private DefaultTableModel modelo = new DefaultTableModel();
     /**
      * Creates new form FormularioConsulta
      */
-    public FormularioConsulta() {
+    public FormularioInscripcion() {
         initComponents();
         armarCabecera();
     }
@@ -175,7 +175,7 @@ private DefaultTableModel modelo = new DefaultTableModel();
         try {            
             setClosed(true);
         } catch (PropertyVetoException ex) {
-            Logger.getLogger(FormularioConsulta.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(FormularioInscripcion.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_jBSalirActionPerformed
 
