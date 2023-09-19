@@ -5,9 +5,12 @@
  */
 package guia5.Vistas;
 
+import guia5.AccesoADatos.AlumnoData;
 import guia5.AccesoADatos.InscripcionData;
+import guia5.Entidades.Alumno;
 import guia5.Entidades.Inscripcion;
 import java.beans.PropertyVetoException;
+import java.time.LocalDate;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -25,6 +28,7 @@ private DefaultTableModel modelo = new DefaultTableModel();
     public FormularioInscripcion() {
         initComponents();
         armarCabecera();
+        cargarCombo();
     }
 
     /**
@@ -66,7 +70,11 @@ private DefaultTableModel modelo = new DefaultTableModel();
             }
         });
 
-        jCBAlumno.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jCBAlumno.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jCBAlumnoMousePressed(evt);
+            }
+        });
 
         jLabel1.setText("Seleccione un alumno");
 
@@ -159,7 +167,7 @@ private DefaultTableModel modelo = new DefaultTableModel();
                     .addComponent(jBAnular)
                     .addComponent(jBInscribir)
                     .addComponent(jBSalir))
-                .addContainerGap(137, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -191,12 +199,21 @@ private DefaultTableModel modelo = new DefaultTableModel();
         insdat.guardarInscripcion(insc);
     }//GEN-LAST:event_jBInscribirActionPerformed
 
+    private void jCBAlumnoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jCBAlumnoMousePressed
+        AlumnoData aldat  =new AlumnoData();
+        Alumno alu = new Alumno();
+        //int id = Integer.parseInt();
+        //jCBAlumno.setText(alu.getIdAlumno(),alu.getDni(),alu.getApellido(),alu.getNombre(),alu.getFechaNac(),alu.isActivo());
+       aldat.listarAlumno();
+        
+    }//GEN-LAST:event_jCBAlumnoMousePressed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBAnular;
     private javax.swing.JButton jBInscribir;
     private javax.swing.JButton jBSalir;
-    private javax.swing.JComboBox<String> jCBAlumno;
+    private javax.swing.JComboBox<Alumno> jCBAlumno;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -213,4 +230,7 @@ modelo.addColumn("Nombre");
 modelo.addColumn("Año");
 jTInsc.setModel(modelo);
 }
+
+private void cargarCombo(){
+//jCBAlumno
 }

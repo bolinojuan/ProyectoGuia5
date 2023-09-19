@@ -146,10 +146,10 @@ public class AlumnoData {
     
       public List listarAlumno(){
           
-           String lista="SELECT * FROM alumno WHERE estado=1"; 
+           String sql="SELECT * FROM alumno WHERE estado=1"; 
          
     try{
-        PreparedStatement ps=con.prepareStatement(lista);
+        PreparedStatement ps=con.prepareStatement(sql);
         ResultSet rs=ps.executeQuery();
         while(rs.next()){
             Alumno alumno = new Alumno();

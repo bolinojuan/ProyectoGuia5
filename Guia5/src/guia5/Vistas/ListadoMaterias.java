@@ -5,6 +5,7 @@
  */
 package guia5.Vistas;
 
+import guia5.Entidades.Materia;
 import java.beans.PropertyVetoException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -47,8 +48,6 @@ DefaultTableModel modelo = new DefaultTableModel();
         jLabel1.setText("Listado de Alumnos por Materias");
 
         jLabel2.setText("Seleccione una Materia:");
-
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         jTAlumnos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -123,7 +122,7 @@ DefaultTableModel modelo = new DefaultTableModel();
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
-    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JComboBox<Materia> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
@@ -138,4 +137,9 @@ modelo.addColumn("Apellido");
 modelo.addColumn("Nombre");
 jTAlumnos.setModel(modelo);
 }
+
+private void cargarCombo(){
+
+}
+
 }
