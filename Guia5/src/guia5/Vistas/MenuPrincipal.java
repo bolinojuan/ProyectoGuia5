@@ -101,9 +101,13 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jMenuBar1.add(jMConsultas);
 
         jMSalir.setText("Salir");
-        jMSalir.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                jMSalirMousePressed(evt);
+        jMSalir.addMenuListener(new javax.swing.event.MenuListener() {
+            public void menuSelected(javax.swing.event.MenuEvent evt) {
+                jMSalirMenuSelected(evt);
+            }
+            public void menuDeselected(javax.swing.event.MenuEvent evt) {
+            }
+            public void menuCanceled(javax.swing.event.MenuEvent evt) {
             }
         });
         jMenuBar1.add(jMSalir);
@@ -156,10 +160,10 @@ public class MenuPrincipal extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_escritorioPropertyChange
 
-    private void jMSalirMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMSalirMousePressed
-        JOptionPane.showMessageDialog(this,"Desea cerrar el programa?");
-        System.exit(0);
-    }//GEN-LAST:event_jMSalirMousePressed
+    private void jMSalirMenuSelected(javax.swing.event.MenuEvent evt) {//GEN-FIRST:event_jMSalirMenuSelected
+      JOptionPane.showMessageDialog(null, "Desea cerrar el programa?");
+      System.exit(0);
+    }//GEN-LAST:event_jMSalirMenuSelected
 
     /**
      * @param args the command line arguments
