@@ -110,7 +110,7 @@ public class FormularioConsulta extends javax.swing.JInternalFrame {
                             .addGap(251, 251, 251)
                             .addComponent(jCBAlumno, javax.swing.GroupLayout.PREFERRED_SIZE, 259, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(layout.createSequentialGroup()
-                            .addGap(138, 138, 138)
+                            .addGap(132, 132, 132)
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 380, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(layout.createSequentialGroup()
                             .addGap(197, 197, 197)
