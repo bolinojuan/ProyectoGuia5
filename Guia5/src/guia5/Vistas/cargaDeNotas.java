@@ -9,18 +9,20 @@ import java.beans.PropertyVetoException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
  * @author dev0
  */
 public class cargaDeNotas extends javax.swing.JInternalFrame {
-
+private DefaultTableModel modelo = new DefaultTableModel();
     /**
      * Creates new form cargaDeNotas
      */
     public cargaDeNotas() {
         initComponents();
+        armarCabecera();
     }
 
     /**
@@ -36,7 +38,7 @@ public class cargaDeNotas extends javax.swing.JInternalFrame {
         jLabel2 = new javax.swing.JLabel();
         jComboBox1 = new javax.swing.JComboBox<>();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jTmodelo = new javax.swing.JTable();
         jBGuardar = new javax.swing.JButton();
         jBSalir = new javax.swing.JButton();
 
@@ -54,7 +56,7 @@ public class cargaDeNotas extends javax.swing.JInternalFrame {
             }
         });
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        jTmodelo.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -65,7 +67,7 @@ public class cargaDeNotas extends javax.swing.JInternalFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(jTmodelo);
 
         jBGuardar.setText("Guardar");
 
@@ -143,6 +145,13 @@ public class cargaDeNotas extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable jTmodelo;
     // End of variables declaration//GEN-END:variables
+
+private void armarCabecera(){
+modelo.addColumn("Codigo");
+modelo.addColumn("Nombre");
+modelo.addColumn("Nota");
+jTmodelo.setModel(modelo);
+}
 }

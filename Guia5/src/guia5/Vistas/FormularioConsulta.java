@@ -11,18 +11,20 @@ import java.beans.PropertyVetoException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
  * @author dev0
  */
 public class FormularioConsulta extends javax.swing.JInternalFrame {
-
+private DefaultTableModel modelo = new DefaultTableModel();
     /**
      * Creates new form FormularioConsulta
      */
     public FormularioConsulta() {
         initComponents();
+        armarCabecera();
     }
 
     /**
@@ -44,7 +46,7 @@ public class FormularioConsulta extends javax.swing.JInternalFrame {
         jRMatIns = new javax.swing.JRadioButton();
         jRMatNoIns = new javax.swing.JRadioButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTabla = new javax.swing.JTable();
+        jTInsc = new javax.swing.JTable();
 
         setPreferredSize(new java.awt.Dimension(590, 350));
 
@@ -88,7 +90,7 @@ public class FormularioConsulta extends javax.swing.JInternalFrame {
             }
         });
 
-        jTabla.setModel(new javax.swing.table.DefaultTableModel(
+        jTInsc.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -99,7 +101,7 @@ public class FormularioConsulta extends javax.swing.JInternalFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jTabla);
+        jScrollPane1.setViewportView(jTInsc);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -201,6 +203,14 @@ public class FormularioConsulta extends javax.swing.JInternalFrame {
     private javax.swing.JRadioButton jRMatIns;
     private javax.swing.JRadioButton jRMatNoIns;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTabla;
+    private javax.swing.JTable jTInsc;
     // End of variables declaration//GEN-END:variables
+
+
+private void armarCabecera(){
+modelo.addColumn("ID");
+modelo.addColumn("Nombre");
+modelo.addColumn("Año");
+jTInsc.setModel(modelo);
+}
 }
