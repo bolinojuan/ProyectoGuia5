@@ -65,14 +65,14 @@ public Materia buscarMateria(int id){
 }
 
 public void modificarMateria(Materia materia){
-    String sql="UPDATE materia SET nombre=?,año=? WHERE idMateria="+materia.getIdMateria();
+    String sql="UPDATE materia SET nombre=?,año=?, estado = ? WHERE idMateria=?";
      
     try{
         PreparedStatement ps=con.prepareStatement(sql);
         ps.setString(1, materia.getNombre());
         ps.setInt(2, materia.getAnioMateria());
-        //ps.setBoolean(3, materia.isActivo());
-        //ps.setInt(4, materia.getIdMateria());
+        ps.setBoolean(3, materia.isActivo());
+        ps.setInt(4, materia.getIdMateria());
         int exito=ps.executeUpdate();
         if(exito==1){
             JOptionPane.showMessageDialog(null, "Materia modificada exitosamente");
@@ -91,7 +91,7 @@ public void eliminarMateria(int id){
         String sql="UPDATE materia SET estado=0 WHERE idMateria=? AND estado=1";
         PreparedStatement ps=con.prepareStatement(sql);
         ps.setInt(1, id);
-        int fila=ps.executeUpdate(sql);
+        int fila=ps.executeUpdate();
         if(fila==1){
             JOptionPane.showMessageDialog(null, "Se eliminó la materia");
         }else{

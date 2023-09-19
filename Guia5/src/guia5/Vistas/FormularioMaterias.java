@@ -228,9 +228,8 @@ private MateriaData matdat;
 
     private void jBEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBEliminarActionPerformed
        int cod  = Integer.parseInt(jTCodigo.getText());
-       borrarCampos();
        matdat.eliminarMateria(cod);
-       
+       borrarCampos();
     }//GEN-LAST:event_jBEliminarActionPerformed
 
     private void jBSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBSalirActionPerformed
