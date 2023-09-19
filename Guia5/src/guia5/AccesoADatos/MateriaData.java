@@ -127,17 +127,17 @@ public List <Materia> listarMaterias(){
 }
 
 
-public void setearMateriasActivas(){
-String sql = "UPDATE materia SET estado = 1";
-
-        try {
-            PreparedStatement ps = con.prepareStatement(sql);
-            ps.executeUpdate();
-            
-        } catch (SQLException ex) {
-            Logger.getLogger(MateriaData.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
-
-}
+//public void setearMateriasActivas(){
+//String sql = "UPDATE materia SET estado = 1";
+//
+//        try {
+//            PreparedStatement ps = con.prepareStatement(sql);
+//            ps.executeUpdate();
+//            
+//        } catch (SQLException ex) {
+//            Logger.getLogger(MateriaData.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+//        
+//
+//}
 }
