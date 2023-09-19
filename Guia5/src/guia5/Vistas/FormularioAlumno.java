@@ -7,8 +7,11 @@ package guia5.Vistas;
 
 import guia5.AccesoADatos.*;
 import guia5.Entidades.*;
+import java.beans.PropertyVetoException;
 import java.sql.Date;
 import java.time.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 
@@ -296,20 +299,23 @@ private AlumnoData aldat;
        
        int dni = Integer.parseInt(jTDni.getText());
        
-       jTDni.isOpaque();
        alum.setDni(dni);       
        alum.setApellido(jTApellido.getText());
        alum.setNombre(jTNombre.getText());
        alum.setActivo(jREstado.isSelected());
        alum.setFecha(fecha);
-         aldat.modificarAlumno(alum);
+       aldat.modificarAlumno(alum);
         
         
     }//GEN-LAST:event_jBGuardarActionPerformed
 
     private void jBSalirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBSalirMouseClicked
-       JOptionPane.showMessageDialog(this,"Desea cerrar el programa?");
-       System.exit(0);
+       JOptionPane.showMessageDialog(this,"Desea volver al programa principal?");
+    try {
+        setClosed(true);
+    } catch (PropertyVetoException ex) {
+        Logger.getLogger(FormularioAlumno.class.getName()).log(Level.SEVERE, null, ex);
+    }
        
     }//GEN-LAST:event_jBSalirMouseClicked
 

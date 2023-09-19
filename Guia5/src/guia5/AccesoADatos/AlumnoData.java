@@ -171,7 +171,7 @@ public class AlumnoData {
 
      public void modificarAlumno(Alumno alumno){
      
-         String modificar = "UPDATE alumno SET dni = ?, apellido = ?, nombre = ?,fechaNacimiento = ?, estado = ? WHERE idAlumno= ? ";
+         String modificar = "UPDATE alumno SET dni = ?, apellido = ?, nombre = ?,fechaNacimiento = ?, estado = ? WHERE dni= ? ";
          
 
 
@@ -185,7 +185,7 @@ public class AlumnoData {
             ps.setString(3, alumno.getNombre());
             ps.setDate(4, Date.valueOf(alumno.getFechaNac()));
             ps.setBoolean(5,alumno.isActivo());
-            ps.setInt(6, alumno.getIdAlumno());
+            ps.setInt(6, alumno.getDni());
    
       
             
@@ -228,17 +228,17 @@ public class AlumnoData {
  
          }
          
-     public void estadoTrue(){
-     String sql = "UPDATE alumno SET estado =1";
-     
-     
-        try {
-            PreparedStatement ps = con.prepareStatement(sql);
-            ps.execute();
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null,"Error al conectar a la base");
-        }
-     }
+//     public void estadoTrue(){
+//     String sql = "UPDATE alumno SET estado =1";
+//     
+//     
+//        try {
+//            PreparedStatement ps = con.prepareStatement(sql);
+//            ps.execute();
+//        } catch (SQLException ex) {
+//            JOptionPane.showMessageDialog(null,"Error al conectar a la base");
+//        }
+//     }
      
      }
 

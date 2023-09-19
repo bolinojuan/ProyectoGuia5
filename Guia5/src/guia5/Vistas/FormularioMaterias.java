@@ -7,6 +7,9 @@ package guia5.Vistas;
 
 import guia5.AccesoADatos.MateriaData;
 import guia5.Entidades.Materia;
+import java.beans.PropertyVetoException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -231,8 +234,12 @@ private MateriaData matdat;
     }//GEN-LAST:event_jBEliminarActionPerformed
 
     private void jBSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBSalirActionPerformed
-        JOptionPane.showMessageDialog(null,"Confirme si desea cerrar el programa");
-        System.exit(0);
+        JOptionPane.showMessageDialog(null,"Desea volver al programa principal?");
+    try {
+        setClosed(true);
+    } catch (PropertyVetoException ex) {
+        Logger.getLogger(FormularioMaterias.class.getName()).log(Level.SEVERE, null, ex);
+    }
     }//GEN-LAST:event_jBSalirActionPerformed
 
     private void jREstadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jREstadoActionPerformed
