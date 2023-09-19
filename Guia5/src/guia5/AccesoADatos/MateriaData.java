@@ -3,6 +3,8 @@ package guia5.AccesoADatos;
 import guia5.Entidades.Materia;
 import java.util.*;
 import java.sql.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 public class MateriaData {
@@ -124,4 +126,18 @@ public List <Materia> listarMaterias(){
     return materias;
 }
 
+
+public void setearMateriasActivas(){
+String sql = "UPDATE materia SET estado = 1";
+
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.executeUpdate();
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(MateriaData.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+
+}
 }

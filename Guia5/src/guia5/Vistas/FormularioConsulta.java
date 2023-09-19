@@ -156,6 +156,7 @@ public class FormularioConsulta extends javax.swing.JInternalFrame {
 
     private void jRMatNoInsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRMatNoInsActionPerformed
      jRMatNoIns.setEnabled(false);
+     
     }//GEN-LAST:event_jRMatNoInsActionPerformed
 
     private void jBSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBSalirActionPerformed

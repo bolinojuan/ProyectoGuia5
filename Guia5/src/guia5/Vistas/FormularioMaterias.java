@@ -214,6 +214,7 @@ private MateriaData matdat;
         JOptionPane.showMessageDialog(null,"Debe completar todos los campos");
         return;
        }
+       matdat.setearMateriasActivas();
         Materia mat=new Materia();                       
         int codigo = Integer.parseInt(jTCodigo.getText());
         int anio = Integer.parseInt(jTAnio.getText());
@@ -223,6 +224,7 @@ private MateriaData matdat;
         mat.setActivo(jREstado.isSelected());
         matdat.modificarMateria(mat);
         borrarCampos();
+        
         
     }//GEN-LAST:event_jGuardarActionPerformed
 
