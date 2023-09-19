@@ -305,7 +305,7 @@ private AlumnoData aldat;
        alum.setActivo(jREstado.isSelected());
        alum.setFecha(fecha);
        aldat.modificarAlumno(alum);
-        
+       borrarCampos();
         
     }//GEN-LAST:event_jBGuardarActionPerformed
 
