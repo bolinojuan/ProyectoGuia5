@@ -28,7 +28,7 @@ private DefaultTableModel modelo = new DefaultTableModel();
     public FormularioInscripcion() {
         initComponents();
         armarCabecera();
-        cargarCombo();
+       
     }
 
     /**
@@ -202,8 +202,7 @@ private DefaultTableModel modelo = new DefaultTableModel();
     private void jCBAlumnoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jCBAlumnoMousePressed
         AlumnoData aldat  =new AlumnoData();
         Alumno alu = new Alumno();
-        //int id = Integer.parseInt();
-        //jCBAlumno.setText(alu.getIdAlumno(),alu.getDni(),alu.getApellido(),alu.getNombre(),alu.getFechaNac(),alu.isActivo());
+        jCBAlumno.addItem(alu);
        aldat.listarAlumno();
         
     }//GEN-LAST:event_jCBAlumnoMousePressed
@@ -229,9 +228,5 @@ modelo.addColumn("ID");
 modelo.addColumn("Nombre");
 modelo.addColumn("Año");
 jTInsc.setModel(modelo);
-}
-
-private void cargarCombo(){
-//jCBAlumno
 }
 }
