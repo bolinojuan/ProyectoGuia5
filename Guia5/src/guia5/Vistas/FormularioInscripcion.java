@@ -269,7 +269,9 @@ private DefaultTableModel modelo = new DefaultTableModel();
     }//GEN-LAST:event_jBInscribirActionPerformed
 
     private void jCBAlumnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCBAlumnoActionPerformed
-        
+        borrarFilas();
+        jRMatIns.setSelected(false);
+        jRMatNoIns.setSelected(false);
     }//GEN-LAST:event_jCBAlumnoActionPerformed
 
     private void jBAnularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBAnularActionPerformed

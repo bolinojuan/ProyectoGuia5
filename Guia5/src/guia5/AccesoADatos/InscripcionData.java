@@ -31,7 +31,7 @@ public void guardarInscripcion(Inscripcion insc){
      ps.setInt(3, insc.getMateria().getIdMateria());
      ResultSet rs=ps.getGeneratedKeys();
      if(rs.next()){
-         insc.setIdInscripcion(rs.getInt("idInscripcion"));
+        // insc.setIdInscripcion(rs.getInt("idInscripcion"));
          JOptionPane.showMessageDialog(null, "Inscripción realizada con éxito");
      }
      ps.close();
@@ -108,7 +108,7 @@ PreparedStatement ps;
 public List obtenerMateriasCursadas(int id){
     ArrayList <Materia> materias=new ArrayList();
     try{
-        String sql="SELECT materia.idMateria,materia.nombre,materia.año FROM materia JOIN inscripcion ON (inscripcion.idMateria=materia.idMateria) WHERE inscripcion.idAlumno=?";
+        String sql="SELECT materia.idMateria,materia.nombre,materia.año FROM materia JOIN inscripcion ON (inscripcion.idMateria=materia.idMateria) WHERE inscripcion.idAlumno = ? AND estado =1";
         PreparedStatement ps=con.prepareStatement(sql);
         ps.setInt(1, id);
         ResultSet rs=ps.executeQuery();
@@ -128,11 +128,16 @@ public List obtenerMateriasCursadas(int id){
     return materias;
 }
 
-public List obtenerMateriasNoCursadas(int id){
+public List <Materia> obtenerMateriasNoCursadas(int id){
     ArrayList <Materia> materias=new ArrayList();
-    try{
-        String sql="SELECT materia.idMateria,materia.nombre,materia.año FROM materia JOIN inscripcion ON (inscripcion.idMateria=materia.idMateria) WHERE NOT inscripcion.idAlumno=?";
-        PreparedStatement ps=con.prepareStatement(sql);
+    
+  
+        String sql = "SELECT * FROM materia WHERE estado = 1 AND idMateria NOT IN(SELECT idMateria FROM inscripcion WHERE inscripcion.idAlumno = ?)";
+
+ try{
+
+       
+      PreparedStatement ps=con.prepareStatement(sql);
         ps.setInt(1, id);
         ResultSet rs=ps.executeQuery();
         Materia materia;
@@ -154,12 +159,13 @@ public List obtenerMateriasNoCursadas(int id){
 public void borrarInscripcionMateriaAlumno(int idAlumno, int idMateria){
     
     //probar restriccion de integridad referencial   
-    String sql = "DELETE FROM inscripcion JOIN  idAlumno ON(inscripcion.idAlumno = alumno.idAlumno) JOIN materia ON(inscripcion.idMateria = materia.idMmateria) WHERE idAlumno = ? AND idMateria = ?";
+    String sql = "UPDATE materia SET estado =0  WHERE idAlumno = ? AND idMateria = ?";
     PreparedStatement  ps= null;    
     try {
           
              ps = con.prepareStatement(sql);
-            ps.setInt(idMateria, idAlumno);
+            ps.setInt(1,idMateria);
+            ps.setInt(2, idAlumno);
              int borrado = ps.executeUpdate();
              if(borrado ==1){
                  JOptionPane.showMessageDialog(null,"Inscripcion eliminada");
