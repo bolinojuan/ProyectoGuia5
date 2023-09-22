@@ -7,6 +7,7 @@ package guia5.Vistas;
 
 import guia5.AccesoADatos.*;
 import guia5.Entidades.*;
+import java.awt.Color;
 import java.beans.PropertyVetoException;
 import java.sql.Date;
 import java.time.*;
@@ -71,6 +72,16 @@ private AlumnoData aldat;
         });
 
         jBBuscar.setText("Buscar");
+        jBBuscar.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                jBBuscarMouseMoved(evt);
+            }
+        });
+        jBBuscar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jBBuscarMouseExited(evt);
+            }
+        });
         jBBuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBBuscarActionPerformed(evt);
@@ -101,6 +112,16 @@ private AlumnoData aldat;
         });
 
         jBEliminar.setText("Eliminar");
+        jBEliminar.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                jBEliminarMouseMoved(evt);
+            }
+        });
+        jBEliminar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jBEliminarMouseExited(evt);
+            }
+        });
         jBEliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBEliminarActionPerformed(evt);
@@ -213,30 +234,47 @@ private AlumnoData aldat;
     }//GEN-LAST:event_jTApellidoActionPerformed
 
     private void jBBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBBuscarActionPerformed
-        Alumno alu =new Alumno();
-        
-      AlumnoData aludata = new AlumnoData();   
-      
-        int dni = Integer.parseInt(jTDni.getText());
-        
-        //aludata.estadoTrue();
-        alu=aludata.buscarPorDni(dni);
-        if(alu==null&&dni>0){
-            borrarCampos();
-        }else{   
+   
+       
           
-        jTApellido.setText(alu.getApellido());
-        jTNombre.setText(alu.getNombre());       
-        jDCFechaNac.setDate(Date.valueOf(alu.getFechaNac()));
-        jREstado.setSelected(alu.isActivo());
+     
+         
+          Alumno alu;
         
-        }
-        
+          AlumnoData aludata = new AlumnoData();   
+      
+      
+       
+       try{
+            int idAlu=Integer.parseInt(JOptionPane.showInputDialog("ingrese el id del alumno"));
+            alu = aludata.buscarAlumno(idAlu);
+         if(alu==null){
+         borrarCampos();
+          
+          }else{
+      
+      
+          jTDni.setText(alu.getDni()+"");
+          jTApellido.setText(alu.getApellido());
+          jTNombre.setText(alu.getNombre());       
+          jDCFechaNac.setDate(Date.valueOf(alu.getFechaNac()));
+          jREstado.setSelected(alu.isActivo());
+            
+  
+      
+       }
+       
+       }catch(NumberFormatException nf){
+            
+            JOptionPane.showMessageDialog(null, "Revise que los datos ingresados sean correctos ");
+               
+       }
 
     }//GEN-LAST:event_jBBuscarActionPerformed
        
     private void jREstadoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jREstadoMouseClicked
-      jREstado.setEnabled(false);
+    jREstado.setSelected(true);
+ 
     }//GEN-LAST:event_jREstadoMouseClicked
 
     private void jBNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBNuevoActionPerformed
@@ -315,6 +353,22 @@ private AlumnoData aldat;
     }
        
     }//GEN-LAST:event_jBSalirMouseClicked
+
+    private void jBEliminarMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBEliminarMouseMoved
+        jBEliminar.setBackground(Color.red);
+    }//GEN-LAST:event_jBEliminarMouseMoved
+
+    private void jBEliminarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBEliminarMouseExited
+        jBEliminar.setBackground(Color.white);
+    }//GEN-LAST:event_jBEliminarMouseExited
+
+    private void jBBuscarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBBuscarMouseExited
+       jBBuscar.setBackground(Color.white);
+    }//GEN-LAST:event_jBBuscarMouseExited
+
+    private void jBBuscarMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBBuscarMouseMoved
+       jBBuscar.setBackground(Color.CYAN);
+    }//GEN-LAST:event_jBBuscarMouseMoved
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

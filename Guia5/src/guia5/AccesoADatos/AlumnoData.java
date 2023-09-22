@@ -58,16 +58,15 @@ public class AlumnoData {
          
                  JOptionPane.showMessageDialog(null,"Alumno agregado exitosamente");
             
-        } catch (SQLException ex) {
+        } catch(SQLException ex) {
      
             JOptionPane.showMessageDialog(null,"Error de conexion " +ex.getMessage());
+            
         }
-
-    
     }
     public Alumno buscarAlumno(int id){
     
-        String sql = "SELECT dni, apellido, nombre, fechaNacimiento FROM alumno WHERE idAlumno = ? AND estado =1";
+        String sql = "SELECT dni, apellido, nombre, estado, fechaNacimiento FROM alumno WHERE idAlumno = ? AND estado=1 ";
         
         Alumno alumno = null;
         
@@ -87,7 +86,7 @@ public class AlumnoData {
                 alumno.setApellido(rs.getString("apellido"));
                 alumno.setNombre(rs.getString("nombre"));
                 alumno.setFecha(rs.getDate("fechaNacimiento").toLocalDate());
-                alumno.setActivo(true);
+                alumno.setActivo(rs.getBoolean("estado"));
           
             
             }else{
