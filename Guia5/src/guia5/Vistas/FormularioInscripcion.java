@@ -9,12 +9,14 @@ import guia5.AccesoADatos.AlumnoData;
 import guia5.AccesoADatos.InscripcionData;
 import guia5.Entidades.Alumno;
 import guia5.Entidades.Inscripcion;
+import guia5.Entidades.Materia;
 import java.beans.PropertyVetoException;
-import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableColumnModel;
 
 /**
  *
@@ -28,7 +30,7 @@ private DefaultTableModel modelo = new DefaultTableModel();
     public FormularioInscripcion() {
         initComponents();
         armarCabecera();
-       
+       cargarCombobox();
     }
 
     /**
@@ -70,9 +72,9 @@ private DefaultTableModel modelo = new DefaultTableModel();
             }
         });
 
-        jCBAlumno.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                jCBAlumnoMousePressed(evt);
+        jCBAlumno.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCBAlumnoActionPerformed(evt);
             }
         });
 
@@ -118,15 +120,15 @@ private DefaultTableModel modelo = new DefaultTableModel();
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(218, 218, 218)
-                        .addComponent(jCBAlumno, javax.swing.GroupLayout.PREFERRED_SIZE, 259, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
                         .addGap(37, 37, 37)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(12, 12, 12)
                                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 380, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jLabel1)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel1)
+                                .addGap(19, 19, 19)
+                                .addComponent(jCBAlumno, javax.swing.GroupLayout.PREFERRED_SIZE, 341, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jRMatIns)
                                 .addGap(120, 120, 120)
@@ -144,7 +146,7 @@ private DefaultTableModel modelo = new DefaultTableModel();
                     .addGroup(layout.createSequentialGroup()
                         .addGap(108, 108, 108)
                         .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(413, Short.MAX_VALUE))
+                .addContainerGap(60, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -175,7 +177,21 @@ private DefaultTableModel modelo = new DefaultTableModel();
 
     private void jRMatNoInsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRMatNoInsActionPerformed
      jRMatNoIns.setEnabled(false);
+     if(jRMatIns.isSelected()){
+     jRMatNoIns.setSelected(false);
+         //borrarFilas();
+        if(jRMatIns.isSelected()){
+        Alumno alumno =  (Alumno)jCBAlumno.getSelectedItem();
+        InscripcionData insc = new InscripcionData();
+        ArrayList<Materia> materias = new ArrayList<>();
+        materias.addAll(insc.obtenerMateriasNoCursadas(alumno.idAlumno));
+        for (Materia mat: materias) {
+       modelo.addRow(new Object[]{mat.getIdMateria()+"",mat.getNombre(),mat.getAnioMateria()+""});
+           
+        }
+        }
      
+     }
     }//GEN-LAST:event_jRMatNoInsActionPerformed
 
     private void jBSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBSalirActionPerformed
@@ -189,6 +205,22 @@ private DefaultTableModel modelo = new DefaultTableModel();
 
     private void jRMatInsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jRMatInsMouseClicked
        jRMatIns.setEnabled(false);
+       if(jRMatNoIns.isSelected()){
+       jRMatIns.setSelected(false);
+         //borrarFilas();
+       
+        Alumno alumno =  (Alumno)jCBAlumno.getSelectedItem();
+        InscripcionData insc = new InscripcionData();
+        ArrayList<Materia> materias = new ArrayList<>();
+        materias.addAll(insc.obtenerMateriasCursadas(alumno.idAlumno));
+        for (Materia mat: materias) {
+       modelo.addRow(new Object[]{mat.getIdMateria()+"",mat.getNombre(),mat.getAnioMateria()+""});
+           
+        }
+        }
+       
+     
+       
     }//GEN-LAST:event_jRMatInsMouseClicked
 
     private void jBInscribirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBInscribirActionPerformed
@@ -199,13 +231,24 @@ private DefaultTableModel modelo = new DefaultTableModel();
         insdat.guardarInscripcion(insc);
     }//GEN-LAST:event_jBInscribirActionPerformed
 
-    private void jCBAlumnoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jCBAlumnoMousePressed
-        AlumnoData aldat  =new AlumnoData();
-        Alumno alu = new Alumno();
-        jCBAlumno.addItem(alu);
-       aldat.listarAlumno();
+    private void jCBAlumnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCBAlumnoActionPerformed
+
         
-    }//GEN-LAST:event_jCBAlumnoMousePressed
+//        borrarFilas();
+//        if(jRMatIns.isSelected()){
+//        Alumno alumno =  (Alumno)jCBAlumno.getSelectedItem();
+//        InscripcionData insc = new InscripcionData();
+//        ArrayList<Materia> materias = new ArrayList<>();
+//        materias.addAll(insc.obtenerMateriasCursadas(alumno.idAlumno));
+//        for (Materia mat: materias) {
+//       modelo.addRow(new Object[]{mat.getIdMateria()+"",mat.getNombre(),mat.getAnioMateria()+""});
+//           
+//         }
+//     
+    
+     
+    
+    }//GEN-LAST:event_jCBAlumnoActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -229,4 +272,21 @@ modelo.addColumn("Nombre");
 modelo.addColumn("Año");
 jTInsc.setModel(modelo);
 }
+
+private void cargarCombobox(){
+AlumnoData alumnodata = new AlumnoData();
+ArrayList <Alumno> lista = new ArrayList<>();
+ lista.addAll(alumnodata.listarAlumno());
+        
+    for (Alumno a : lista){
+        jCBAlumno.addItem(a);
+        }
+
+}
+private void borrarFilas(){
+        int f=jTInsc.getRowCount()-1;
+        for(;f>=0;f--){
+            modelo.removeRow(f);
+        }
+    }
 }
