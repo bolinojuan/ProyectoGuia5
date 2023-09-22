@@ -108,7 +108,7 @@ PreparedStatement ps;
 public List obtenerMateriasCursadas(int id){
     ArrayList <Materia> materias=new ArrayList();
     try{
-        String sql="SELECT inscripcion.idMateria,nombre,año FROM inscripcion JOIN materia ON (inscripcion.idMateria=materia.idMateria) JOIN alumno ON(inscripcion.idAlumno = alumno.idAlumno)WHERE inscripcion.idAlumno NOT ?";
+        String sql="SELECT materia.idMateria,nombre,año FROM materia JOIN inscripcion ON (inscripcion.idMateria=materia.idMateria) JOIN alumno ON(inscripcion.idAlumno = alumno.idAlumno)";
         PreparedStatement ps=con.prepareStatement(sql);
         ps.setInt(1, id);
         ResultSet rs=ps.executeQuery();
@@ -131,7 +131,7 @@ public List obtenerMateriasCursadas(int id){
 public List obtenerMateriasNoCursadas(int id){
     ArrayList <Materia> materias=new ArrayList();
     try{
-        String sql="SELECT inscripcion.idMateria,nombre,año FROM inscripcion JOIN materia ON (inscripcion.idMateria=materia.idMateria) WHERE inscripcion.idAlumno   ?";
+        String sql="SELECT materia.idMateria,nombre,año FROM materia JOIN inscripcion ON (inscripcion.idMateria=materia.idMateria) WHERE inscripcion.idAlumno NOT ?";
         PreparedStatement ps=con.prepareStatement(sql);
         ps.setInt(1, id);
         ResultSet rs=ps.executeQuery();
