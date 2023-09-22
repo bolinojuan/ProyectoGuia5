@@ -194,6 +194,8 @@ private DefaultTableModel modelo = new DefaultTableModel();
      }*/
      jRMatIns.setSelected(false);
      jRMatIns.setEnabled(false);
+     jBInscribir.setEnabled(true);
+     jBAnular.setEnabled(false);
      borrarFilas();
      Alumno alumno=(Alumno)jCBAlumno.getSelectedItem();
      InscripcionData insc=new InscripcionData();
@@ -230,6 +232,8 @@ private DefaultTableModel modelo = new DefaultTableModel();
         }*/
        jRMatNoIns.setSelected(false);
        jRMatNoIns.setEnabled(false);
+       jBInscribir.setEnabled(false);
+       jBAnular.setEnabled(true);
        borrarFilas();
       Alumno alumno=(Alumno)jCBAlumno.getSelectedItem();
       InscripcionData insc=new InscripcionData();
@@ -253,22 +257,7 @@ private DefaultTableModel modelo = new DefaultTableModel();
     }//GEN-LAST:event_jBInscribirActionPerformed
 
     private void jCBAlumnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCBAlumnoActionPerformed
-
         
-//        borrarFilas();
-//        if(jRMatIns.isSelected()){
-//        Alumno alumno =  (Alumno)jCBAlumno.getSelectedItem();
-//        InscripcionData insc = new InscripcionData();
-//        ArrayList<Materia> materias = new ArrayList<>();
-//        materias.addAll(insc.obtenerMateriasCursadas(alumno.idAlumno));
-//        for (Materia mat: materias) {
-//       modelo.addRow(new Object[]{mat.getIdMateria()+"",mat.getNombre(),mat.getAnioMateria()+""});
-//           
-//         }
-//     
-    
-     
-    
     }//GEN-LAST:event_jCBAlumnoActionPerformed
 
 
