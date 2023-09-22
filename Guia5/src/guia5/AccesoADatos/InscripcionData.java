@@ -108,7 +108,7 @@ PreparedStatement ps;
 public List obtenerMateriasCursadas(int id){
     ArrayList <Materia> materias=new ArrayList();
     try{
-        String sql="SELECT materia.idMateria,nombre,año FROM materia JOIN inscripcion ON (inscripcion.idMateria=materia.idMateria) JOIN alumno ON(inscripcion.idAlumno = alumno.idAlumno)";
+        String sql="SELECT materia.idMateria,materia.nombre,materia.año FROM materia JOIN inscripcion ON (inscripcion.idMateria=materia.idMateria) WHERE inscripcion.idAlumno=?";
         PreparedStatement ps=con.prepareStatement(sql);
         ps.setInt(1, id);
         ResultSet rs=ps.executeQuery();
@@ -117,8 +117,8 @@ public List obtenerMateriasCursadas(int id){
             materia=new Materia();
             materia.setIdMateria(rs.getInt("idMateria"));
             materia.setNombre(rs.getString("nombre"));
-            materia.setAnioMateria(rs.getInt("anioMateria"));
-            materia.setActivo(rs.getBoolean("estado"));
+            materia.setAnioMateria(rs.getInt("año"));
+            //materia.setActivo(rs.getBoolean("estado"));
             materias.add(materia);
         }
         ps.close();
@@ -131,7 +131,7 @@ public List obtenerMateriasCursadas(int id){
 public List obtenerMateriasNoCursadas(int id){
     ArrayList <Materia> materias=new ArrayList();
     try{
-        String sql="SELECT materia.idMateria,nombre,año FROM materia JOIN inscripcion ON (inscripcion.idMateria=materia.idMateria) WHERE inscripcion.idAlumno NOT ?";
+        String sql="SELECT materia.idMateria,materia.nombre,materia.año FROM materia JOIN inscripcion ON (inscripcion.idMateria=materia.idMateria) WHERE NOT inscripcion.idAlumno=?";
         PreparedStatement ps=con.prepareStatement(sql);
         ps.setInt(1, id);
         ResultSet rs=ps.executeQuery();
@@ -140,8 +140,8 @@ public List obtenerMateriasNoCursadas(int id){
             materia=new Materia();
             materia.setIdMateria(rs.getInt("idMateria"));
             materia.setNombre(rs.getString("nombre"));
-            materia.setAnioMateria(rs.getInt("anioMateria"));
-            materia.setActivo(rs.getBoolean("estado"));
+            materia.setAnioMateria(rs.getInt("año"));
+            //materia.setActivo(rs.getBoolean("estado"));
             materias.add(materia);
         }
         ps.close();

@@ -177,10 +177,10 @@ private DefaultTableModel modelo = new DefaultTableModel();
 
     private void jRMatNoInsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRMatNoInsActionPerformed
      jRMatNoIns.setEnabled(false);
-     if(jRMatIns.isSelected()){
-     jRMatNoIns.setSelected(false);
+     if(jRMatNoIns.isSelected()){
+     jRMatIns.setSelected(false);
          //borrarFilas();
-        if(jRMatIns.isSelected()){
+        //if(jRMatIns.isSelected()){
         Alumno alumno =  (Alumno)jCBAlumno.getSelectedItem();
         InscripcionData insc = new InscripcionData();
         ArrayList<Materia> materias = new ArrayList<>();
@@ -188,7 +188,7 @@ private DefaultTableModel modelo = new DefaultTableModel();
         for (Materia mat: materias) {
        modelo.addRow(new Object[]{mat.getIdMateria()+"",mat.getNombre(),mat.getAnioMateria()+""});
            
-        }
+        //}
         }
      
      }
