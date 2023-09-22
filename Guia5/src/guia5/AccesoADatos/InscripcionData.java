@@ -115,9 +115,9 @@ public List obtenerMateriasCursadas(int id){
         Materia materia;
         while(rs.next()){
             materia=new Materia();
-            materia.setIdMateria(rs.getInt("idMateria"));
-            materia.setNombre(rs.getString("nombre"));
-            materia.setAnioMateria(rs.getInt("año"));
+            materia.setIdMateria(rs.getInt("materia.idMateria"));
+            materia.setNombre(rs.getString("materia.nombre"));
+            materia.setAnioMateria(rs.getInt("materia.año"));
             //materia.setActivo(rs.getBoolean("estado"));
             materias.add(materia);
         }
@@ -138,9 +138,9 @@ public List obtenerMateriasNoCursadas(int id){
         Materia materia;
         while(rs.next()){
             materia=new Materia();
-            materia.setIdMateria(rs.getInt("idMateria"));
-            materia.setNombre(rs.getString("nombre"));
-            materia.setAnioMateria(rs.getInt("año"));
+            materia.setIdMateria(rs.getInt("materia.idMateria"));
+            materia.setNombre(rs.getString("materia.nombre"));
+            materia.setAnioMateria(rs.getInt("materia.año"));
             //materia.setActivo(rs.getBoolean("estado"));
             materias.add(materia);
         }
