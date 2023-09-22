@@ -64,6 +64,11 @@ private DefaultTableModel modelo = new DefaultTableModel();
         });
 
         jBAnular.setText("Anular Inscripcion");
+        jBAnular.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBAnularActionPerformed(evt);
+            }
+        });
 
         jBSalir.setText("Salir");
         jBSalir.addActionListener(new java.awt.event.ActionListener() {
@@ -249,16 +254,27 @@ private DefaultTableModel modelo = new DefaultTableModel();
     }//GEN-LAST:event_jRMatInsMouseClicked
 
     private void jBInscribirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBInscribirActionPerformed
-        Inscripcion insc = new Inscripcion();
         
-        InscripcionData insdat =new InscripcionData();
+         Materia mat = new Materia();
+        Alumno alumno=(Alumno)jCBAlumno.getSelectedItem();
+      InscripcionData insc=new InscripcionData();
+      ArrayList <Materia> materias=new ArrayList();
+      materias.addAll(insc.obtenerMateriasNoCursadas(alumno.getIdAlumno()));
+      mat=materias.get(jTInsc.getSelectedRow());
+      Inscripcion inscripcion = new Inscripcion(alumno,mat,0);
+      insc.guardarInscripcion(inscripcion);
+      
+       
         
-        insdat.guardarInscripcion(insc);
     }//GEN-LAST:event_jBInscribirActionPerformed
 
     private void jCBAlumnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCBAlumnoActionPerformed
         
     }//GEN-LAST:event_jCBAlumnoActionPerformed
+
+    private void jBAnularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBAnularActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jBAnularActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
