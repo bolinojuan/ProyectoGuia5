@@ -234,11 +234,6 @@ private AlumnoData aldat;
     }//GEN-LAST:event_jTApellidoActionPerformed
 
     private void jBBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBBuscarActionPerformed
-   
-       
-          
-     
-         
           Alumno alu;
         
           AlumnoData aludata = new AlumnoData();   
@@ -248,17 +243,17 @@ private AlumnoData aldat;
        try{
             int idAlu=Integer.parseInt(JOptionPane.showInputDialog("ingrese el id del alumno"));
             alu = aludata.buscarAlumno(idAlu);
-         if(alu==null){
-         borrarCampos();
+               if(alu==null){
+               borrarCampos();
           
-          }else{
+                }else{
       
-      
-          jTDni.setText(alu.getDni()+"");
-          jTApellido.setText(alu.getApellido());
-          jTNombre.setText(alu.getNombre());       
-          jDCFechaNac.setDate(Date.valueOf(alu.getFechaNac()));
-          jREstado.setSelected(alu.isActivo());
+                  
+                  jTDni.setText(alu.getDni()+"");
+                  jTApellido.setText(alu.getApellido());
+                  jTNombre.setText(alu.getNombre());       
+                  jDCFechaNac.setDate(Date.valueOf(alu.getFechaNac()));
+                  jREstado.setSelected(alu.isActivo());
             
   
       
@@ -280,22 +275,27 @@ private AlumnoData aldat;
     private void jBNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBNuevoActionPerformed
        if(jTApellido.getText().isEmpty() || jTDni.getText().isEmpty() || jTApellido.getText().isEmpty()){
            JOptionPane.showMessageDialog(null, "Debe completar todos los campos");
-       }
+       }else{
     
-       Alumno alum = new Alumno();
        
-       int dni = Integer.parseInt(jTDni.getText());
+       Alumno alum = new Alumno();
+       try{
+      
+       int dni = Integer.parseInt(jTDni.getText());      
        alum.setDni(dni);
        alum.setApellido(jTApellido.getText());
        alum.setNombre(jTNombre.getText());
        alum.setActivo(jREstado.isSelected());
        alum.setFecha(fecha);
-       
-        aldat.guardarAlumno(alum);
-        borrarCampos();
+         aldat.guardarAlumno(alum);
         
+       }catch(NumberFormatException nf){
+       JOptionPane.showMessageDialog(null, "ingrese un numero de documento valido");
+         
+      
     
-       
+       }
+       }
       
       
     }//GEN-LAST:event_jBNuevoActionPerformed
