@@ -279,12 +279,19 @@ private DefaultTableModel modelo = new DefaultTableModel();
         Alumno alumno=(Alumno)jCBAlumno.getSelectedItem();
       InscripcionData insc=new InscripcionData();
       ArrayList <Materia> materias=new ArrayList();
+<<<<<<< Updated upstream
       materias.addAll(insc.obtenerMateriasNoCursadas(alumno.getIdAlumno()));
       mat=materias.get(jTInsc.getSelectedRow());
       Inscripcion inscripcion = new Inscripcion(alumno,mat,0);
       
   
       //insc.borrarInscripcionMateriaAlumno(WIDTH, WIDTH);
+=======
+      materias.addAll(insc.obtenerMateriasCursadas(alumno.getIdAlumno()));
+      mat=materias.get(jTInsc.getSelectedRow());
+      //Inscripcion inscripcion = new Inscripcion(alumno,mat,0);
+      insc.borrarInscripcionMateriaAlumno(alumno.getIdAlumno(),mat.getIdMateria());
+>>>>>>> Stashed changes
     }//GEN-LAST:event_jBAnularActionPerformed
 
 

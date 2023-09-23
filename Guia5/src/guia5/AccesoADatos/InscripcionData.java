@@ -29,6 +29,7 @@ public void guardarInscripcion(Inscripcion insc){
      ps.setDouble(1,insc.getNota());
      ps.setInt(2,insc.getAlumno().getIdAlumno());
      ps.setInt(3, insc.getMateria().getIdMateria());
+     ps.executeUpdate();
      ResultSet rs=ps.getGeneratedKeys();
      if(rs.next()){
         // insc.setIdInscripcion(rs.getInt("idInscripcion"));
@@ -159,19 +160,23 @@ public List <Materia> obtenerMateriasNoCursadas(int id){
 public void borrarInscripcionMateriaAlumno(int idAlumno, int idMateria){
     
     //probar restriccion de integridad referencial   
+<<<<<<< Updated upstream
     String sql = "DELETE  * FROM inscripcion WHERE idMateria = ? AND idAlumno = ?";
     PreparedStatement  ps= null;    
+=======
+    String sql = "DELETE FROM inscripcion WHERE inscripcion.idAlumno=? AND inscripcion.idMateria=?";  
+>>>>>>> Stashed changes
     try {
           
-             ps = con.prepareStatement(sql);
-            ps.setInt(1,idMateria);
-            ps.setInt(2, idAlumno);
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1,idAlumno);
+            ps.setInt(2,idMateria);
              int borrado = ps.executeUpdate();
              if(borrado ==1){
                  JOptionPane.showMessageDialog(null,"Inscripcion eliminada");
                    }
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Error en la conexion a la Base De Datos");
+            JOptionPane.showMessageDialog(null, "Error en la conexion a la Base De Datos"+ex.getMessage());
         
         }
 }       
