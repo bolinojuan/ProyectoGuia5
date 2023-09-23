@@ -42,24 +42,31 @@ public class InscripcionData {
     }
 
     public ArrayList obtenerInscripciones(){
-    String sql = "SELECT * FROM inscripcion";
-    PreparedStatement ps;
-            try {
-                ps = con.prepareStatement(sql);
+        ArrayList<Inscripcion> inscripcion=new ArrayList();
+        String sql = "SELECT * FROM inscripcion";
+        PreparedStatement ps;
+        try {
+            ps = con.prepareStatement(sql);
 
-                ResultSet rs = ps.executeQuery();
-                if(rs.next()){
-                JOptionPane.showMessageDialog(null," Lista obtenida exitosamente" );
-                }
-            } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null,"Error en la conexion a Base de Datos "+ex.getMessage());
+            ResultSet rs = ps.executeQuery();
+            Inscripcion insc;  
+            while(rs.next()){
+                insc=new Inscripcion();
+                insc.setIdInscripcion(rs.getInt("idInscripcion"));
+                insc.setAlumno(aluData.buscarAlumno(rs.getInt("idAlumno")));
+                insc.setMateria(matData.buscarMateria(rs.getInt("idMateria")));
+                insc.setNota(rs.getDouble("nota"));
+                //JOptionPane.showMessageDialog(null," Lista obtenida exitosamente" );
             }
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null,"Error en la conexion a Base de Datos "+ex.getMessage());
+        }
 
         return inscripcion;
     }
 
 
-    public ArrayList obtenerInscripcionesPorAlumno(int id) {
+    public ArrayList <Inscripcion> obtenerInscripcionesPorAlumno(int id) {
 
         ArrayList<Inscripcion> inscripcionAlumno = new ArrayList<>();
 
@@ -106,7 +113,7 @@ public class InscripcionData {
 
 
 //TreeSet de materias
-    public ArrayList obtenerMateriasCursadas(int id){
+    public ArrayList<Materia> obtenerMateriasCursadas(int id){
         ArrayList <Materia> materias=new ArrayList();
         try{
             String sql="SELECT materia.idMateria,materia.nombre,materia.año FROM materia JOIN inscripcion ON (inscripcion.idMateria=materia.idMateria) WHERE inscripcion.idAlumno = ? AND estado =1";
@@ -197,35 +204,33 @@ public class InscripcionData {
         }
     }
 
-    public ArrayList obtenerAlumnosXMateria(int idMateria){
+    public ArrayList<Alumno> obtenerAlumnosXMateria(int idMateria){
         String sql="SELECT * FROM  alumno WHERE estado=1 AND idAlumno IN(SELECT idInscripcion FROM inscripcion JOIN materia ON(inscripcion.idMateria=materia.idMateria) WHERE materia.idMateria = 1)";
         //String sql ="SELECT * FROM  alumno JOIN inscripcion ON(alumno.idAlumno=inscripcion.idAlumno) WHERE inscripcion.idMateria = ? AND alumno.estado=1";
 
         ArrayList <Alumno> listado = new ArrayList<>();
         Alumno alum ;
-            try {
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1,idMateria);
 
-                PreparedStatement ps = con.prepareStatement(sql);
-                ps.setInt(1,idMateria);
-
-                ResultSet rs  = ps.executeQuery();
-                while(rs.next()){
-                    alum=new Alumno();
-                    alum.setIdAlumno(rs.getInt("idAlumno"));
-                    alum.setDni(rs.getInt("dni"));
-                    alum.setNombre(rs.getString("nombre"));
-                    alum.setApellido(rs.getString("apellido"));
-                    alum.setFecha((rs.getDate("fechaNacimiento").toLocalDate()));
-                    alum.setActivo(rs.getBoolean("estado"));
-                    listado.add(alum);
-                 }
-                ps.close();
-            } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Error en la conexion a Base De Datos");
+            ResultSet rs  = ps.executeQuery();
+            while(rs.next()){
+                alum=new Alumno();
+                alum.setIdAlumno(rs.getInt("idAlumno"));
+                alum.setDni(rs.getInt("dni"));
+                alum.setNombre(rs.getString("nombre"));
+                alum.setApellido(rs.getString("apellido"));
+                alum.setFecha((rs.getDate("fechaNacimiento").toLocalDate()));
+                alum.setActivo(rs.getBoolean("estado"));
+                listado.add(alum);
             }
-            return listado;
+            ps.close();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error en la conexion a Base De Datos");
         }
-
+        return listado;
+    }
 }
 
 
