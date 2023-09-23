@@ -275,7 +275,16 @@ private DefaultTableModel modelo = new DefaultTableModel();
     }//GEN-LAST:event_jCBAlumnoActionPerformed
 
     private void jBAnularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBAnularActionPerformed
-        // TODO add your handling code here:
+         Materia mat = new Materia();
+        Alumno alumno=(Alumno)jCBAlumno.getSelectedItem();
+      InscripcionData insc=new InscripcionData();
+      ArrayList <Materia> materias=new ArrayList();
+      materias.addAll(insc.obtenerMateriasNoCursadas(alumno.getIdAlumno()));
+      mat=materias.get(jTInsc.getSelectedRow());
+      Inscripcion inscripcion = new Inscripcion(alumno,mat,0);
+      
+  
+      //insc.borrarInscripcionMateriaAlumno(WIDTH, WIDTH);
     }//GEN-LAST:event_jBAnularActionPerformed
 
 

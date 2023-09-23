@@ -159,7 +159,7 @@ public List <Materia> obtenerMateriasNoCursadas(int id){
 public void borrarInscripcionMateriaAlumno(int idAlumno, int idMateria){
     
     //probar restriccion de integridad referencial   
-    String sql = "UPDATE materia SET estado =0  WHERE idAlumno = ? AND idMateria = ?";
+    String sql = "DELETE  * FROM inscripcion WHERE idMateria = ? AND idAlumno = ?";
     PreparedStatement  ps= null;    
     try {
           
