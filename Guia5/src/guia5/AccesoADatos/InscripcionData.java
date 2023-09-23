@@ -205,7 +205,7 @@ public class InscripcionData {
     }
 
     public ArrayList obtenerAlumnosXMateria(int idMateria){
-        String sql="SELECT * FROM  alumno WHERE estado=1 AND idAlumno IN(SELECT idInscripcion FROM inscripcion JOIN materia ON(inscripcion.idMateria=materia.idMateria) WHERE materia.idMateria = 1)";
+        String sql="SELECT * FROM  alumno WHERE estado=1 AND idAlumno IN(SELECT idInscripcion FROM inscripcion JOIN materia ON(inscripcion.idMateria=materia.idMateria) WHERE materia.idMateria = ?)";
         //String sql ="SELECT * FROM  alumno JOIN inscripcion ON(alumno.idAlumno=inscripcion.idAlumno) WHERE inscripcion.idMateria = ? AND alumno.estado=1";
 
         ArrayList <Alumno> listado = new ArrayList<>();

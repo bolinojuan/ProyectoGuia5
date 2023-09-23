@@ -197,7 +197,7 @@ private DefaultTableModel modelo = new DefaultTableModel();
     }//GEN-LAST:event_jRMatNoInsActionPerformed
 
     private void jBSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBSalirActionPerformed
-        JOptionPane.showMessageDialog(this,"desea volver al menu principal?");
+        JOptionPane.showMessageDialog(this,"¿Desea volver al menu principal?");
         try {            
             setClosed(true);
         } catch (PropertyVetoException ex) {
