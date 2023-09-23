@@ -5,12 +5,14 @@
  */
 package guia5.Vistas;
 
-import guia5.Entidades.Materia;
+import guia5.Entidades.*;
 import java.beans.PropertyVetoException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import guia5.AccesoADatos.*;
+import java.util.*;
 
 /**
  *
@@ -24,6 +26,7 @@ DefaultTableModel modelo = new DefaultTableModel();
     public ListadoMaterias() {
         initComponents();
         armarCabecera();
+        cargarCombo();
     }
 
     /**
@@ -48,6 +51,12 @@ DefaultTableModel modelo = new DefaultTableModel();
         jLabel1.setText("Listado de Alumnos por Materias");
 
         jLabel2.setText("Seleccione una Materia:");
+
+        jCBMateria.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCBMateriaActionPerformed(evt);
+            }
+        });
 
         jTAlumnos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -119,6 +128,17 @@ DefaultTableModel modelo = new DefaultTableModel();
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void jCBMateriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCBMateriaActionPerformed
+        borrarFilas();
+        Materia materia=(Materia)jCBMateria.getSelectedItem();
+        InscripcionData inscripcion=new InscripcionData();
+        ArrayList<Alumno> listado=new ArrayList();
+        listado.addAll(inscripcion.obtenerAlumnosXMateria(materia.getIdMateria()));
+        for(Alumno a:listado){
+            modelo.addRow(new Object[]{a.getIdAlumno(),a.getDni(),a.getApellido(),a.getNombre()});
+        }
+    }//GEN-LAST:event_jCBMateriaActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
@@ -130,16 +150,28 @@ DefaultTableModel modelo = new DefaultTableModel();
     // End of variables declaration//GEN-END:variables
 
 
-private void armarCabecera(){
-modelo.addColumn("ID");
-modelo.addColumn("DNI");
-modelo.addColumn("Apellido");
-modelo.addColumn("Nombre");
-jTAlumnos.setModel(modelo);
-}
+    private void armarCabecera(){
+    modelo.addColumn("ID");
+    modelo.addColumn("DNI");
+    modelo.addColumn("Apellido");
+    modelo.addColumn("Nombre");
+    jTAlumnos.setModel(modelo);
+    }
 
-private void cargarCombo(){
+    private void cargarCombo(){
+        MateriaData materiadata = new MateriaData();
+        ArrayList <Materia> lista = new ArrayList<>();
+        lista.addAll(materiadata.listarMaterias());
 
-}
+        for (Materia m : lista){
+            jCBMateria.addItem(m);
+        }
+    }
+    private void borrarFilas(){
+        int f=jTAlumnos.getRowCount()-1;
+        for(;f>=0;f--){
+            modelo.removeRow(f);
+        }
+    }
 
 }

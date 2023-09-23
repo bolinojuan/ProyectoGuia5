@@ -266,24 +266,23 @@ private DefaultTableModel modelo = new DefaultTableModel();
     // End of variables declaration//GEN-END:variables
 
 
-private void armarCabecera(){
-modelo.addColumn("ID");
-modelo.addColumn("Nombre");
-modelo.addColumn("Año");
-jTInsc.setModel(modelo);
-}
+    private void armarCabecera(){
+    modelo.addColumn("ID");
+    modelo.addColumn("Nombre");
+    modelo.addColumn("Año");
+    jTInsc.setModel(modelo);
+    }
 
-private void cargarCombobox(){
-AlumnoData alumnodata = new AlumnoData();
-ArrayList <Alumno> lista = new ArrayList<>();
- lista.addAll(alumnodata.listarAlumno());
-        
-    for (Alumno a : lista){
-        jCBAlumno.addItem(a);
+    private void cargarCombobox(){
+        AlumnoData alumnodata = new AlumnoData();
+        ArrayList <Alumno> lista = new ArrayList<>();
+        lista.addAll(alumnodata.listarAlumno());
+
+        for (Alumno a : lista){
+            jCBAlumno.addItem(a);
         }
-
-}
-private void borrarFilas(){
+    }
+    private void borrarFilas(){
         int f=jTInsc.getRowCount()-1;
         for(;f>=0;f--){
             modelo.removeRow(f);
