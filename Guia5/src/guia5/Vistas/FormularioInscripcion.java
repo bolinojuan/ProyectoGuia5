@@ -181,22 +181,6 @@ private DefaultTableModel modelo = new DefaultTableModel();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jRMatNoInsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRMatNoInsActionPerformed
-     /*jRMatNoIns.setEnabled(false);
-     if(jRMatIns.isSelected()){
-     jRMatNoIns.setSelected(false);
-         //borrarFilas();
-        if(jRMatNoIns.isSelected()){
-        Alumno alumno =  (Alumno)jCBAlumno.getSelectedItem();
-        InscripcionData insc = new InscripcionData();
-        ArrayList<Materia> materias = new ArrayList<>();
-        materias.addAll(insc.obtenerMateriasNoCursadas(alumno.getIdAlumno()));
-        for (Materia mat: materias) {
-       modelo.addRow(new Object[]{mat.getIdMateria()+"",mat.getNombre(),mat.getAnioMateria()+""});
-           
-        }
-        }
-     
-     }*/
      jRMatIns.setSelected(false);
      jRMatIns.setEnabled(false);
      jBInscribir.setEnabled(true);
@@ -207,7 +191,7 @@ private DefaultTableModel modelo = new DefaultTableModel();
      ArrayList <Materia> materias=new ArrayList();
      materias.addAll(insc.obtenerMateriasNoCursadas(alumno.getIdAlumno()));
      for(Materia mat:materias){
-         modelo.addRow(new Object[]{mat.getIdMateria(),mat.getNombre(),mat.getAnioMateria()});
+        modelo.addRow(new Object[]{mat.getIdMateria(),mat.getNombre(),mat.getAnioMateria()});
      }
      jRMatIns.setEnabled(true);
     }//GEN-LAST:event_jRMatNoInsActionPerformed
@@ -222,50 +206,31 @@ private DefaultTableModel modelo = new DefaultTableModel();
     }//GEN-LAST:event_jBSalirActionPerformed
 
     private void jRMatInsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jRMatInsMouseClicked
-       /*jRMatIns.setEnabled(false);
-       if(jRMatNoIns.isSelected()){
-       jRMatIns.setSelected(false);
-         //borrarFilas();
-        Alumno alumno =  (Alumno)jCBAlumno.getSelectedItem();
-        InscripcionData insc = new InscripcionData();
-        ArrayList<Materia> materias = new ArrayList<>();
+        jRMatNoIns.setSelected(false);
+        jRMatNoIns.setEnabled(false);
+        jBInscribir.setEnabled(false);
+        jBAnular.setEnabled(true);
+        borrarFilas();
+        Alumno alumno=(Alumno)jCBAlumno.getSelectedItem();
+        InscripcionData insc=new InscripcionData();
+        ArrayList <Materia> materias=new ArrayList();
         materias.addAll(insc.obtenerMateriasCursadas(alumno.getIdAlumno()));
-        for (Materia mat: materias) {
-       modelo.addRow(new Object[]{mat.getIdMateria()+"",mat.getNombre(),mat.getAnioMateria()+""});
-           
+        for(Materia mat:materias){
+            modelo.addRow(new Object[]{mat.getIdMateria(),mat.getNombre(),mat.getAnioMateria()});
         }
-        }*/
-       jRMatNoIns.setSelected(false);
-       jRMatNoIns.setEnabled(false);
-       jBInscribir.setEnabled(false);
-       jBAnular.setEnabled(true);
-       borrarFilas();
-      Alumno alumno=(Alumno)jCBAlumno.getSelectedItem();
-      InscripcionData insc=new InscripcionData();
-      ArrayList <Materia> materias=new ArrayList();
-      materias.addAll(insc.obtenerMateriasCursadas(alumno.getIdAlumno()));
-      for(Materia mat:materias){
-          modelo.addRow(new Object[]{mat.getIdMateria(),mat.getNombre(),mat.getAnioMateria()});
-      }
-       jRMatNoIns.setEnabled(true);
-       
-     
-       
+        jRMatNoIns.setEnabled(true);
     }//GEN-LAST:event_jRMatInsMouseClicked
 
     private void jBInscribirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBInscribirActionPerformed
         
-         Materia mat = new Materia();
+        Materia mat = new Materia();
         Alumno alumno=(Alumno)jCBAlumno.getSelectedItem();
-      InscripcionData insc=new InscripcionData();
-      ArrayList <Materia> materias=new ArrayList();
-      materias.addAll(insc.obtenerMateriasNoCursadas(alumno.getIdAlumno()));
-      mat=materias.get(jTInsc.getSelectedRow());
-      Inscripcion inscripcion = new Inscripcion(alumno,mat,0);
-      insc.guardarInscripcion(inscripcion);
-      
-       
-        
+        InscripcionData insc=new InscripcionData();
+        ArrayList <Materia> materias=new ArrayList();
+        materias.addAll(insc.obtenerMateriasNoCursadas(alumno.getIdAlumno()));
+        mat=materias.get(jTInsc.getSelectedRow());
+        Inscripcion inscripcion = new Inscripcion(alumno,mat,0);
+        insc.guardarInscripcion(inscripcion);
     }//GEN-LAST:event_jBInscribirActionPerformed
 
     private void jCBAlumnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCBAlumnoActionPerformed
@@ -275,23 +240,14 @@ private DefaultTableModel modelo = new DefaultTableModel();
     }//GEN-LAST:event_jCBAlumnoActionPerformed
 
     private void jBAnularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBAnularActionPerformed
-         Materia mat = new Materia();
+        Materia mat = new Materia();
         Alumno alumno=(Alumno)jCBAlumno.getSelectedItem();
-      InscripcionData insc=new InscripcionData();
-      ArrayList <Materia> materias=new ArrayList();
-<<<<<<< Updated upstream
-      materias.addAll(insc.obtenerMateriasNoCursadas(alumno.getIdAlumno()));
-      mat=materias.get(jTInsc.getSelectedRow());
-      Inscripcion inscripcion = new Inscripcion(alumno,mat,0);
-      
-  
-      //insc.borrarInscripcionMateriaAlumno(WIDTH, WIDTH);
-=======
-      materias.addAll(insc.obtenerMateriasCursadas(alumno.getIdAlumno()));
-      mat=materias.get(jTInsc.getSelectedRow());
-      //Inscripcion inscripcion = new Inscripcion(alumno,mat,0);
-      insc.borrarInscripcionMateriaAlumno(alumno.getIdAlumno(),mat.getIdMateria());
->>>>>>> Stashed changes
+        InscripcionData insc=new InscripcionData();
+        ArrayList <Materia> materias=new ArrayList();
+        materias.addAll(insc.obtenerMateriasCursadas(alumno.getIdAlumno()));
+        mat=materias.get(jTInsc.getSelectedRow());
+        Inscripcion inscripcion = new Inscripcion(alumno,mat,0);
+        insc.borrarInscripcionMateriaAlumno(alumno.getIdAlumno(),mat.getIdMateria());
     }//GEN-LAST:event_jBAnularActionPerformed
 
 

@@ -160,12 +160,10 @@ public List <Materia> obtenerMateriasNoCursadas(int id){
 public void borrarInscripcionMateriaAlumno(int idAlumno, int idMateria){
     
     //probar restriccion de integridad referencial   
-<<<<<<< Updated upstream
-    String sql = "DELETE  * FROM inscripcion WHERE idMateria = ? AND idAlumno = ?";
-    PreparedStatement  ps= null;    
-=======
+      
+
     String sql = "DELETE FROM inscripcion WHERE inscripcion.idAlumno=? AND inscripcion.idMateria=?";  
->>>>>>> Stashed changes
+
     try {
           
             PreparedStatement ps = con.prepareStatement(sql);
