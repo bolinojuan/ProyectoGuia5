@@ -132,7 +132,7 @@ DefaultTableModel modelo = new DefaultTableModel();
         borrarFilas();
         Materia materia=(Materia)jCBMateria.getSelectedItem();
         InscripcionData inscripcion=new InscripcionData();
-        ArrayList<Alumno> listado=new ArrayList();
+        ArrayList <Alumno> listado=new ArrayList();
         listado.addAll(inscripcion.obtenerAlumnosXMateria(materia.getIdMateria()));
         for(Alumno a:listado){
             modelo.addRow(new Object[]{a.getIdAlumno(),a.getDni(),a.getApellido(),a.getNombre()});

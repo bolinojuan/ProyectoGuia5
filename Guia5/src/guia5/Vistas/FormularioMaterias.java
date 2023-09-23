@@ -179,33 +179,45 @@ private MateriaData matdat;
     }// </editor-fold>//GEN-END:initComponents
 
     private void jBBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBBuscarActionPerformed
-        Materia mat;
-        int cod = Integer.parseInt(jTCodigo.getText());
-        mat =matdat.buscarMateria(cod);
-        if(mat==null){
-            borrarCampos();
-        }else{
-            jTNombre.setText(mat.getNombre());
-            jTAnio.setText(mat.getAnioMateria()+"");
+        try{
+            if(jTCodigo.getText().isEmpty()){
+                JOptionPane.showMessageDialog(this, "Complete el campo");
+                return;
+            }
+            Materia mat;
+            int cod = Integer.parseInt(jTCodigo.getText());
+            mat =matdat.buscarMateria(cod);
+            if(mat==null){
+                borrarCampos();
+            }else{
+                jTNombre.setText(mat.getNombre());
+                jTAnio.setText(mat.getAnioMateria()+"");
+            }
+        }catch(Exception ex){
+            JOptionPane.showMessageDialog(this, "Ingrese números enel campo código");
         }
+        
     
     }//GEN-LAST:event_jBBuscarActionPerformed
 
     private void jBNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBNuevoActionPerformed
-       if(jTAnio.getText().isEmpty() || jTCodigo.getText().isEmpty()  || jTNombre.getText().isEmpty()){
-       JOptionPane.showMessageDialog(null, "Debe completar todos los campos");
-       return;
-       }
-      Materia mat=new Materia();
-       int anio = Integer.parseInt(jTAnio.getText());
-       //int codigo = Integer.parseInt(jTCodigo.getText());       
-       //mat.setIdMateria(codigo);
-       mat.setNombre(jTNombre.getText());
-       mat.setAnioMateria(anio);
-       mat.setActivo(jREstado.isSelected());         
-       matdat.guardarMateria(mat);
-       borrarCampos();
-       
+       try{
+           if(jTAnio.getText().isEmpty() || jTCodigo.getText().isEmpty()  || jTNombre.getText().isEmpty()){
+            JOptionPane.showMessageDialog(null, "Debe completar todos los campos");
+            return;
+            }
+            Materia mat=new Materia();
+            int anio = Integer.parseInt(jTAnio.getText());
+            //int codigo = Integer.parseInt(jTCodigo.getText());       
+            //mat.setIdMateria(codigo);
+            mat.setNombre(jTNombre.getText());
+            mat.setAnioMateria(anio);
+            mat.setActivo(jREstado.isSelected());         
+            matdat.guardarMateria(mat);
+            borrarCampos();
+        }catch(Exception ex){
+           JOptionPane.showMessageDialog(this, "Ingrese en los campos códidgo y/o año");
+        }
     }//GEN-LAST:event_jBNuevoActionPerformed
     
     
