@@ -194,7 +194,7 @@ private MateriaData matdat;
                 jTAnio.setText(mat.getAnioMateria()+"");
             }
         }catch(Exception ex){
-            JOptionPane.showMessageDialog(this, "Ingrese números enel campo código");
+            JOptionPane.showMessageDialog(this, "Ingrese números en el campo código");
         }
         
     

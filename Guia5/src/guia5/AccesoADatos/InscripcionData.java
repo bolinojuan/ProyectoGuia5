@@ -66,7 +66,7 @@ public class InscripcionData {
     }
 
 
-    public ArrayList <Inscripcion> obtenerInscripcionesPorAlumno(int id) {
+    public ArrayList obtenerInscripcionesPorAlumno(int id) {
 
         ArrayList<Inscripcion> inscripcionAlumno = new ArrayList<>();
 
@@ -113,7 +113,7 @@ public class InscripcionData {
 
 
 //TreeSet de materias
-    public ArrayList<Materia> obtenerMateriasCursadas(int id){
+    public ArrayList obtenerMateriasCursadas(int id){
         ArrayList <Materia> materias=new ArrayList();
         try{
             String sql="SELECT materia.idMateria,materia.nombre,materia.año FROM materia JOIN inscripcion ON (inscripcion.idMateria=materia.idMateria) WHERE inscripcion.idAlumno = ? AND estado =1";
@@ -136,16 +136,16 @@ public class InscripcionData {
         return materias;
     }
 
-    public ArrayList <Materia> obtenerMateriasNoCursadas(int id){
+    public ArrayList obtenerMateriasNoCursadas(int id){
         ArrayList <Materia> materias=new ArrayList();
 
 
-            String sql = "SELECT * FROM materia WHERE estado = 1 AND idMateria NOT IN(SELECT idMateria FROM inscripcion WHERE inscripcion.idAlumno = ?)";
+        String sql = "SELECT * FROM materia WHERE estado = 1 AND idMateria NOT IN(SELECT idMateria FROM inscripcion WHERE inscripcion.idAlumno = ?)";
 
-     try{
+        try{
 
 
-          PreparedStatement ps=con.prepareStatement(sql);
+            PreparedStatement ps=con.prepareStatement(sql);
             ps.setInt(1, id);
             ResultSet rs=ps.executeQuery();
             Materia materia;
@@ -204,7 +204,7 @@ public class InscripcionData {
         }
     }
 
-    public ArrayList<Alumno> obtenerAlumnosXMateria(int idMateria){
+    public ArrayList obtenerAlumnosXMateria(int idMateria){
         String sql="SELECT * FROM  alumno WHERE estado=1 AND idAlumno IN(SELECT idInscripcion FROM inscripcion JOIN materia ON(inscripcion.idMateria=materia.idMateria) WHERE materia.idMateria = 1)";
         //String sql ="SELECT * FROM  alumno JOIN inscripcion ON(alumno.idAlumno=inscripcion.idAlumno) WHERE inscripcion.idMateria = ? AND alumno.estado=1";
 
