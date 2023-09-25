@@ -5,8 +5,10 @@
  */
 package guia5.Vistas;
 
+import guia5.AccesoADatos.AlumnoData;
 import guia5.Entidades.Alumno;
 import java.beans.PropertyVetoException;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -24,6 +26,7 @@ private DefaultTableModel modelo = new DefaultTableModel();
     public cargaDeNotas() {
         initComponents();
         armarCabecera();
+        cargarCombo();
     }
 
     /**
@@ -165,6 +168,19 @@ jTmodelo.setModel(modelo);
 }
 
 private void cargarCombo(){
+AlumnoData aludata = new AlumnoData();
+ArrayList<Alumno> lista = new ArrayList<>();
+lista.addAll(aludata.listarAlumno());
 
+lista.forEach((i)->{
+    jCBAlumno.addItem(i);
+});
+}
+
+private void borrarFilas(){
+        int f=jTmodelo.getRowCount()-1;
+        for(;f>=0;f--){
+            modelo.removeRow(f);
+        }
 }
 }
