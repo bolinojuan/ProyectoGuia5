@@ -250,15 +250,15 @@ private AlumnoData aldat;
     }//GEN-LAST:event_jTApellidoActionPerformed
 
     private void jBBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBBuscarActionPerformed
-          Alumno alu;
+          Alumno alu = new Alumno();
         
           AlumnoData aludata = new AlumnoData();   
       
       
        
        try{
-            int idAlu=Integer.parseInt(JOptionPane.showInputDialog("ingrese el id del alumno"));
-            alu = aludata.buscarAlumno(idAlu);
+           
+            alu = aludata.buscarPorDni(alu.getDni());
                if(alu==null){
                borrarCampos();
           

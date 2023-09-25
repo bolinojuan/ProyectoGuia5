@@ -6,7 +6,10 @@
 package guia5.Vistas;
 
 import guia5.AccesoADatos.AlumnoData;
+import guia5.AccesoADatos.InscripcionData;
 import guia5.Entidades.Alumno;
+import guia5.Entidades.Inscripcion;
+import guia5.Entidades.Materia;
 import java.beans.PropertyVetoException;
 import java.util.ArrayList;
 import java.util.logging.Level;
@@ -20,6 +23,11 @@ import javax.swing.table.DefaultTableModel;
  */
 public class cargaDeNotas extends javax.swing.JInternalFrame {
 private DefaultTableModel modelo = new DefaultTableModel();
+//public boolean isCellEditable(int f,int c);
+//return false;
+//}
+   
+
     /**
      * Creates new form cargaDeNotas
      */
@@ -70,6 +78,11 @@ private DefaultTableModel modelo = new DefaultTableModel();
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        jTmodelo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTmodeloMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTmodelo);
 
         jBGuardar.setText("Guardar");
@@ -133,7 +146,15 @@ private DefaultTableModel modelo = new DefaultTableModel();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jCBAlumnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCBAlumnoActionPerformed
-        // TODO add your handling code here:
+      borrarFilas();
+      InscripcionData inscdata = new InscripcionData();
+      ArrayList<Inscripcion> lista = new ArrayList<>();
+      Alumno alumno = (Alumno) jCBAlumno.getSelectedItem();
+      lista.addAll(inscdata.obtenerInscripcionesPorAlumno(alumno.getIdAlumno()));      
+      lista.forEach((i)->{
+      modelo.addRow(new Object[]{i.getIdInscripcion(),i.getMateria().getNombre(),i.getNota()});
+      
+      });
     }//GEN-LAST:event_jCBAlumnoActionPerformed
 
     private void jBSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBSalirActionPerformed
@@ -146,8 +167,39 @@ private DefaultTableModel modelo = new DefaultTableModel();
     }//GEN-LAST:event_jBSalirActionPerformed
 
     private void jBGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBGuardarActionPerformed
-        // TODO add your handling code here:
+       Materia materia = new Materia();
+       InscripcionData inscdata = new InscripcionData();
+       Alumno alumno =  (Alumno) jCBAlumno.getSelectedItem();
+       Inscripcion insc = new Inscripcion();
+       
+       ArrayList<Inscripcion> lista = new ArrayList<>();
+       lista.addAll(inscdata.obtenerInscripcionesPorAlumno(alumno.getIdAlumno()));
+       materia=lista.get(jTmodelo.getSelectedRow()).getMateria();
+//       lista.forEach((elem)->{
+//       //modelo.addRow(new Object[]{elem.getIdInscripcion(),elem.getMateria().getIdMateria(),elem.getNota()));
+//       }
+       
+       int fila =jTmodelo.getSelectedRow();
+       
+       
+       int codigo = alumno.getIdAlumno();
+       int idmateria = materia.getIdMateria();
+       try{
+       String n = String.valueOf( modelo.getValueAt(fila,2));
+       double  nota = Double.parseDouble(n); 
+       nscdata.actualizarNota(codigo,idmateria, nota);
+       }catch(NumberFormatException nf){
+       JOptionPane.showMessageDialog(null, "Debe ingresar un numero");
+       
+       
+       i
+       
+       }
     }//GEN-LAST:event_jBGuardarActionPerformed
+
+    private void jTmodeloMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTmodeloMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTmodeloMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -183,4 +235,6 @@ private void borrarFilas(){
             modelo.removeRow(f);
         }
 }
+
+
 }

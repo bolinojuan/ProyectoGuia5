@@ -70,7 +70,7 @@ public class InscripcionData {
 
         ArrayList<Inscripcion> inscripcionAlumno = new ArrayList<>();
 
-        String sql = "SELECT  idInscripcion,idAlumno,idMateria,nota FROM inscripcion JOIN alumno ON (inscripcion.idAlumno=alumno.idAlumno) WHERE idAlumno = ?";
+        String sql = "SELECT  idInscripcion,inscripcion.idAlumno,idMateria,nota FROM inscripcion JOIN alumno ON (inscripcion.idAlumno=alumno.idAlumno) WHERE alumno.idAlumno = ? AND estado =1";
 
         
 
@@ -86,7 +86,7 @@ public class InscripcionData {
                 MateriaData MatDat = new MateriaData();
 
                 Alumno a;
-                a=AluDat.buscarAlumno(rs.getInt("idAlumno"));
+                a=AluDat.buscarAlumno(rs.getInt("inscripcion.idAlumno"));
                             
                 
                 Materia mat;
@@ -186,7 +186,7 @@ public class InscripcionData {
     }       
         
     public void actualizarNota(int idAlumno, int idMateria, double nota){
-        String sql="UPDATE inscripcion SET nota=? WHERE idMateria=? AND idAlumno=?";
+        String sql="UPDATE inscripcion SET inscripcion.nota=? WHERE inscripcion.idMateria=? AND inscripcion.idAlumno=?";
         PreparedStatement ps=null;
         try{
             ps=con.prepareStatement(sql);
