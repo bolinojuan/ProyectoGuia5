@@ -5,11 +5,9 @@
  */
 package guia5.Vistas;
 
-import java.awt.Color;
-import java.awt.Graphics;
-import java.awt.Image;
-import javax.swing.ImageIcon;
-import javax.swing.JOptionPane;
+
+import java.awt.*;
+import javax.swing.*;
 
 /**
  *
