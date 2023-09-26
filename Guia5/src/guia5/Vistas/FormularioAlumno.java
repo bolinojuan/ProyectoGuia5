@@ -11,6 +11,7 @@ import java.awt.Color;
 import java.beans.PropertyVetoException;
 import java.sql.Date;
 import java.time.*;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -272,26 +273,35 @@ private AlumnoData aldat;
        
        try{
            
-            alu = aludata.buscarPorDni(alu.getDni());
+           int dni = Integer.parseInt(jTDni.getText());
+            alu = aludata.buscarPorDni(dni);
+             
+           
                if(alu==null){
                borrarCampos();
           
                 }else{
-      
+                 jTApellido.setText(alu.getApellido());
+                 jTNombre.setText(alu.getNombre());       
+                 jDCFechaNac.setDate(Date.valueOf(alu.getFechaNac()));
+                 jREstado.setSelected(alu.isActivo());
                   
-                  jTDni.setText(alu.getDni()+"");
-                  jTApellido.setText(alu.getApellido());
-                  jTNombre.setText(alu.getNombre());       
-                  jDCFechaNac.setDate(Date.valueOf(alu.getFechaNac()));
-                  jREstado.setSelected(alu.isActivo());
-            
-  
+//                  ArrayList<Alumno>listadoAlumno = new ArrayList<>();
+//                  listadoAlumno.forEach((a) ->{
+//                jTApellido.setText(a.getApellido());
+//                jTNombre.setText(a.getNombre());       
+//                  jDCFechaNac.setDate(Date.valueOf(a.getFechaNac()));
+//                   jREstado.setSelected(a.isActivo());
+//                  });
+                  
+              
+               }
+       
       
-       }
        
        }catch(NumberFormatException nf){
             
-            JOptionPane.showMessageDialog(null, "Revise que los datos ingresados sean correctos ");
+            JOptionPane.showMessageDialog(this, "Revise que los datos ingresados sean correctos ");
                
        }
 
