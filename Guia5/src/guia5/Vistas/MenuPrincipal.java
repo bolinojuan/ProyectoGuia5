@@ -46,15 +46,16 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jMSalir = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(600, 400));
+        setPreferredSize(new java.awt.Dimension(800, 600));
 
+        escritorio.setPreferredSize(new java.awt.Dimension(800, 600));
         escritorio.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
             public void propertyChange(java.beans.PropertyChangeEvent evt) {
                 escritorioPropertyChange(evt);
             }
         });
 
-        jMAlumno.setText("Alumno");
+        jMAlumno.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/alumno.png"))); // NOI18N
 
         jMFormAlumno.setText("Formulario de Alumno");
         jMFormAlumno.addActionListener(new java.awt.event.ActionListener() {
@@ -66,7 +67,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         jMenuBar1.add(jMAlumno);
 
-        jMMateria.setText("Materia");
+        jMMateria.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/materia.png"))); // NOI18N
 
         jMFormularioMateria.setText("Formulario de Materia");
         jMFormularioMateria.addActionListener(new java.awt.event.ActionListener() {
@@ -78,7 +79,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         jMenuBar1.add(jMMateria);
 
-        jMAdministracion.setText("Administracion");
+        jMAdministracion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/administracion.png"))); // NOI18N
 
         jMManejoIns.setText("Manejo de Inscripciones");
         jMManejoIns.addActionListener(new java.awt.event.ActionListener() {
@@ -98,7 +99,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         jMenuBar1.add(jMAdministracion);
 
-        jMConsultas.setText("Consultas");
+        jMConsultas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/consultas.png"))); // NOI18N
 
         jMAlumnosPorMateria.setText("Alumnos por Materia");
         jMAlumnosPorMateria.addActionListener(new java.awt.event.ActionListener() {
@@ -110,7 +111,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         jMenuBar1.add(jMConsultas);
 
-        jMSalir.setText("Salir");
+        jMSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/salida.png"))); // NOI18N
         jMSalir.addMenuListener(new javax.swing.event.MenuListener() {
             public void menuSelected(javax.swing.event.MenuEvent evt) {
                 jMSalirMenuSelected(evt);
@@ -128,11 +129,13 @@ public class MenuPrincipal extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(escritorio, javax.swing.GroupLayout.DEFAULT_SIZE, 408, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(escritorio, javax.swing.GroupLayout.DEFAULT_SIZE, 408, Short.MAX_VALUE)
+                .addGap(0, 0, 0))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(escritorio, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 275, Short.MAX_VALUE)
+            .addComponent(escritorio, javax.swing.GroupLayout.DEFAULT_SIZE, 241, Short.MAX_VALUE)
         );
 
         pack();
