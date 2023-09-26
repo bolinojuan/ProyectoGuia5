@@ -54,8 +54,9 @@ private DefaultTableModel modelo = new DefaultTableModel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTInsc = new javax.swing.JTable();
 
-        setPreferredSize(new java.awt.Dimension(590, 350));
+        setPreferredSize(new java.awt.Dimension(800, 600));
 
+        jBInscribir.setFont(new java.awt.Font("Noto Sans", 0, 18)); // NOI18N
         jBInscribir.setText("Inscribir");
         jBInscribir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -63,6 +64,7 @@ private DefaultTableModel modelo = new DefaultTableModel();
             }
         });
 
+        jBAnular.setFont(new java.awt.Font("Noto Sans", 0, 18)); // NOI18N
         jBAnular.setText("Anular Inscripcion");
         jBAnular.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -70,6 +72,7 @@ private DefaultTableModel modelo = new DefaultTableModel();
             }
         });
 
+        jBSalir.setFont(new java.awt.Font("Noto Sans", 0, 18)); // NOI18N
         jBSalir.setText("Salir");
         jBSalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -83,14 +86,16 @@ private DefaultTableModel modelo = new DefaultTableModel();
             }
         });
 
+        jLabel1.setFont(new java.awt.Font("Noto Sans", 0, 18)); // NOI18N
         jLabel1.setText("Seleccione un alumno");
 
-        jLabel2.setFont(new java.awt.Font("Noto Sans", 1, 16)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Noto Sans", 1, 20)); // NOI18N
         jLabel2.setText("Listado de Materias");
 
-        jLabel3.setFont(new java.awt.Font("Noto Sans", 1, 18)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Noto Sans", 1, 20)); // NOI18N
         jLabel3.setText("Formulario de Inscripcion");
 
+        jRMatIns.setFont(new java.awt.Font("Noto Sans", 0, 18)); // NOI18N
         jRMatIns.setText("Materias Inscriptas");
         jRMatIns.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -98,6 +103,7 @@ private DefaultTableModel modelo = new DefaultTableModel();
             }
         });
 
+        jRMatNoIns.setFont(new java.awt.Font("Noto Sans", 0, 18)); // NOI18N
         jRMatNoIns.setText("Materias NO inscriptas");
         jRMatNoIns.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -123,58 +129,59 @@ private DefaultTableModel modelo = new DefaultTableModel();
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(45, 45, 45)
+                .addComponent(jRMatIns)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jRMatNoIns)
+                .addGap(174, 174, 174))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(66, 66, 66)
+                .addComponent(jBInscribir, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 113, Short.MAX_VALUE)
+                .addComponent(jBAnular, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(104, 104, 104)
+                .addComponent(jBSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(102, 102, 102))
+            .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(37, 37, 37)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(12, 12, 12)
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 380, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel1)
-                                .addGap(19, 19, 19)
-                                .addComponent(jCBAlumno, javax.swing.GroupLayout.PREFERRED_SIZE, 341, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jRMatIns)
-                                .addGap(120, 120, 120)
-                                .addComponent(jRMatNoIns))))
+                        .addGap(78, 78, 78)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 553, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(61, 61, 61)
-                        .addComponent(jBInscribir)
-                        .addGap(62, 62, 62)
-                        .addComponent(jBAnular)
-                        .addGap(76, 76, 76)
-                        .addComponent(jBSalir))
+                        .addGap(24, 24, 24)
+                        .addComponent(jLabel1)
+                        .addGap(94, 94, 94)
+                        .addComponent(jCBAlumno, javax.swing.GroupLayout.PREFERRED_SIZE, 341, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(146, 146, 146)
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(155, 155, 155)
+                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(108, 108, 108)
-                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(60, Short.MAX_VALUE))
+                        .addGap(219, 219, 219)
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(5, 5, 5)
+                .addGap(33, 33, 33)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jCBAlumno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1))
-                .addGap(18, 18, 18)
+                .addGap(38, 38, 38)
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(29, 29, 29)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jRMatIns)
                     .addComponent(jRMatNoIns))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(73, 73, 73)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(49, 49, 49)
+                .addGap(69, 69, 69)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jBSalir)
                     .addComponent(jBAnular)
-                    .addComponent(jBInscribir)
-                    .addComponent(jBSalir))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jBInscribir))
+                .addContainerGap(95, Short.MAX_VALUE))
         );
 
         pack();

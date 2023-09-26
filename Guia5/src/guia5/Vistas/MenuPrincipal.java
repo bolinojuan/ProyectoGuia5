@@ -5,6 +5,10 @@
  */
 package guia5.Vistas;
 
+import java.awt.Color;
+import java.awt.Graphics;
+import java.awt.Image;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
 /**
@@ -18,6 +22,8 @@ public class MenuPrincipal extends javax.swing.JFrame {
      */
     public MenuPrincipal() {
         initComponents();
+        this.setLocationRelativeTo(null);
+        this.setSize(800,600);
         
     }
 
@@ -32,7 +38,13 @@ public class MenuPrincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        escritorio = new javax.swing.JDesktopPane();
+        ImageIcon icono = new ImageIcon(getClass().getResource("/recursos/universidadVista.jpg"));
+        Image miImagen = icono.getImage();
+        escritorio = new javax.swing.JDesktopPane(){
+            public void paintComponent(Graphics g){
+                g.drawImage(miImagen,0,0,getWidth(),getHeight(),this);
+            }
+        };
         jMenuBar1 = new javax.swing.JMenuBar();
         jMAlumno = new javax.swing.JMenu();
         jMFormAlumno = new javax.swing.JMenuItem();
@@ -48,7 +60,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(800, 600));
 
-        escritorio.setPreferredSize(new java.awt.Dimension(800, 600));
         escritorio.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
             public void propertyChange(java.beans.PropertyChangeEvent evt) {
                 escritorioPropertyChange(evt);
@@ -147,8 +158,10 @@ public class MenuPrincipal extends javax.swing.JFrame {
     
     FormularioAlumno f = new FormularioAlumno();
     f.setVisible(true);
+    f.getContentPane().setBackground(new Color(250,252,207));
     escritorio.add(f);
     escritorio.moveToFront(f);
+    
     }//GEN-LAST:event_jMFormAlumnoActionPerformed
 
     private void jMFormularioMateriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMFormularioMateriaActionPerformed
@@ -156,6 +169,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
       escritorio.repaint();
       FormularioMaterias f = new FormularioMaterias();
       f.setVisible(true);
+      f.getContentPane().setBackground(new Color(250,252,207));
       escritorio.add(f);
       escritorio.moveToFront(f);
     }//GEN-LAST:event_jMFormularioMateriaActionPerformed
@@ -174,6 +188,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
        escritorio.repaint();
        FormularioInscripcion fc = new FormularioInscripcion();
        fc.setVisible(true);
+       fc.getContentPane().setBackground(new Color(250,252,207));
        escritorio.add(fc);
        escritorio.moveToFront(fc);
     }//GEN-LAST:event_jMManejoInsActionPerformed
@@ -183,6 +198,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
        escritorio.repaint();
        cargaDeNotas cn = new cargaDeNotas();
        cn.setVisible(true);
+       cn.getContentPane().setBackground(new Color(250,252,207));
        escritorio.add(cn);
        escritorio.moveToFront(cn);
     }//GEN-LAST:event_jMManipNotasActionPerformed
@@ -192,6 +208,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
        escritorio.repaint();
        ListadoMaterias lm = new ListadoMaterias();
        lm.setVisible(true);
+       lm.getContentPane().setBackground(new Color(250,252,207));
        escritorio.add(lm);
        escritorio.moveToFront(lm);
     }//GEN-LAST:event_jMAlumnosPorMateriaActionPerformed

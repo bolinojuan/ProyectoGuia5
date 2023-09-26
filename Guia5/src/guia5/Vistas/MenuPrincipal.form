@@ -133,14 +133,13 @@
   </Layout>
   <SubComponents>
     <Component class="javax.swing.JDesktopPane" name="escritorio">
-      <Properties>
-        <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-          <Dimension value="[800, 600]"/>
-        </Property>
-      </Properties>
       <Events>
         <EventHandler event="propertyChange" listener="java.beans.PropertyChangeListener" parameters="java.beans.PropertyChangeEvent" handler="escritorioPropertyChange"/>
       </Events>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JDesktopPane(){&#xa;    public void paintComponent(Graphics g){&#xa;        g.drawImage(miImagen,0,0,getWidth(),getHeight(),this);&#xa;    }&#xa;}"/>
+        <AuxValue name="JavaCodeGenerator_CreateCodePre" type="java.lang.String" value="ImageIcon icono = new ImageIcon(getClass().getResource(&quot;/recursos/universidadVista.jpg&quot;));&#xa;Image miImagen = icono.getImage();"/>
+      </AuxValues>
     </Component>
   </SubComponents>
 </Form>
