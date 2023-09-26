@@ -286,14 +286,6 @@ private AlumnoData aldat;
                  jDCFechaNac.setDate(Date.valueOf(alu.getFechaNac()));
                  jREstado.setSelected(alu.isActivo());
                   
-//                  ArrayList<Alumno>listadoAlumno = new ArrayList<>();
-//                  listadoAlumno.forEach((a) ->{
-//                jTApellido.setText(a.getApellido());
-//                jTNombre.setText(a.getNombre());       
-//                  jDCFechaNac.setDate(Date.valueOf(a.getFechaNac()));
-//                   jREstado.setSelected(a.isActivo());
-//                  });
-                  
               
                }
        
