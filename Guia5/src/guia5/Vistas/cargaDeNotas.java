@@ -187,12 +187,11 @@ private DefaultTableModel modelo = new DefaultTableModel();
        try{
        String n = String.valueOf( modelo.getValueAt(fila,2));
        double  nota = Double.parseDouble(n); 
-       nscdata.actualizarNota(codigo,idmateria, nota);
+       inscdata.actualizarNota(codigo,idmateria, nota);
        }catch(NumberFormatException nf){
        JOptionPane.showMessageDialog(null, "Debe ingresar un numero");
        
        
-       i
        
        }
     }//GEN-LAST:event_jBGuardarActionPerformed
