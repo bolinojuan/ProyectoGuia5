@@ -35,6 +35,7 @@ private DefaultTableModel modelo = new DefaultTableModel();
         initComponents();
         armarCabecera();
         cargarCombo();
+        jBGuardar.setEnabled(false);
     }
 
     /**
@@ -171,7 +172,10 @@ private DefaultTableModel modelo = new DefaultTableModel();
     }//GEN-LAST:event_jBSalirActionPerformed
 
     private void jBGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBGuardarActionPerformed
-       Materia materia = new Materia();
+       
+        
+        
+        Materia materia = new Materia();
        InscripcionData inscdata = new InscripcionData();
        Alumno alumno =  (Alumno) jCBAlumno.getSelectedItem();
        Inscripcion insc = new Inscripcion();
@@ -185,7 +189,9 @@ private DefaultTableModel modelo = new DefaultTableModel();
        
        int fila =jTmodelo.getSelectedRow();
        
-       
+//       if(fila==-1){
+//           
+//       } else{
        int codigo = alumno.getIdAlumno();
        int idmateria = materia.getIdMateria();
        try{
@@ -201,7 +207,7 @@ private DefaultTableModel modelo = new DefaultTableModel();
     }//GEN-LAST:event_jBGuardarActionPerformed
 
     private void jTmodeloMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTmodeloMouseClicked
-        // TODO add your handling code here:
+        jBGuardar.setEnabled(true);
     }//GEN-LAST:event_jTmodeloMouseClicked
 
 
@@ -216,7 +222,7 @@ private DefaultTableModel modelo = new DefaultTableModel();
     // End of variables declaration//GEN-END:variables
 
 private void armarCabecera(){
-modelo.addColumn("Codigo");
+modelo.addColumn("Codigo de inscripcion");
 modelo.addColumn("Nombre");
 modelo.addColumn("Nota");
 jTmodelo.setModel(modelo);

@@ -67,7 +67,8 @@ public class InscripcionData {
 
 
     public ArrayList obtenerInscripcionesPorAlumno(int id) {
-
+        
+        
         ArrayList<Inscripcion> inscripcionAlumno = new ArrayList<>();
 
         String sql = "SELECT  idInscripcion,inscripcion.idAlumno,idMateria,nota FROM inscripcion JOIN alumno ON (inscripcion.idAlumno=alumno.idAlumno) WHERE alumno.idAlumno = ? AND estado =1";
@@ -78,21 +79,25 @@ public class InscripcionData {
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setInt(1, id);
             ResultSet rs = ps.executeQuery();
+            AlumnoData alumnodata = new AlumnoData();
+            
+            Alumno alumno = alumnodata.buscarAlumno(id);
+            
             while (rs.next()) {
                 Inscripcion ins = new Inscripcion();
 
-                AlumnoData AluDat = new AlumnoData();
+              //  AlumnoData AluDat = new AlumnoData();
 
                 MateriaData MatDat = new MateriaData();
 
-                Alumno a;
-                a=AluDat.buscarAlumno(rs.getInt("inscripcion.idAlumno"));
+                //Alumno a;
+               // a=AluDat.buscarAlumno(rs.getInt("inscripcion.idAlumno"));
                             
                 
                 Materia mat;
                 mat=MatDat.buscarMateria(rs.getInt("idMateria"));
                 
-                ins.setAlumno(a);
+                ins.setAlumno(alumno);
 
                 ins.setMateria(mat);
 

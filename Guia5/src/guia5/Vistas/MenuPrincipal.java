@@ -153,7 +153,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private void jMFormAlumnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMFormAlumnoActionPerformed
     escritorio.removeAll();
     escritorio.repaint();
-    
     FormularioAlumno f = new FormularioAlumno();
     f.setVisible(true);
     f.getContentPane().setBackground(new Color(250,252,207));
@@ -173,14 +172,15 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jMFormularioMateriaActionPerformed
 
     private void escritorioPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_escritorioPropertyChange
-        // TODO add your handling code here:
+     
     }//GEN-LAST:event_escritorioPropertyChange
 
     private void jMSalirMenuSelected(javax.swing.event.MenuEvent evt) {//GEN-FIRST:event_jMSalirMenuSelected
-      JOptionPane.showMessageDialog(null, "Desea cerrar el programa?");
-      System.exit(0);
+     if(JOptionPane.showConfirmDialog(this, "Desea salir del programa?")==0){
+     
+       System.exit(0);
     }//GEN-LAST:event_jMSalirMenuSelected
-
+    }
     private void jMManejoInsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMManejoInsActionPerformed
        escritorio.removeAll();
        escritorio.repaint();

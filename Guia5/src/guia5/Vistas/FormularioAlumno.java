@@ -286,15 +286,15 @@ private AlumnoData aldat;
                  jDCFechaNac.setDate(Date.valueOf(alu.getFechaNac()));
                  jREstado.setSelected(alu.isActivo());
                   
-              
+                
                }
        
       
        
        }catch(NumberFormatException nf){
-            
+            jTDni.setText(null);
             JOptionPane.showMessageDialog(this, "Revise que los datos ingresados sean correctos ");
-               
+           
        }
 
     }//GEN-LAST:event_jBBuscarActionPerformed
@@ -323,9 +323,7 @@ private AlumnoData aldat;
         
        }catch(NumberFormatException nf){
        JOptionPane.showMessageDialog(null, "ingrese un numero de documento valido");
-         
-      
-    
+        
        }
        }
       
@@ -351,14 +349,20 @@ private AlumnoData aldat;
     }//GEN-LAST:event_jDCFechaNacPropertyChange
 
     private void jBEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBEliminarActionPerformed
-       int dni  = Integer.parseInt(jTDni.getText());
+          if(jTApellido.getText().isEmpty() || jTDni.getText().isEmpty() || jTApellido.getText().isEmpty()){
+              JOptionPane.showMessageDialog(this,"Debe completar todos los campos");
+              return;
+          }else{
+              int dni  = Integer.parseInt(jTDni.getText());
         aldat.eliminarAlumno(dni);
         borrarCampos();
+          }
     }//GEN-LAST:event_jBEliminarActionPerformed
 
     private void jBGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBGuardarActionPerformed
         if(jTApellido.getText().isEmpty() || jTDni.getText().isEmpty() || jTApellido.getText().isEmpty()){
            JOptionPane.showMessageDialog(null, "Debe completar todos los campos");
+           return;
        }
     
        Alumno alum = new Alumno();
@@ -429,3 +433,5 @@ private AlumnoData aldat;
     private javax.swing.JTextField jTNombre;
     // End of variables declaration//GEN-END:variables
 }
+
+

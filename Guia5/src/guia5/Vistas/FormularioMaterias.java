@@ -207,6 +207,7 @@ private MateriaData matdat;
             }else{
                 jTNombre.setText(mat.getNombre());
                 jTAnio.setText(mat.getAnioMateria()+"");
+                jREstado.setSelected(true);
             }
         }catch(Exception ex){
             JOptionPane.showMessageDialog(this, "Ingrese números en el campo código");
@@ -217,7 +218,7 @@ private MateriaData matdat;
 
     private void jBNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBNuevoActionPerformed
        try{
-           if(jTAnio.getText().isEmpty() || jTCodigo.getText().isEmpty()  || jTNombre.getText().isEmpty()){
+           if(jTAnio.getText().isEmpty()  || jTNombre.getText().isEmpty()){
             JOptionPane.showMessageDialog(null, "Debe completar todos los campos");
             return;
             }
@@ -227,7 +228,7 @@ private MateriaData matdat;
             //mat.setIdMateria(codigo);
             mat.setNombre(jTNombre.getText());
             mat.setAnioMateria(anio);
-            mat.setActivo(jREstado.isSelected());         
+            mat.setActivo(true);         
             matdat.guardarMateria(mat);
             borrarCampos();
         }catch(Exception ex){
@@ -256,9 +257,14 @@ private MateriaData matdat;
     }//GEN-LAST:event_jGuardarActionPerformed
 
     private void jBEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBEliminarActionPerformed
-       int cod  = Integer.parseInt(jTCodigo.getText());
+      if(jTCodigo.getText().isEmpty()){
+      JOptionPane.showMessageDialog(this,"Debe ingresar un codigo");
+      return;
+      }
+        int cod  = Integer.parseInt(jTCodigo.getText());
        matdat.eliminarMateria(cod);
        borrarCampos();
+       
     }//GEN-LAST:event_jBEliminarActionPerformed
 
     private void jBSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBSalirActionPerformed
