@@ -60,18 +60,6 @@ private AlumnoData aldat;
 
         setPreferredSize(new java.awt.Dimension(800, 600));
 
-        jTDni.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTDniActionPerformed(evt);
-            }
-        });
-
-        jTApellido.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTApellidoActionPerformed(evt);
-            }
-        });
-
         jBBuscar.setFont(new java.awt.Font("Noto Sans", 0, 18)); // NOI18N
         jBBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/magnifier.png"))); // NOI18N
         jBBuscar.setText("Buscar ID");
@@ -268,14 +256,6 @@ private AlumnoData aldat;
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jTDniActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTDniActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTDniActionPerformed
-
-    private void jTApellidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTApellidoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTApellidoActionPerformed
 
     private void jBBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBBuscarActionPerformed
           Alumno alu = new Alumno();

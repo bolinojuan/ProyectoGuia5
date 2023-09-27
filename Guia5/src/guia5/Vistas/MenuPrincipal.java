@@ -36,12 +36,12 @@ public class MenuPrincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        ImageIcon icono = new ImageIcon(getClass().getResource("/recursos/universidadVista.jpg"));
-        Image miImagen = icono.getImage();
+        //ImageIcon icono = new ImageIcon(getClass().getResource("/recursos/universidadVista.jpg"));
+        //Image miImagen = icono.getImage();
         escritorio = new javax.swing.JDesktopPane(){
-            public void paintComponent(Graphics g){
-                g.drawImage(miImagen,0,0,getWidth(),getHeight(),this);
-            }
+            //public void paintComponent(Graphics g){
+                //  g.drawImage(miImagen,0,0,getWidth(),getHeight(),this);
+                // }
         };
         jMenuBar1 = new javax.swing.JMenuBar();
         jMAlumno = new javax.swing.JMenu();

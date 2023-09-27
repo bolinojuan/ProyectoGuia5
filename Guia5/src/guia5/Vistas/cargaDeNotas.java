@@ -24,9 +24,7 @@ import javax.swing.table.DefaultTableModel;
  */
 public class cargaDeNotas extends javax.swing.JInternalFrame {
 private DefaultTableModel modelo = new DefaultTableModel();
-//public boolean isCellEditable(int f,int c);
-//return false;
-//}
+
    
 
     /**
@@ -208,9 +206,6 @@ return;
        ArrayList<Inscripcion> lista = new ArrayList<>();
        lista.addAll(inscdata.obtenerInscripcionesPorAlumno(alumno.getIdAlumno()));
        materia=lista.get(jTmodelo.getSelectedRow()).getMateria();
-//       lista.forEach((elem)->{
-//       //modelo.addRow(new Object[]{elem.getIdInscripcion(),elem.getMateria().getIdMateria(),elem.getNota()));
-//       }
        
        int fila =jTmodelo.getSelectedRow();
  
@@ -222,8 +217,7 @@ return;
        if(nota<0){
            JOptionPane.showMessageDialog(this, "Ingrese una nota válida");
            return;
-       }else{
-       }
+        }
        inscdata.actualizarNota(codigo,idmateria, nota);
        }catch(NumberFormatException nf){
        JOptionPane.showMessageDialog(null, "Debe ingresar un numero");
@@ -242,7 +236,7 @@ return;
     }//GEN-LAST:event_jBGuardarMouseExited
 
     private void jBGuardarMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBGuardarMouseMoved
-        jBGuardar.setBackground(new Color(84,234,54));
+        jBGuardar.setBackground(new Color(221,160,239));
     }//GEN-LAST:event_jBGuardarMouseMoved
 
     private void jBSalirMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBSalirMouseExited

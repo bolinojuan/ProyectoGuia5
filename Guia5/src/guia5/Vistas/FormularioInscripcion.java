@@ -350,7 +350,7 @@ return;
         }
     }
     private void borrarFilas(){
-        int f=jTInsc.getRowCount()-1;
+        int f=jTInsc.getRowCount()-1;      
         for(;f>=0;f--){
             modelo.removeRow(f);
         }

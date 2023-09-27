@@ -173,7 +173,7 @@ public class AlumnoData {
          String sql = "UPDATE alumno SET dni = ?, apellido = ?, nombre = ?,fechaNacimiento = ? WHERE dni= ? ";
          
 
-          //no permite modificar dni 
+        
         try {
             PreparedStatement ps = con.prepareStatement(sql);
       

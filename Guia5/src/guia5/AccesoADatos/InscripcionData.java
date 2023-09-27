@@ -56,7 +56,8 @@ public class InscripcionData {
                 insc.setAlumno(aluData.buscarAlumno(rs.getInt("idAlumno")));
                 insc.setMateria(matData.buscarMateria(rs.getInt("idMateria")));
                 insc.setNota(rs.getDouble("nota"));
-                //JOptionPane.showMessageDialog(null," Lista obtenida exitosamente" );
+                inscripcion.add(insc);
+                
             }
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null,"Error en la conexion a Base de Datos "+ex.getMessage());
@@ -86,7 +87,7 @@ public class InscripcionData {
             while (rs.next()) {
                 Inscripcion ins = new Inscripcion();
 
-              //  AlumnoData AluDat = new AlumnoData();
+           
 
                 MateriaData MatDat = new MateriaData();
 
@@ -199,12 +200,14 @@ public class InscripcionData {
             ps.setInt(2, idMateria);
             ps.setInt(3, idAlumno);
             int exito=ps.executeUpdate();
-            if(exito==1){
-                JOptionPane.showMessageDialog(null, "Inscripción modificada exitosamente");
             
-             }else{
-           JOptionPane.showMessageDialog(null, "No se ha modificado la nota");
-}
+            System.out.println(exito);
+//            if(exito==1){
+//                JOptionPane.showMessageDialog(null, "Inscripción modificada exitosamente");
+//            
+//             }else{
+//           JOptionPane.showMessageDialog(null, "No se ha modificado la nota");
+//}
         }catch(SQLException ex){
             JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Materia"+ex.getMessage());
         }
