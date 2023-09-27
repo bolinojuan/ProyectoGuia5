@@ -51,7 +51,7 @@ public class AlumnoData {
             
             if(rs.next()){
                 
-                 alumno.setDni(rs.getInt(1));
+                alumno.setDni(rs.getInt(1));
                  
             }
             

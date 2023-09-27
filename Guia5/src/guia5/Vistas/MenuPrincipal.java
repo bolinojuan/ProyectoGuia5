@@ -176,11 +176,17 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_escritorioPropertyChange
 
     private void jMSalirMenuSelected(javax.swing.event.MenuEvent evt) {//GEN-FIRST:event_jMSalirMenuSelected
-     if(JOptionPane.showConfirmDialog(this, "Desea salir del programa?")==0){
-     
-       System.exit(0);
+
+int respuesta=JOptionPane.showConfirmDialog(this, "desea salir del programa?","confirm",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
+if(respuesta==JOptionPane.NO_OPTION){
+return;
+}else{
+System.exit(0);
+}
+ 
     }//GEN-LAST:event_jMSalirMenuSelected
-    }
+ 
+
     private void jMManejoInsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMManejoInsActionPerformed
        escritorio.removeAll();
        escritorio.repaint();

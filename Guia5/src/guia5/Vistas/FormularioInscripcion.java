@@ -10,6 +10,7 @@ import guia5.AccesoADatos.InscripcionData;
 import guia5.Entidades.Alumno;
 import guia5.Entidades.Inscripcion;
 import guia5.Entidades.Materia;
+import java.awt.Color;
 import java.beans.PropertyVetoException;
 import java.util.ArrayList;
 import java.util.logging.Level;
@@ -58,6 +59,16 @@ private DefaultTableModel modelo = new DefaultTableModel();
 
         jBInscribir.setFont(new java.awt.Font("Noto Sans", 0, 18)); // NOI18N
         jBInscribir.setText("Inscribir");
+        jBInscribir.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                jBInscribirMouseMoved(evt);
+            }
+        });
+        jBInscribir.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jBInscribirMouseExited(evt);
+            }
+        });
         jBInscribir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBInscribirActionPerformed(evt);
@@ -66,6 +77,16 @@ private DefaultTableModel modelo = new DefaultTableModel();
 
         jBAnular.setFont(new java.awt.Font("Noto Sans", 0, 18)); // NOI18N
         jBAnular.setText("Anular Inscripcion");
+        jBAnular.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                jBAnularMouseMoved(evt);
+            }
+        });
+        jBAnular.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jBAnularMouseExited(evt);
+            }
+        });
         jBAnular.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBAnularActionPerformed(evt);
@@ -74,6 +95,16 @@ private DefaultTableModel modelo = new DefaultTableModel();
 
         jBSalir.setFont(new java.awt.Font("Noto Sans", 0, 18)); // NOI18N
         jBSalir.setText("Salir");
+        jBSalir.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                jBSalirMouseMoved(evt);
+            }
+        });
+        jBSalir.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jBSalirMouseExited(evt);
+            }
+        });
         jBSalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBSalirActionPerformed(evt);
@@ -204,12 +235,16 @@ private DefaultTableModel modelo = new DefaultTableModel();
     }//GEN-LAST:event_jRMatNoInsActionPerformed
 
     private void jBSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBSalirActionPerformed
-        JOptionPane.showMessageDialog(this,"¿Desea volver al menu principal?");
-        try {            
-            setClosed(true);
-        } catch (PropertyVetoException ex) {
-            Logger.getLogger(FormularioInscripcion.class.getName()).log(Level.SEVERE, null, ex);
-        }
+  int respuesta=JOptionPane.showConfirmDialog(this, "desea salir al menu principal?","confirm",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
+if(respuesta==JOptionPane.NO_OPTION){
+return;
+}else{
+    try {
+        setClosed(true);
+    } catch (PropertyVetoException ex) {
+        Logger.getLogger(FormularioAlumno.class.getName()).log(Level.SEVERE, null, ex);
+    }
+}
     }//GEN-LAST:event_jBSalirActionPerformed
 
     private void jRMatInsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jRMatInsMouseClicked
@@ -257,6 +292,30 @@ private DefaultTableModel modelo = new DefaultTableModel();
         Inscripcion inscripcion = new Inscripcion(alumno,mat,0);
         insc.borrarInscripcionMateriaAlumno(alumno.getIdAlumno(),mat.getIdMateria());
     }//GEN-LAST:event_jBAnularActionPerformed
+
+    private void jBInscribirMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBInscribirMouseExited
+        jBInscribir.setBackground(Color.lightGray);
+    }//GEN-LAST:event_jBInscribirMouseExited
+
+    private void jBInscribirMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBInscribirMouseMoved
+        jBInscribir.setBackground(new Color(84,234,54));
+    }//GEN-LAST:event_jBInscribirMouseMoved
+
+    private void jBAnularMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBAnularMouseExited
+       jBAnular.setBackground(Color.lightGray);
+    }//GEN-LAST:event_jBAnularMouseExited
+
+    private void jBAnularMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBAnularMouseMoved
+      jBAnular.setBackground(new Color(231,142,142));
+    }//GEN-LAST:event_jBAnularMouseMoved
+
+    private void jBSalirMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBSalirMouseExited
+        jBSalir.setBackground(Color.lightGray);
+    }//GEN-LAST:event_jBSalirMouseExited
+
+    private void jBSalirMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBSalirMouseMoved
+        jBSalir.setBackground(new Color(171,181,38));
+    }//GEN-LAST:event_jBSalirMouseMoved
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -201,9 +201,10 @@ public class InscripcionData {
             int exito=ps.executeUpdate();
             if(exito==1){
                 JOptionPane.showMessageDialog(null, "Inscripción modificada exitosamente");
-            }else{
-                JOptionPane.showMessageDialog(null, "La inscripción no existe");
-            }
+            
+             }else{
+           JOptionPane.showMessageDialog(null, "No se ha modificado la nota");
+}
         }catch(SQLException ex){
             JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Materia"+ex.getMessage());
         }

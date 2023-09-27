@@ -12,6 +12,7 @@ import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import guia5.AccesoADatos.*;
+import java.awt.Color;
 import java.util.*;
 
 /**
@@ -74,6 +75,16 @@ DefaultTableModel modelo = new DefaultTableModel();
 
         jButton1.setFont(new java.awt.Font("Noto Sans", 0, 18)); // NOI18N
         jButton1.setText("Salir");
+        jButton1.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                jButton1MouseMoved(evt);
+            }
+        });
+        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jButton1MouseExited(evt);
+            }
+        });
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -124,12 +135,17 @@ DefaultTableModel modelo = new DefaultTableModel();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        JOptionPane.showMessageDialog(null,"¿Desea volver al menu principal?");
-        try {
-            setClosed(true);
-        } catch (PropertyVetoException ex) {
-            Logger.getLogger(ListadoMaterias.class.getName()).log(Level.SEVERE, null, ex);
-        }
+   int respuesta=JOptionPane.showConfirmDialog(this, "desea salir al menu principal?","confirm",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
+if(respuesta==JOptionPane.NO_OPTION){
+return;
+}else{
+    try {
+        setClosed(true);
+    } catch (PropertyVetoException ex) {
+        Logger.getLogger(FormularioAlumno.class.getName()).log(Level.SEVERE, null, ex);
+    }
+}
+        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jCBMateriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCBMateriaActionPerformed
@@ -142,6 +158,14 @@ DefaultTableModel modelo = new DefaultTableModel();
             modelo.addRow(new Object[]{a.getIdAlumno(),a.getDni(),a.getApellido(),a.getNombre()});
         }
     }//GEN-LAST:event_jCBMateriaActionPerformed
+
+    private void jButton1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseExited
+        jButton1.setBackground(Color.lightGray);
+    }//GEN-LAST:event_jButton1MouseExited
+
+    private void jButton1MouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseMoved
+       jButton1.setBackground(new Color(171,181,38));
+    }//GEN-LAST:event_jButton1MouseMoved
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

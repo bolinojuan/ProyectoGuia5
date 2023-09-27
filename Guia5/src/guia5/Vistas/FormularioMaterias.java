@@ -7,6 +7,7 @@ package guia5.Vistas;
 
 import guia5.AccesoADatos.MateriaData;
 import guia5.Entidades.Materia;
+import java.awt.Color;
 import java.beans.PropertyVetoException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -74,6 +75,16 @@ private MateriaData matdat;
         jBBuscar.setFont(new java.awt.Font("Noto Sans", 0, 18)); // NOI18N
         jBBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/magnifier.png"))); // NOI18N
         jBBuscar.setText("Buscar");
+        jBBuscar.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                jBBuscarMouseMoved(evt);
+            }
+        });
+        jBBuscar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jBBuscarMouseExited(evt);
+            }
+        });
         jBBuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBBuscarActionPerformed(evt);
@@ -82,6 +93,16 @@ private MateriaData matdat;
 
         jBNuevo.setFont(new java.awt.Font("Noto Sans", 0, 18)); // NOI18N
         jBNuevo.setText("Nuevo");
+        jBNuevo.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                jBNuevoMouseMoved(evt);
+            }
+        });
+        jBNuevo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jBNuevoMouseExited(evt);
+            }
+        });
         jBNuevo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBNuevoActionPerformed(evt);
@@ -90,6 +111,16 @@ private MateriaData matdat;
 
         jBEliminar.setFont(new java.awt.Font("Noto Sans", 0, 18)); // NOI18N
         jBEliminar.setText("Eliminar");
+        jBEliminar.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                jBEliminarMouseMoved(evt);
+            }
+        });
+        jBEliminar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jBEliminarMouseExited(evt);
+            }
+        });
         jBEliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBEliminarActionPerformed(evt);
@@ -98,6 +129,16 @@ private MateriaData matdat;
 
         jGuardar.setFont(new java.awt.Font("Noto Sans", 0, 18)); // NOI18N
         jGuardar.setText("Guardar");
+        jGuardar.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                jGuardarMouseMoved(evt);
+            }
+        });
+        jGuardar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jGuardarMouseExited(evt);
+            }
+        });
         jGuardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jGuardarActionPerformed(evt);
@@ -106,6 +147,16 @@ private MateriaData matdat;
 
         jBSalir.setFont(new java.awt.Font("Noto Sans", 0, 18)); // NOI18N
         jBSalir.setText("Salir");
+        jBSalir.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                jBSalirMouseMoved(evt);
+            }
+        });
+        jBSalir.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jBSalirMouseExited(evt);
+            }
+        });
         jBSalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBSalirActionPerformed(evt);
@@ -126,40 +177,36 @@ private MateriaData matdat;
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                 .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 75, Short.MAX_VALUE))))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(52, 52, 52)
-                        .addComponent(jBNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(23, 23, 23)
+                        .addComponent(jBNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(53, 53, 53)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(98, 98, 98)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jBEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 99, Short.MAX_VALUE)
-                                        .addComponent(jGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(0, 0, Short.MAX_VALUE)
-                                        .addComponent(jTNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 287, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGap(58, 58, 58)
-                                .addComponent(jBSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(jTAnio, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE))
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(108, 108, 108)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jTAnio, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 367, Short.MAX_VALUE))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jTCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(jBBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(26, 26, 26)))))
-                        .addContainerGap(50, Short.MAX_VALUE))
+                                    .addComponent(jTNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 287, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jTCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(139, 139, 139)
+                        .addGap(34, 34, 34)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jBBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jBEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(58, 58, 58)
+                                .addComponent(jGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(89, 89, 89)
+                                .addComponent(jBSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addContainerGap(218, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(81, 81, 81)
                         .addComponent(jREstado)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -171,22 +218,22 @@ private MateriaData matdat;
                     .addComponent(jBBuscar))
                 .addGap(48, 48, 48)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
-                .addGap(55, 55, 55)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTAnio, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3))
-                .addGap(58, 58, 58)
+                    .addComponent(jLabel2)
+                    .addComponent(jTNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(45, 45, 45)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel3)
+                    .addComponent(jTAnio, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(68, 68, 68)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel4)
                     .addComponent(jREstado))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 74, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jGuardar)
-                    .addComponent(jBEliminar)
                     .addComponent(jBNuevo)
-                    .addComponent(jBSalir))
+                    .addComponent(jGuardar)
+                    .addComponent(jBSalir)
+                    .addComponent(jBEliminar))
                 .addGap(141, 141, 141))
         );
 
@@ -201,13 +248,21 @@ private MateriaData matdat;
             }
             Materia mat;
             int cod = Integer.parseInt(jTCodigo.getText());
-            mat =matdat.buscarMateria(cod);
+            if(cod<0){
+                jTCodigo.setText(null);
+                JOptionPane.showMessageDialog(this, "Debe ingresar un código válido");
+            }else{ 
+            mat =matdat.buscarMateria(cod);           
+        
             if(mat==null){
                 borrarCampos();
             }else{
                 jTNombre.setText(mat.getNombre());
                 jTAnio.setText(mat.getAnioMateria()+"");
                 jREstado.setSelected(true);
+      
+                    
+                    }
             }
         }catch(Exception ex){
             JOptionPane.showMessageDialog(this, "Ingrese números en el campo código");
@@ -268,17 +323,62 @@ private MateriaData matdat;
     }//GEN-LAST:event_jBEliminarActionPerformed
 
     private void jBSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBSalirActionPerformed
-        JOptionPane.showMessageDialog(null,"Desea volver al programa principal?");
+      
+ int respuesta=JOptionPane.showConfirmDialog(this, "desea salir al menu principal?","confirm",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
+if(respuesta==JOptionPane.NO_OPTION){
+return;
+}else{
     try {
         setClosed(true);
     } catch (PropertyVetoException ex) {
-        Logger.getLogger(FormularioMaterias.class.getName()).log(Level.SEVERE, null, ex);
+        Logger.getLogger(FormularioAlumno.class.getName()).log(Level.SEVERE, null, ex);
     }
+}
     }//GEN-LAST:event_jBSalirActionPerformed
 
     private void jREstadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jREstadoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jREstadoActionPerformed
+
+    private void jBNuevoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBNuevoMouseExited
+      jBNuevo.setBackground(Color.lightGray);
+    }//GEN-LAST:event_jBNuevoMouseExited
+
+    private void jBNuevoMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBNuevoMouseMoved
+        jBNuevo.setBackground(new Color(84,234,54));
+    }//GEN-LAST:event_jBNuevoMouseMoved
+
+    private void jBEliminarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBEliminarMouseExited
+        jBEliminar.setBackground(Color.lightGray);
+    }//GEN-LAST:event_jBEliminarMouseExited
+
+    private void jBEliminarMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBEliminarMouseMoved
+       jBEliminar.setBackground(new Color(231,142,142));
+    }//GEN-LAST:event_jBEliminarMouseMoved
+
+    private void jBBuscarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBBuscarMouseExited
+        jBBuscar.setBackground(Color.lightGray);
+    }//GEN-LAST:event_jBBuscarMouseExited
+
+    private void jBBuscarMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBBuscarMouseMoved
+        jBBuscar.setBackground(Color.CYAN);
+    }//GEN-LAST:event_jBBuscarMouseMoved
+
+    private void jGuardarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jGuardarMouseExited
+        jGuardar.setBackground(Color.lightGray);
+    }//GEN-LAST:event_jGuardarMouseExited
+
+    private void jGuardarMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jGuardarMouseMoved
+       jGuardar.setBackground(new Color(221,160,239));
+    }//GEN-LAST:event_jGuardarMouseMoved
+
+    private void jBSalirMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBSalirMouseExited
+       jBSalir.setBackground(Color.lightGray);
+    }//GEN-LAST:event_jBSalirMouseExited
+
+    private void jBSalirMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBSalirMouseMoved
+       jBSalir.setBackground(new Color(171,181,38));
+    }//GEN-LAST:event_jBSalirMouseMoved
 
 
     public void borrarCampos(){

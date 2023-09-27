@@ -150,6 +150,16 @@ private AlumnoData aldat;
 
         jBGuardar.setFont(new java.awt.Font("Noto Sans", 0, 18)); // NOI18N
         jBGuardar.setText("Guardar");
+        jBGuardar.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                jBGuardarMouseMoved(evt);
+            }
+        });
+        jBGuardar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jBGuardarMouseExited(evt);
+            }
+        });
         jBGuardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBGuardarActionPerformed(evt);
@@ -158,9 +168,17 @@ private AlumnoData aldat;
 
         jBSalir.setFont(new java.awt.Font("Noto Sans", 0, 18)); // NOI18N
         jBSalir.setText("Salir");
+        jBSalir.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                jBSalirMouseMoved(evt);
+            }
+        });
         jBSalir.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jBSalirMouseClicked(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jBSalirMouseExited(evt);
             }
         });
 
@@ -175,15 +193,7 @@ private AlumnoData aldat;
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap(33, Short.MAX_VALUE)
-                        .addComponent(jBNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(73, 73, 73)
-                        .addComponent(jBEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(65, 65, 65)
-                        .addComponent(jBGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(80, 80, 80))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addGroup(layout.createSequentialGroup()
@@ -210,28 +220,31 @@ private AlumnoData aldat;
                                 .addComponent(jLabel5)
                                 .addGap(44, 44, 44)
                                 .addComponent(jDCFechaNac, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                        .addGap(100, 100, 100)))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jBSalir, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jBBuscar, javax.swing.GroupLayout.DEFAULT_SIZE, 124, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jBBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jBNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(62, 62, 62)
+                        .addComponent(jBEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(65, 65, 65)
+                        .addComponent(jBGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(80, 80, 80)
+                        .addComponent(jBSalir, javax.swing.GroupLayout.DEFAULT_SIZE, 124, Short.MAX_VALUE)))
                 .addGap(98, 98, 98))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(32, 32, 32)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel1)
-                    .addComponent(jTDni, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(jBBuscar))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(29, 29, 29)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jTApellido, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel2))))
+                    .addComponent(jTDni, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 42, Short.MAX_VALUE)
+                    .addComponent(jBBuscar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(29, 29, 29)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jTApellido, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2))
                 .addGap(28, 28, 28)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -272,10 +285,20 @@ private AlumnoData aldat;
       
        
        try{
-           
+          
+        
+               
            int dni = Integer.parseInt(jTDni.getText());
+           
+           if(dni>0){
+           
             alu = aludata.buscarPorDni(dni);
-             
+           }else{
+               jTDni.setText(null);
+               JOptionPane.showMessageDialog(this, "Ingrese un dni válido");
+               return;
+                   
+           }
            
                if(alu==null){
                borrarCampos();
@@ -286,10 +309,9 @@ private AlumnoData aldat;
                  jDCFechaNac.setDate(Date.valueOf(alu.getFechaNac()));
                  jREstado.setSelected(alu.isActivo());
                   
-                
                }
        
-      
+           
        
        }catch(NumberFormatException nf){
             jTDni.setText(null);
@@ -313,14 +335,23 @@ private AlumnoData aldat;
        Alumno alum = new Alumno();
        try{
       
-       int dni = Integer.parseInt(jTDni.getText());      
+       int dni = Integer.parseInt(jTDni.getText());  
+       if(dni>0){
+  
        alum.setDni(dni);
        alum.setApellido(jTApellido.getText());
        alum.setNombre(jTNombre.getText());
        alum.setActivo(jREstado.isSelected());
        alum.setFecha(fecha);
          aldat.guardarAlumno(alum);
-        
+       }else{
+       jTDni.setText(null);
+       jTApellido.setText(null);
+       jTNombre.setText(null);
+       JOptionPane.showMessageDialog(this, "Debe ingresar un documento válido");
+       return;
+       }
+       
        }catch(NumberFormatException nf){
        JOptionPane.showMessageDialog(null, "ingrese un numero de documento valido");
         
@@ -381,25 +412,32 @@ private AlumnoData aldat;
     }//GEN-LAST:event_jBGuardarActionPerformed
 
     private void jBSalirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBSalirMouseClicked
-       JOptionPane.showMessageDialog(this,"Desea volver al programa principal?");
+   
+        
+int respuesta=JOptionPane.showConfirmDialog(this, "desea salir al menu principal?","confirm",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
+if(respuesta==JOptionPane.NO_OPTION){
+return;
+}else{
     try {
         setClosed(true);
     } catch (PropertyVetoException ex) {
         Logger.getLogger(FormularioAlumno.class.getName()).log(Level.SEVERE, null, ex);
     }
+}
+    
        
     }//GEN-LAST:event_jBSalirMouseClicked
 
     private void jBEliminarMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBEliminarMouseMoved
-        jBEliminar.setBackground(Color.red);
+        jBEliminar.setBackground(new Color(231,142,142));
     }//GEN-LAST:event_jBEliminarMouseMoved
 
     private void jBEliminarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBEliminarMouseExited
-        jBEliminar.setBackground(Color.white);
+        jBEliminar.setBackground(Color.lightGray);
     }//GEN-LAST:event_jBEliminarMouseExited
 
     private void jBBuscarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBBuscarMouseExited
-       jBBuscar.setBackground(Color.white);
+       jBBuscar.setBackground(Color.lightGray);
     }//GEN-LAST:event_jBBuscarMouseExited
 
     private void jBBuscarMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBBuscarMouseMoved
@@ -407,12 +445,28 @@ private AlumnoData aldat;
     }//GEN-LAST:event_jBBuscarMouseMoved
 
     private void jBNuevoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBNuevoMouseExited
-       jBNuevo.setBackground(Color.WHITE);
+       jBNuevo.setBackground(Color.lightGray);
     }//GEN-LAST:event_jBNuevoMouseExited
 
     private void jBNuevoMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBNuevoMouseMoved
-       jBNuevo.setBackground(Color.GREEN);
+       jBNuevo.setBackground(new Color(84,234,54));
     }//GEN-LAST:event_jBNuevoMouseMoved
+
+    private void jBGuardarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBGuardarMouseExited
+      jBGuardar.setBackground(Color.lightGray);
+    }//GEN-LAST:event_jBGuardarMouseExited
+
+    private void jBGuardarMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBGuardarMouseMoved
+        jBGuardar.setBackground(new Color(221,160,239));
+    }//GEN-LAST:event_jBGuardarMouseMoved
+
+    private void jBSalirMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBSalirMouseExited
+        jBSalir.setBackground(Color.lightGray);
+    }//GEN-LAST:event_jBSalirMouseExited
+
+    private void jBSalirMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBSalirMouseMoved
+       jBSalir.setBackground(new Color(171,181,38));
+    }//GEN-LAST:event_jBSalirMouseMoved
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
