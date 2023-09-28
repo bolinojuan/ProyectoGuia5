@@ -182,16 +182,16 @@ private DefaultTableModel modelo = new DefaultTableModel();
     }//GEN-LAST:event_jCBAlumnoActionPerformed
 
     private void jBSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBSalirActionPerformed
-    int respuesta=JOptionPane.showConfirmDialog(this, "desea salir al menu principal?","confirm",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
-if(respuesta==JOptionPane.NO_OPTION){
-return;
-}else{
-    try {
-        setClosed(true);
-    } catch (PropertyVetoException ex) {
-        Logger.getLogger(FormularioAlumno.class.getName()).log(Level.SEVERE, null, ex);
-    }
-}
+        int respuesta=JOptionPane.showConfirmDialog(this, "¿Desea regresar al menú principal?","confirm",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
+        if(respuesta==JOptionPane.NO_OPTION){
+            return;
+        }else{
+            try {
+                setClosed(true);
+            } catch (PropertyVetoException ex) {
+               Logger.getLogger(FormularioAlumno.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
     }//GEN-LAST:event_jBSalirActionPerformed
 
     private void jBGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBGuardarActionPerformed
@@ -212,18 +212,15 @@ return;
        int codigo = alumno.getIdAlumno();
        int idmateria = materia.getIdMateria();
        try{
-       String n = String.valueOf( modelo.getValueAt(fila,2));
-       double  nota = Double.parseDouble(n); 
-       if(nota<0){
-           JOptionPane.showMessageDialog(this, "Ingrese una nota válida");
-           return;
-        }
-       inscdata.actualizarNota(codigo,idmateria, nota);
-       }catch(NumberFormatException nf){
-       JOptionPane.showMessageDialog(null, "Debe ingresar un numero");
-       
-       
-       
+            String n = String.valueOf( modelo.getValueAt(fila,2));
+            double  nota = Double.parseDouble(n); 
+            if(nota<0){
+                JOptionPane.showMessageDialog(this, "Ingrese una nota válida");
+                return;
+             }
+            inscdata.actualizarNota(codigo,idmateria, nota);
+            }catch(NumberFormatException nf){
+            JOptionPane.showMessageDialog(null, "Debe ingresar un numero");
        }
     }//GEN-LAST:event_jBGuardarActionPerformed
 
@@ -259,7 +256,7 @@ return;
     // End of variables declaration//GEN-END:variables
 
 private void armarCabecera(){
-modelo.addColumn("Codigo de inscripcion");
+modelo.addColumn("ID inscripción");
 modelo.addColumn("Nombre");
 modelo.addColumn("Nota");
 jTmodelo.setModel(modelo);

@@ -135,17 +135,16 @@ DefaultTableModel modelo = new DefaultTableModel();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-   int respuesta=JOptionPane.showConfirmDialog(this, "desea salir al menu principal?","confirm",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
-if(respuesta==JOptionPane.NO_OPTION){
-return;
-}else{
-    try {
-        setClosed(true);
-    } catch (PropertyVetoException ex) {
-        Logger.getLogger(FormularioAlumno.class.getName()).log(Level.SEVERE, null, ex);
-    }
-}
-        
+        int respuesta=JOptionPane.showConfirmDialog(this, "¿Desea regresar al menú principal?","confirm",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
+        if(respuesta==JOptionPane.NO_OPTION){
+            return;
+        }else{
+            try {
+                setClosed(true);
+            } catch (PropertyVetoException ex) {
+                Logger.getLogger(FormularioAlumno.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }    
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jCBMateriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCBMateriaActionPerformed
@@ -179,7 +178,7 @@ return;
 
 
     private void armarCabecera(){
-    modelo.addColumn("ID");
+    modelo.addColumn("ID Alumno");
     modelo.addColumn("DNI");
     modelo.addColumn("Apellido");
     modelo.addColumn("Nombre");

@@ -235,16 +235,16 @@ private DefaultTableModel modelo = new DefaultTableModel();
     }//GEN-LAST:event_jRMatNoInsActionPerformed
 
     private void jBSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBSalirActionPerformed
-    int respuesta=JOptionPane.showConfirmDialog(this, "desea salir al menu principal?","confirm",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
+    int respuesta=JOptionPane.showConfirmDialog(this, "¿Desea salir al menu principal?","confirm",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
     if(respuesta==JOptionPane.NO_OPTION){
-    return;
+        return;
     }else{
-    try {
-        setClosed(true);
-    } catch (PropertyVetoException ex) {
-        Logger.getLogger(FormularioAlumno.class.getName()).log(Level.SEVERE, null, ex);
+        try {
+            setClosed(true);
+        } catch (PropertyVetoException ex) {
+            Logger.getLogger(FormularioAlumno.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
-}
     }//GEN-LAST:event_jBSalirActionPerformed
 
     private void jRMatInsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jRMatInsMouseClicked
@@ -334,7 +334,7 @@ private DefaultTableModel modelo = new DefaultTableModel();
 
 
     private void armarCabecera(){
-    modelo.addColumn("ID");
+    modelo.addColumn("ID Materia");
     modelo.addColumn("Nombre");
     modelo.addColumn("Año");
     jTInsc.setModel(modelo);

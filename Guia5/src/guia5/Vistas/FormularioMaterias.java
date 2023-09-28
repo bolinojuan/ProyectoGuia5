@@ -252,7 +252,7 @@ private MateriaData matdat;
     private void jBBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBBuscarActionPerformed
         try{
             if(jTCodigo.getText().isEmpty()){
-                JOptionPane.showMessageDialog(this, "Complete el campo");
+                JOptionPane.showMessageDialog(this, "Ingrese un código para buscar materia");
                 return;
             }
             Materia mat;
@@ -263,15 +263,13 @@ private MateriaData matdat;
             }else{ 
             mat =matdat.buscarMateria(cod);           
         
-            if(mat==null){
-                borrarCampos();
-            }else{
-                jTNombre.setText(mat.getNombre());
-                jTAnio.setText(mat.getAnioMateria()+"");
-                jREstado.setSelected(true);
-      
-                    
-                    }
+                if(mat==null){
+                    borrarCampos();
+                }else{
+                    jTNombre.setText(mat.getNombre());
+                    jTAnio.setText(mat.getAnioMateria()+"");
+                    jREstado.setSelected(true);
+                }
             }
         }catch(Exception ex){
             JOptionPane.showMessageDialog(this, "Ingrese números en el campo código");
@@ -294,7 +292,7 @@ private MateriaData matdat;
             matdat.guardarMateria(mat);
             borrarCampos();
         }catch(Exception ex){
-           JOptionPane.showMessageDialog(this, "Ingrese en los campos códidgo y/o año");
+           JOptionPane.showMessageDialog(this, "Ingrese correctamente los campos códidgo y/o año");
         }
     }//GEN-LAST:event_jBNuevoActionPerformed
     
@@ -304,42 +302,45 @@ private MateriaData matdat;
         JOptionPane.showMessageDialog(null,"Debe completar todos los campos");
         return;
        }
-      
-        Materia mat=new Materia();                       
-        int codigo = Integer.parseInt(jTCodigo.getText());
-        int anio = Integer.parseInt(jTAnio.getText());
-        mat.setIdMateria(codigo);
-        mat.setNombre(jTNombre.getText());
-        mat.setAnioMateria(anio);        
-        matdat.modificarMateria(mat);
-        borrarCampos();
+       try{
+           Materia mat=new Materia();                       
+            int codigo = Integer.parseInt(jTCodigo.getText());
+            int anio = Integer.parseInt(jTAnio.getText());
+            mat.setIdMateria(codigo);
+            mat.setNombre(jTNombre.getText());
+            mat.setAnioMateria(anio);        
+            matdat.modificarMateria(mat);
+            borrarCampos();
+       }catch(Exception ex){
+           JOptionPane.showMessageDialog(this, "Ingrese correctamente los campos códidgo y/o año");
+       }
+        
         
         
     }//GEN-LAST:event_jGuardarActionPerformed
 
     private void jBEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBEliminarActionPerformed
       if(jTCodigo.getText().isEmpty()){
-      JOptionPane.showMessageDialog(this,"Debe ingresar un codigo");
+      JOptionPane.showMessageDialog(this,"Ingresar un código para eliminar materia");
       return;
       }
-        int cod  = Integer.parseInt(jTCodigo.getText());
+       int cod  = Integer.parseInt(jTCodigo.getText());
        matdat.eliminarMateria(cod);
-       borrarCampos();
-       
+       borrarCampos();   
     }//GEN-LAST:event_jBEliminarActionPerformed
 
     private void jBSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBSalirActionPerformed
       
- int respuesta=JOptionPane.showConfirmDialog(this, "desea salir al menu principal?","confirm",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
-if(respuesta==JOptionPane.NO_OPTION){
-return;
-}else{
-    try {
-        setClosed(true);
-    } catch (PropertyVetoException ex) {
-        Logger.getLogger(FormularioAlumno.class.getName()).log(Level.SEVERE, null, ex);
-    }
-}
+        int respuesta=JOptionPane.showConfirmDialog(this, "¿Desea regresar al menú principal?","confirm",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
+        if(respuesta==JOptionPane.NO_OPTION){
+            return;
+        }else{
+           try {
+               setClosed(true);
+            } catch (PropertyVetoException ex) {
+               Logger.getLogger(FormularioAlumno.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
     }//GEN-LAST:event_jBSalirActionPerformed
 
     private void jREstadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jREstadoActionPerformed
@@ -389,11 +390,10 @@ return;
 
     public void borrarCampos(){
     if(!jTAnio.getText().isEmpty() && !jTCodigo.getText().isEmpty() && !jTNombre.getText().isEmpty()){
-    jTAnio.setText(null);
-    jTCodigo.setText(null);
-    jTNombre.setText(null);
-    jREstado.setText(null);
-    
+        jTAnio.setText(null);
+        jTCodigo.setText(null);
+        jTNombre.setText(null);
+        jREstado.setText(null);
     }
     
     }

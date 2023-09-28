@@ -278,47 +278,34 @@ private AlumnoData aldat;
     }// </editor-fold>//GEN-END:initComponents
 
     private void jBBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBBuscarActionPerformed
-          Alumno alu = new Alumno();
+        Alumno alu = new Alumno();
         
-          AlumnoData aludata = new AlumnoData();   
-      
-      
+        AlumnoData aludata = new AlumnoData();   
        
-       try{
-          
-        
-               
+        try{
            int dni = Integer.parseInt(jTDni.getText());
            
            if(dni>0){
-           
-            alu = aludata.buscarPorDni(dni);
-           }else{
+               alu = aludata.buscarPorDni(dni);
+            }else{
                jTDni.setText(null);
                JOptionPane.showMessageDialog(this, "Ingrese un dni válido");
-               return;
-                   
-           }
+               return;      
+            }
            
-               if(alu==null){
+           if(alu==null){
                borrarCampos();
           
-                }else{
-                 jTApellido.setText(alu.getApellido());
-                 jTNombre.setText(alu.getNombre());       
-                 jDCFechaNac.setDate(Date.valueOf(alu.getFechaNac()));
-                 jREstado.setSelected(alu.isActivo());
-                  
-               }
-       
-           
-       
-       }catch(NumberFormatException nf){
+            }else{
+                jTApellido.setText(alu.getApellido());
+                jTNombre.setText(alu.getNombre());       
+                jDCFechaNac.setDate(Date.valueOf(alu.getFechaNac()));
+                jREstado.setSelected(alu.isActivo());     
+            }
+        }catch(NumberFormatException nf){
             jTDni.setText(null);
             JOptionPane.showMessageDialog(this, "Revise que los datos ingresados sean correctos ");
-           
-       }
-
+        }
     }//GEN-LAST:event_jBBuscarActionPerformed
        
     private void jREstadoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jREstadoMouseClicked
@@ -327,50 +314,45 @@ private AlumnoData aldat;
     }//GEN-LAST:event_jREstadoMouseClicked
 
     private void jBNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBNuevoActionPerformed
-       if(jTApellido.getText().isEmpty() || jTDni.getText().isEmpty() || jTApellido.getText().isEmpty()){
+       if(jTApellido.getText().isEmpty() || jTDni.getText().isEmpty() || jTNombre.getText().isEmpty()||fecha==null){
            JOptionPane.showMessageDialog(null, "Debe completar todos los campos");
-       }else{
+           return;
+        }else{
     
        
-       Alumno alum = new Alumno();
-       try{
-      
-       int dni = Integer.parseInt(jTDni.getText());  
-       if(dni>0){
-  
-       alum.setDni(dni);
-       alum.setApellido(jTApellido.getText());
-       alum.setNombre(jTNombre.getText());
-       alum.setActivo(jREstado.isSelected());
-       alum.setFecha(fecha);
-         aldat.guardarAlumno(alum);
-       }else{
-       jTDni.setText(null);
-       jTApellido.setText(null);
-       jTNombre.setText(null);
-       JOptionPane.showMessageDialog(this, "Debe ingresar un documento válido");
-       return;
-       }
-       
-       }catch(NumberFormatException nf){
-       JOptionPane.showMessageDialog(null, "ingrese un numero de documento valido");
-        
-       }
-       }
-      
-      
+            Alumno alum = new Alumno();
+            try{
+                int dni = Integer.parseInt(jTDni.getText());  
+                if(dni>0){
+                    alum.setDni(dni);
+                    alum.setApellido(jTApellido.getText());
+                    alum.setNombre(jTNombre.getText());
+                    alum.setActivo(jREstado.isSelected());
+                    alum.setFecha(fecha);
+                    aldat.guardarAlumno(alum);
+                }else{
+                    jTDni.setText(null);
+                    jTApellido.setText(null);
+                    jTNombre.setText(null);
+                    JOptionPane.showMessageDialog(this, "Debe ingresar un documento válido");
+                    return;
+                }
+
+            }catch(NumberFormatException nf){
+                JOptionPane.showMessageDialog(null, "Ingrese DNI válido");
+            }
+        } 
     }//GEN-LAST:event_jBNuevoActionPerformed
 
         public void borrarCampos(){
-        if(!jTApellido.getText().isEmpty() && !jTDni.getText().isEmpty() && !jTApellido.getText().isEmpty()){
+            if(!jTApellido.getText().isEmpty() && !jTDni.getText().isEmpty() && !jTNombre.getText().isEmpty()){
             jTApellido.setText(null);
             jTDni .setText(null);
             jTNombre.setText(null);
             jREstado.setSelected(false);
             jDCFechaNac.setDate(null);
-            
-           
-        }
+            fecha=null;
+            }
         }
     
     private void jDCFechaNacPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_jDCFechaNacPropertyChange
@@ -380,50 +362,48 @@ private AlumnoData aldat;
     }//GEN-LAST:event_jDCFechaNacPropertyChange
 
     private void jBEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBEliminarActionPerformed
-          if(jTApellido.getText().isEmpty() || jTDni.getText().isEmpty() || jTApellido.getText().isEmpty()){
-              JOptionPane.showMessageDialog(this,"Debe completar todos los campos");
-              return;
-          }else{
-              int dni  = Integer.parseInt(jTDni.getText());
-        aldat.eliminarAlumno(dni);
-        borrarCampos();
-          }
+        if(jTApellido.getText().isEmpty() || jTDni.getText().isEmpty() || jTNombre.getText().isEmpty()){
+            JOptionPane.showMessageDialog(this,"Debe completar todos los campos");
+            return;
+        }else{
+            int dni  = Integer.parseInt(jTDni.getText());
+            aldat.eliminarAlumno(dni);
+            borrarCampos();
+        }
     }//GEN-LAST:event_jBEliminarActionPerformed
 
     private void jBGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBGuardarActionPerformed
-        if(jTApellido.getText().isEmpty() || jTDni.getText().isEmpty() || jTApellido.getText().isEmpty()){
+        if(jTApellido.getText().isEmpty() || jTDni.getText().isEmpty() || jTNombre.getText().isEmpty()){
            JOptionPane.showMessageDialog(null, "Debe completar todos los campos");
            return;
-       }
-    
-       Alumno alum = new Alumno();
-       
-       
-       int dni = Integer.parseInt(jTDni.getText());
-       
-       alum.setDni(dni);       
-       alum.setApellido(jTApellido.getText());
-       alum.setNombre(jTNombre.getText());
-       alum.setActivo(jREstado.isSelected());
-       alum.setFecha(fecha);
-       aldat.modificarAlumno(alum);
-       borrarCampos();
+        }
+
+        Alumno alum = new Alumno();
+
+
+        int dni = Integer.parseInt(jTDni.getText());
+
+        alum.setDni(dni);       
+        alum.setApellido(jTApellido.getText());
+        alum.setNombre(jTNombre.getText());
+        alum.setActivo(jREstado.isSelected());
+        alum.setFecha(fecha);
+        aldat.modificarAlumno(alum);
+        borrarCampos();
         
     }//GEN-LAST:event_jBGuardarActionPerformed
 
     private void jBSalirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBSalirMouseClicked
-   
-        
-int respuesta=JOptionPane.showConfirmDialog(this, "desea salir al menu principal?","confirm",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
-if(respuesta==JOptionPane.NO_OPTION){
-return;
-}else{
-    try {
-        setClosed(true);
-    } catch (PropertyVetoException ex) {
-        Logger.getLogger(FormularioAlumno.class.getName()).log(Level.SEVERE, null, ex);
-    }
-}
+        int respuesta=JOptionPane.showConfirmDialog(this, "¿Desea regresar al menú principal?","confirm",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
+        if(respuesta==JOptionPane.NO_OPTION){
+        return;
+        }else{
+            try {
+                setClosed(true);
+            } catch (PropertyVetoException ex) {
+                Logger.getLogger(FormularioAlumno.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
     
        
     }//GEN-LAST:event_jBSalirMouseClicked
