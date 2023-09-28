@@ -20,7 +20,7 @@ public class InscripcionData {
         inscripcion = new ArrayList<>();
     }
 
-    //metodos    
+    
     public void guardarInscripcion(Inscripcion insc){
         String sql="INSERT INTO inscripcion (nota,idAlumno,idMateria) VALUES (?,?,?)";
         PreparedStatement ps;
@@ -32,7 +32,6 @@ public class InscripcionData {
          ps.executeUpdate();
          ResultSet rs=ps.getGeneratedKeys();
          if(rs.next()){
-            // insc.setIdInscripcion(rs.getInt("idInscripcion"));
              JOptionPane.showMessageDialog(null, "Inscripción realizada con éxito");
          }
          ps.close();
@@ -80,6 +79,7 @@ public class InscripcionData {
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setInt(1, id);
             ResultSet rs = ps.executeQuery();
+          
             AlumnoData alumnodata = new AlumnoData();
             
             Alumno alumno = alumnodata.buscarAlumno(id);
@@ -91,8 +91,6 @@ public class InscripcionData {
 
                 MateriaData MatDat = new MateriaData();
 
-                //Alumno a;
-               // a=AluDat.buscarAlumno(rs.getInt("inscripcion.idAlumno"));
                             
                 
                 Materia mat;
@@ -118,7 +116,6 @@ public class InscripcionData {
     }
 
 
-//TreeSet de materias
     public ArrayList obtenerMateriasCursadas(int id){
         ArrayList <Materia> materias=new ArrayList();
         try{
@@ -132,7 +129,6 @@ public class InscripcionData {
                 materia.setIdMateria(rs.getInt("materia.idMateria"));
                 materia.setNombre(rs.getString("materia.nombre"));
                 materia.setAnioMateria(rs.getInt("materia.año"));
-                //materia.setActivo(rs.getBoolean("estado"));
                 materias.add(materia);
             }
             ps.close();
@@ -146,7 +142,7 @@ public class InscripcionData {
         ArrayList <Materia> materias=new ArrayList();
 
 
-        String sql = "SELECT * FROM materia WHERE estado = 1 AND idMateria NOT IN(SELECT idMateria FROM inscripcion WHERE inscripcion.idAlumno = ?)";
+        String sql = "SELECT materia.idMateria,materia.nombre,materia.año FROM materia WHERE estado = 1 AND idMateria NOT IN(SELECT idMateria FROM inscripcion WHERE inscripcion.idAlumno = ?)";
 
         try{
 
@@ -160,7 +156,6 @@ public class InscripcionData {
                 materia.setIdMateria(rs.getInt("materia.idMateria"));
                 materia.setNombre(rs.getString("materia.nombre"));
                 materia.setAnioMateria(rs.getInt("materia.año"));
-                //materia.setActivo(rs.getBoolean("estado"));
                 materias.add(materia);
             }
             ps.close();
@@ -171,8 +166,7 @@ public class InscripcionData {
     }
 
     public void borrarInscripcionMateriaAlumno(int idAlumno, int idMateria){
-
-        //probar restriccion de integridad referencial   
+ 
 
 
         String sql = "DELETE FROM inscripcion WHERE inscripcion.idAlumno=? AND inscripcion.idMateria=?";  
@@ -199,15 +193,10 @@ public class InscripcionData {
             ps.setDouble(1, nota);
             ps.setInt(2, idMateria);
             ps.setInt(3, idAlumno);
-            int exito=ps.executeUpdate();
+            if(ps.executeUpdate()==1){
+            JOptionPane.showMessageDialog(null, "Materia modificada exitosamente");
+            }
             
-            System.out.println(exito);
-//            if(exito==1){
-//                JOptionPane.showMessageDialog(null, "Inscripción modificada exitosamente");
-//            
-//             }else{
-//           JOptionPane.showMessageDialog(null, "No se ha modificado la nota");
-//}
         }catch(SQLException ex){
             JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Materia"+ex.getMessage());
         }
@@ -215,7 +204,6 @@ public class InscripcionData {
 
     public ArrayList obtenerAlumnosXMateria(int idMateria){
         String sql="SELECT * FROM  alumno WHERE estado=1 AND idAlumno IN(SELECT idInscripcion FROM inscripcion JOIN materia ON(inscripcion.idMateria=materia.idMateria) WHERE materia.idMateria = ?)";
-        //String sql ="SELECT * FROM  alumno JOIN inscripcion ON(alumno.idAlumno=inscripcion.idAlumno) WHERE inscripcion.idMateria = ? AND alumno.estado=1";
 
         ArrayList <Alumno> listado = new ArrayList<>();
         Alumno alum ;

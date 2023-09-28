@@ -222,19 +222,7 @@ public class AlumnoData {
         }
              
  
-         }
-         
-//     public void estadoTrue(){
-//     String sql = "UPDATE alumno SET estado =1";
-//     
-//     
-//        try {
-//            PreparedStatement ps = con.prepareStatement(sql);
-//            ps.execute();
-//        } catch (SQLException ex) {
-//            JOptionPane.showMessageDialog(null,"Error al conectar a la base");
-//        }
-//     }
+         }     
      
      }
 

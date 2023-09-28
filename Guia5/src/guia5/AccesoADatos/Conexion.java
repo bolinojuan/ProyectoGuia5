@@ -7,7 +7,6 @@ public class Conexion {
 
     private static final String URL = "jdbc:mariadb://localhost/universidadEjemplo";
     private static final String USER = "root";
-    //private static final String DB = "";
     private static final String PASSWORD = "";
     private static Connection con;
     
@@ -22,8 +21,7 @@ public class Conexion {
         try {
             Class.forName("org.mariadb.jdbc.Driver");
             
-          //  con= DriverManager.getConnection(URL+DB+" ?useLegacyDatetimeCode=false&serverTimezone=UTC"+"&user="+ USER + "&password="+PASSWORD);
-            con =DriverManager.getConnection(URL, USER, PASSWORD);
+         con =DriverManager.getConnection(URL, USER, PASSWORD);
         } catch (ClassNotFoundException ex) {
 
             JOptionPane.showMessageDialog(null, "Error al cargar el driver  "+ ex.getMessage());

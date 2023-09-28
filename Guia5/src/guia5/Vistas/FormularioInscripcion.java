@@ -120,10 +120,10 @@ private DefaultTableModel modelo = new DefaultTableModel();
         jLabel1.setFont(new java.awt.Font("Noto Sans", 0, 18)); // NOI18N
         jLabel1.setText("Seleccione un alumno");
 
-        jLabel2.setFont(new java.awt.Font("Noto Sans", 1, 16)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Noto Sans", 1, 20)); // NOI18N
         jLabel2.setText("Listado de Materias");
 
-        jLabel3.setFont(new java.awt.Font("Noto Sans", 1, 20)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Noto Sans", 1, 26)); // NOI18N
         jLabel3.setText("Formulario de Inscripcion");
 
         jRMatIns.setFont(new java.awt.Font("Noto Sans", 0, 18)); // NOI18N
@@ -160,12 +160,6 @@ private DefaultTableModel modelo = new DefaultTableModel();
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(45, 45, 45)
-                .addComponent(jRMatIns)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jRMatNoIns)
-                .addGap(174, 174, 174))
-            .addGroup(layout.createSequentialGroup()
                 .addGap(66, 297, Short.MAX_VALUE)
                 .addComponent(jBAnular, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(104, 104, 104)
@@ -180,22 +174,28 @@ private DefaultTableModel modelo = new DefaultTableModel();
                         .addComponent(jCBAlumno, javax.swing.GroupLayout.PREFERRED_SIZE, 341, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(74, 74, 74)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jBInscribir, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 553, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(236, 236, 236)
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 553, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jRMatIns)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jRMatNoIns)
+                                .addGap(12, 12, 12))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(193, 193, 193)
-                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 360, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(236, 236, 236)
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(33, 33, 33)
+                .addGap(21, 21, 21)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jCBAlumno, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1))
@@ -235,10 +235,10 @@ private DefaultTableModel modelo = new DefaultTableModel();
     }//GEN-LAST:event_jRMatNoInsActionPerformed
 
     private void jBSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBSalirActionPerformed
-  int respuesta=JOptionPane.showConfirmDialog(this, "desea salir al menu principal?","confirm",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
-if(respuesta==JOptionPane.NO_OPTION){
-return;
-}else{
+    int respuesta=JOptionPane.showConfirmDialog(this, "desea salir al menu principal?","confirm",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
+    if(respuesta==JOptionPane.NO_OPTION){
+    return;
+    }else{
     try {
         setClosed(true);
     } catch (PropertyVetoException ex) {
@@ -270,16 +270,16 @@ return;
         InscripcionData insc=new InscripcionData();
         ArrayList <Materia> materias=new ArrayList();
         materias.addAll(insc.obtenerMateriasNoCursadas(alumno.getIdAlumno()));
-        mat=materias.get(jTInsc.getSelectedRow());
-        Inscripcion inscripcion = new Inscripcion(alumno,mat,0);
-        insc.guardarInscripcion(inscripcion);
+        mat=materias.get(jTInsc.getSelectedRow());       
+        Inscripcion inscripcion = new Inscripcion(alumno,mat,0);       
+        insc.guardarInscripcion(inscripcion);  
     }//GEN-LAST:event_jBInscribirActionPerformed
 
     private void jCBAlumnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCBAlumnoActionPerformed
-        //borrarFilas();
+        borrarFilas();
         jRMatIns.setSelected(false);
         jRMatNoIns.setSelected(false);
-        borrarFilas();
+        
     }//GEN-LAST:event_jCBAlumnoActionPerformed
 
     private void jBAnularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBAnularActionPerformed

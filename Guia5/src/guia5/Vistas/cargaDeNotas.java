@@ -59,7 +59,7 @@ private DefaultTableModel modelo = new DefaultTableModel();
         jLabel1.setFont(new java.awt.Font("Noto Sans", 0, 18)); // NOI18N
         jLabel1.setText("Seleccione un alumno: ");
 
-        jLabel2.setFont(new java.awt.Font("Noto Sans", 1, 20)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Noto Sans", 1, 26)); // NOI18N
         jLabel2.setText("Carga De Notas");
 
         jCBAlumno.addActionListener(new java.awt.event.ActionListener() {
@@ -163,7 +163,7 @@ private DefaultTableModel modelo = new DefaultTableModel();
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jBSalir)
                     .addComponent(jBGuardar))
-                .addContainerGap(129, Short.MAX_VALUE))
+                .addContainerGap(121, Short.MAX_VALUE))
         );
 
         pack();

@@ -22,7 +22,7 @@ public class Main {
 //        alu.guardarAlumno(d);        
 //        alu.listarAlumno();
 
-        System.out.println(alu.buscarPorDni(1));
+ //       System.out.println(alu.buscarPorDni(1));
   
     }
    

@@ -48,7 +48,7 @@ DefaultTableModel modelo = new DefaultTableModel();
 
         setPreferredSize(new java.awt.Dimension(800, 600));
 
-        jLabel1.setFont(new java.awt.Font("Noto Sans", 1, 20)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Noto Sans", 1, 26)); // NOI18N
         jLabel1.setText("Listado de Alumnos por Materias");
 
         jLabel2.setFont(new java.awt.Font("Noto Sans", 0, 18)); // NOI18N
@@ -124,7 +124,7 @@ DefaultTableModel modelo = new DefaultTableModel();
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jCBMateria, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 102, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 94, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(107, 107, 107)
                 .addComponent(jButton1)

@@ -13,7 +13,6 @@ public MateriaData(){
     con=Conexion.getConexion();
 }
 
-//metodos
 public void guardarMateria(Materia materia){
     String sql="INSERT INTO materia (nombre,año,estado) VALUES (?,?,?)";
     try{
@@ -25,7 +24,6 @@ public void guardarMateria(Materia materia){
      ps.executeUpdate();
      ResultSet rs=ps.getGeneratedKeys();
      if(rs.next()){
-        // materia.setIdMateria(rs.getInt("idMateria")); -->  ej: condicion que se utiliza para comparar el id de un alumno con el que se pasa por parametro
          
         JOptionPane.showMessageDialog(null, "Materia añadida con éxito");
         
@@ -71,7 +69,6 @@ public void modificarMateria(Materia materia){
         PreparedStatement ps=con.prepareStatement(sql);
         ps.setString(1, materia.getNombre());
         ps.setInt(2, materia.getAnioMateria());
-        //ps.setBoolean(3, materia.isActivo());
         ps.setInt(4, materia.getIdMateria());
         int exito=ps.executeUpdate();
         if(exito==1){
@@ -123,19 +120,6 @@ public List <Materia> listarMaterias(){
     }
     return materias;
 }
-
-
-//public void setearMateriasActivas(){
-//String sql = "UPDATE materia SET estado = 1";
-//
-//        try {
-//            PreparedStatement ps = con.prepareStatement(sql);
-//            ps.executeUpdate();
-//            
-//        } catch (SQLException ex) {
-//            Logger.getLogger(MateriaData.class.getName()).log(Level.SEVERE, null, ex);
-//        }
-//        
-//
-//}
 }
+
+
