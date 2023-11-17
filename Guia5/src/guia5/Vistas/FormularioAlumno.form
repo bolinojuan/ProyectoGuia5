@@ -148,6 +148,9 @@
     <Component class="javax.swing.JTextField" name="jTDni">
     </Component>
     <Component class="javax.swing.JTextField" name="jTApellido">
+      <Events>
+        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jTApellidoKeyTyped"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="jTNombre">
     </Component>

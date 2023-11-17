@@ -61,6 +61,12 @@ private AlumnoData aldat;
 
         setPreferredSize(new java.awt.Dimension(800, 600));
 
+        jTApellido.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTApellidoKeyTyped(evt);
+            }
+        });
+
         jBBuscar.setFont(new java.awt.Font("Noto Sans", 0, 18)); // NOI18N
         jBBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/magnifier.png"))); // NOI18N
         jBBuscar.setText("Buscar ID");
@@ -447,6 +453,12 @@ private AlumnoData aldat;
     private void jBSalirMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBSalirMouseMoved
        jBSalir.setBackground(new Color(171,181,38));
     }//GEN-LAST:event_jBSalirMouseMoved
+
+    private void jTApellidoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTApellidoKeyTyped
+        if(!(Character.isLetter(evt.getKeyChar()))&&!(Character.isWhitespace(evt.getKeyChar()))){
+            evt.consume();
+        }
+    }//GEN-LAST:event_jTApellidoKeyTyped
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
